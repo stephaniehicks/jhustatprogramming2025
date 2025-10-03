@@ -1,0 +1,49 @@
+---
+title: "Programming with GitHub Copilot"
+author: 
+  - name: Stephanie Hicks & Kinnary Shah
+    url: https://stephaniehicks.com
+    affiliation: Department of Biostatistics, Johns Hopkins
+    affiliation_url: https://publichealth.jhu.edu
+description: "Learning how to use Copilot for programming"
+date: 2025-12-04
+draft: true
+---
+
+# Pre-lecture activities
+
+::: callout-important
+
+In advance of class, please set up your GitHub student account on this website: <https://education.github.com/discount_requests/application>. This process may take up to 72 hours.
+
+Once you've been granted access, you can follow these instructions to install Copilot in RStudio: <https://drive.google.com/file/d/1Y_BLnYYWxujbJuxlWXjCtU93mghKG-2s/view?usp=sharing>.
+
+:::
+
+
+# Lecture 
+
+
+## Learning objectives
+
+::: callout-note
+### Learning objectives
+
+**At the end of this lesson you will:**
+
+-   Know the basic terminology and logic of GitHub Copilot
+-   Have helpful tips to optimize your use of GitHub Copilot
+-   Have resources to create a free student account to GitHub Copilot and install it in RStudio 
+
+:::
+
+
+
+## Slides 
+
+- [Lecture 11: Programming with Copilot](https://docs.google.com/presentation/d/18YPgRGSiN-OpQpKtnhIyK5crbnFDiaUw-jNJgNwKEQU/edit?usp=sharing)
+
+# Class activity 
+
+For the rest of the time in class, you and your team will work on the final project. Stephanie will walk around to answer questions and to help in anyway I can. 
+

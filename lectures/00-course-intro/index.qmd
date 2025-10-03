@@ -1,0 +1,70 @@
+---
+title: "Welcome to the course"
+author: 
+  - name: Stephanie Hicks
+    url: https://stephaniehicks.com
+    affiliation: Department of Biostatistics, Johns Hopkins
+    affiliation_url: https://publichealth.jhu.edu
+description: "Overview of course and Hello Quarto!"
+date: 2025-10-23
+---
+
+# Pre-lecture activities
+
+Before each class, there will be a set of pre-lecture activities and/or readings for you to complete. **It is important these activities be done before class so that you can benefit the most from the in-class activities**. 
+
+Today we will cover the [Pre-reading material about quarto](../../readings/00-quarto/index.qmd) as a way to demonstrate where to find the pre-reading materials going forward. Sometimes, there will not be pre-reading materials here, but rather direct links to external resources that you need to read in advance. 
+
+# Lecture 
+
+## Acknowledgements
+
+Material for this lecture was borrowed and adopted from
+
+- r4ds book: <https://r4ds.hadley.nz/quarto>
+- Quarto Publishing System: <https://quarto.org>
+
+
+## Learning objectives
+
+::: callout-note
+### Learning objectives
+
+**At the end of this lesson you will:**
+
+-   Get an overview of the course (including staff, format, grading, etc)
+-   Install and use an Integrated Developer Evironment (IDE) to perform statistial programming and data analyses
+-   Recognize what are Quarto files and how they are different from RMarkdown files or Python notebooks
+-   Be able to create a Quarto project and Quarto website for yourself
+
+:::
+
+
+
+## Slides 
+
+- [Lecture 00: Welcome and course overview](https://docs.google.com/presentation/d/1SWSxSlioTwAOBM1kOYp0wbKjgKslsaTLh89JHOKdj4w/edit?usp=sharing)
+
+
+# Post-lecture
+
+## Summary 
+
+- Access all course material on CoursePlus and course website (<https://www.stephaniehicks.com/jhustatprogramming2025>)
+- Lectures will be recorded followed by an in-class activity. Later in the course, the in-class activity will be to work on the final project
+- Integrated developer environment (IDEs) can make you more efficient as a programmer! 
+- Quarto is an open-source scientific and technical publishing system to create reproducible, production quality articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, and more
+- You can think of Quarto as a natural successor to RMarkdown
+
+## Additional practice
+
+Here are some additional practice questions to help you think about the material discussed.
+
+::: callout-note
+### Questions
+
+1.  In either RStudio or VSCode, create a new Quarto document. Read the instructions. Practice running the chunks individually. Then render the document and practice the appropriate keyboard short cut. Verify that you can modify the code, re-run it, and see modified output.
+
+2.  Create one new Quarto document for each of the three built-in formats: HTML, PDF and Word. Render each of the three documents. How do the outputs differ? How do the inputs differ? (You may need to install LaTeX in order to build the PDF output --- RStudio will prompt you if this is necessary.)
+
+:::
