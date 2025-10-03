@@ -1,0 +1,18 @@
+[
+  {
+    "listing": "/readings.html",
+    "items": [
+      "/readings/00-quarto/index.html"
+    ]
+  },
+  {
+    "listing": "/lectures.html",
+    "items": [
+      "/lectures/00-course-intro/index.html"
+    ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": []
+  }
+]
