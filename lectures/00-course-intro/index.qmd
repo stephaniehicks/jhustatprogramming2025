@@ -54,7 +54,7 @@ Material for this lecture was borrowed and adopted from
 - Lectures will be recorded followed by an in-class activity. Later in the course, the in-class activity will be to work on the final project
 - Integrated developer environment (IDEs) can make you more efficient as a programmer! 
 - Quarto is an open-source scientific and technical publishing system to create reproducible, production quality articles, presentations, dashboards, websites, blogs, and books in HTML, PDF, MS Word, and more
-- You can think of Quarto as a natural successor to RMarkdown
+- You can think of Quarto as a natural successor to RMarkdown with code chunks
 
 ## Additional practice
 
