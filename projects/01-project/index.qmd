@@ -8,7 +8,7 @@ author:
 description: "Building a website and practicing with command-line tools"
 date: 2025-10-23
 knitr: true
-draft: true
+draft: false
 ---
 
 
@@ -17,26 +17,27 @@ draft: true
 
 **Due date: November 7 at 11:59pm**
 
-The goal of this assignment is to practice some of the skills we have been learning about in class around quarto, command-line, and version control by building and deploying a website. You also are asked to practice with some command-line skills more formally. 
+The goal of this assignment is to practice some of the skills we have been learning about in class around building data analyses and quarto by building and deploying a Quarto website. You also are asked to practice with some command-line and version control skills more formally. 
 
 ### To submit your project 
 
 Please use this Quarto file (`.qmd`) and fill in the requested components by adding the URLs pointing to the GitHub repositories and deployed websites. Render this file to a **HTML file**. 
 
-You will push the `.qmd` file and rendered HTML file to a private GitHub repostory on GitHub classroom. The link to create a private GitHub repository for yourself to complete Project 1 will be posted in CoursePlus (**Note**: this creates an empty repository. You will need to clone the reopository locally, add your code, and push your code from your local repo to the remote repository on GitHub Classroom when ready). Please **show all your code**, if relevant to a section.
+You will push the `.qmd` file and rendered HTML file to a private GitHub repostory on GitHub classroom. The link to create a private GitHub repository for yourself to complete Project 1 will be posted in CoursePlus 
+
+::: {.callout-note}
+
+This creates an empty repository. You will need to clone the reopository locally, add your code, and push your code from your local repo to the remote repository on GitHub Classroom when ready. 
+
+Please **show all the code**, if relevant to a section.
+
+:::
 
 The TAs will grade the contents in the GitHub repo by cloning the repo and checking for all the things described below. 
 
 # Part 1
 
-1. Read this blogpost titled [Building a brand as a scientist](https://www.stephaniehicks.com/blog/building-a-brand-as-a-scientist). 
-2. Reflect on the questions in the "Defining your brand" section. 
-3. Write two paragraphs (4-6 sentences) max here answering one (or more) of the questions asked in the section above.
-
-
-# Part 2
-
-Next, with the reflections from Part 1 in mind, you will create a public GitHub repository on your own GitHub account and build a small website to introduce yourself to others in the course. You will also create a small data analysis on one of the webpages to practice literate programming in [Quarto](https://quarto.org). 
+Create a public GitHub repository on your own GitHub account and build a small website to introduce yourself to others in the course. You will also create a small data analysis on one of the webpages to practice literate programming in [Quarto](https://quarto.org). 
 
 ![](../../images/quarto_schematic.png)
 
@@ -72,7 +73,13 @@ Your local repository should include a `README.md` file describing who is the au
 
 ## 4. Deploy your website
 
-Deploy your website e.g. using [Quarto Pub](https://quarto.org/docs/publishing/quarto-pub.html), [GitHub pages](https://quarto.org/docs/publishing/github-pages.html), or [Netlify](https://quarto.org/docs/publishing/netlify.html), etc. (**Note**: Deploying your website to RPubs will not be accepted).
+Deploy your website e.g. using [Quarto Pub](https://quarto.org/docs/publishing/quarto-pub.html), [GitHub pages](https://quarto.org/docs/publishing/github-pages.html), or [Netlify](https://quarto.org/docs/publishing/netlify.html), etc. 
+
+::: {.callout-note}
+
+Deploying your website to RPubs will not be accepted.
+
+:::
 
 ## 5. Share your website
 
@@ -102,7 +109,7 @@ ID,Name,Age,Gender,Grade,Subject
 10,Judy,22,F,79,History
 ```
 
-1. Use [`wget`](https://www.gnu.org/software/wget) to download the `students.csv` file locally from [here](https://github.com/stephaniehicks/jhustatprogramming2024/blob/main/projects/01-project/students.csv).
+1. Use [`wget`](https://www.gnu.org/software/wget) or [`curl`](https://curl.se/docs/tutorial.html) to download the `students.csv` file locally from [here](https://github.com/stephaniehicks/jhustatprogramming2025/blob/main/projects/01-project/students.csv).
 
 ``` {bash}
 # Add your solution here
@@ -187,6 +194,11 @@ ID,Name,Age,Gender,Grade,Subject
 
 ```
 
+12. Put all the commands into a shell script (`.sh`) file and run the command below to show the output from all the commands together. 
+
+```{bash}
+# Add your solution here 
 
 
+```
 
