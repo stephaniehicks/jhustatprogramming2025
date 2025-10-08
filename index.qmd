@@ -12,7 +12,7 @@ This hands-on course will cover advanced statistical computing programming parad
 
 ## Course Information
 
-- Course Staff: [Prof. Stephanie Hicks](https://www.stephaniehicks.com) and TBA TAs
+- Course Staff: [Prof. Stephanie Hicks](https://www.stephaniehicks.com) and (Wenxuan Lu, Wanlu Chen)
 - Lectures: 1:30-2:50pm Tuesday and Thursday. See CoursePlus for location details.
 - Office Hours: See CoursePlus for location details.
 
