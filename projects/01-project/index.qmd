@@ -91,7 +91,7 @@ As you read the introductions from other folks in the class, feel free to commen
 
 - **Link to your deployed website**: [Delete this and replace the text with the link to the public deployed website you created above]
 
-# Part 3
+# Part 2
 
 Consider the dataset called `students.csv` with the following contents: 
 
