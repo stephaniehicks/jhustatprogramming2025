@@ -28,6 +28,8 @@ website:
             href: readings.qmd
           - text: "Projects"
             href: projects.qmd
+          - text: "Additional Resources"
+            href: resources.qmd  
       - icon: github
         href: https://github.com/stephaniehicks/jhustatprogramming2025
 format:
