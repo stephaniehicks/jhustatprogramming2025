@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Stephanie Hicks">
+<meta name="dcterms.date" content="2025-10-23">
+<meta name="description" content="Things to think about when writing up better data analyses">
 
-<title>Projects – Statistical Programming Paradigms and Workflows</title>
+<title>(Some) Best practices for writing up a data analysis – Statistical Programming Paradigms and Workflows</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +23,47 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-fc1a281c15ae91fd4173f431b0abd564.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fc1a281c15ae91fd4173f431b0abd564.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,79 +91,21 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
-      
-      searchColumns: [],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Statistical Programming Paradigms and Workflows</span>
     </a>
   </div>
@@ -153,12 +116,12 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> <i class="bi bi-home" role="img">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-home" role="img">
 </i> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./lectures.html"> <i class="bi bi-book-half" role="img">
+    <a class="nav-link" href="../../lectures.html"> <i class="bi bi-book-half" role="img">
 </i> 
 <span class="menu-text">Course</span></a>
   </li>  
@@ -170,15 +133,15 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
         <li>
-    <a class="dropdown-item" href="./readings.html">
+    <a class="dropdown-item" href="../../readings.html">
  <span class="dropdown-text">Pre-reading</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./projects.html">
+    <a class="dropdown-item" href="../../projects.html">
  <span class="dropdown-text">Projects</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./resources.html">
+    <a class="dropdown-item" href="../../resources.html">
  <span class="dropdown-text">Additional Resources</span></a>
   </li>  
     </ul>
@@ -196,45 +159,181 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">(Some) Best practices for writing up a data analysis</h1>
+                  <div>
+        <div class="description">
+          Things to think about when writing up better data analyses
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author"><a href="https://stephaniehicks.com">Stephanie Hicks</a> </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              Department of Biostatistics, Johns Hopkins
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 23, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#audience" id="toc-audience" class="nav-link" data-scroll-target="#audience">Audience</a></li>
+  <li><a href="#structure" id="toc-structure" class="nav-link" data-scroll-target="#structure">Structure</a>
+  <ul class="collapse">
+  <li><a href="#introduction-and-motivation" id="toc-introduction-and-motivation" class="nav-link" data-scroll-target="#introduction-and-motivation">Introduction and motivation</a></li>
+  <li><a href="#body" id="toc-body" class="nav-link" data-scroll-target="#body">Body</a></li>
+  <li><a href="#conclusion-and-discussion" id="toc-conclusion-and-discussion" class="nav-link" data-scroll-target="#conclusion-and-discussion">Conclusion and discussion</a></li>
+  </ul></li>
+  <li><a href="#some-dos-and-donts" id="toc-some-dos-and-donts" class="nav-link" data-scroll-target="#some-dos-and-donts">Some Dos and Don’ts</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Projects</h1>
+
+
+
+
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p>In this class, you will write up data analyses where you are practicing one or more concepts that we have learned in the class. One of the questions that often arises is “What makes a good data analysis write up?”.</p>
+<p>This is a fantastic question and it’s one of those things that once you have seen enough examples of good data analyses or once you have written enough of them yourself, it is easier to recognize. For those that are new(-ish) to writing up good data analyses, I am here to share the bad news that I do not have simple check list for you to follow. However, I have put together some thoughts that should hopefully help you write <strong>better data analyses</strong> after reading the thoughts below.</p>
+<section id="audience" class="level2">
+<h2 class="anchored" data-anchor-id="audience">Audience</h2>
+<p>A primary goal of building a data analysis is to extract knowledge and insights from examining data <span class="citation" data-cites="tuke:1962 tukeywilk1996">(<a href="#ref-tuke:1962" role="doc-biblioref">J. W. Tukey 1962</a>; <a href="#ref-tukeywilk1996" role="doc-biblioref">W. Tukey and Wilk 1966</a>)</span>. This knowledge is often encoded into machine learning algorithms or related data products to facilitate use by large numbers of users. Yet, the discussion of how to build a data analysis that is trusted by its users often proceeds without explicit reference to an audience or consumer for whom the data analysis is being developed.</p>
+<p>Indeed, there is much for a data analyst to consider on their own with respect to statistical techniques, visualization methods, data processing approaches, and computational algorithms that do not involve the needs or requirements of an audience member in particular. However, a critical goal for many data analyses is to be useful or persuasive to another person <span class="citation" data-cites="kimball1957errors">(<a href="#ref-kimball1957errors" role="doc-biblioref">Kimball 1957</a>)</span>. The audience could range from simply the person doing the analysis to a much larger external group.</p>
+<p>It is worth to think about how to build data analyses that are trustworthy and for others to have trust in the work that they produce. The extent to which results from data analyses are used for key policy decisions enhances the need for trust between analyst and audience. <span class="citation" data-cites="broderick2023toward">Broderick et al. (<a href="#ref-broderick2023toward" role="doc-biblioref">2023</a>)</span> note that complex data analyses with long data pipelines present numerous opportunities for trust to break down. In particular, they note that trust can break down if the evidence generated by an analysis is not useful for decision-making. An alternative framework is proposed by <span class="citation" data-cites="yu2024veridical">Yu and Barter (<a href="#ref-yu2024veridical" role="doc-biblioref">2024</a>)</span>, who argue that trustworthiness in the data science life cycle can be achieved through building analyses that have predictability, computability, and stability. A principle that ties both frameworks together is the characterization of the development of trust as primarily being in the hands of the analyst, via decisions made about study design, data collection, model choice, and other aspects of the data science process.</p>
+<p>One approach to addressing the challenge of building a useful analysis is to consider the audience as part of the design of the analysis itself. Hence, it can be a valuable exercise to think about who the audience is that you (as the data analyst) have in mind when you build the data analysis. Some examples of who a data analysis write up is written for could include:</p>
+<ul>
+<li><strong>A primary non-technical audience</strong>: This could be a collaborator or client. They might be interested a higher-level, non-technical pass of the write up (primarily focused on the introduction, main figures, and conclusions to find out what you learned). They may or may not read the technical details to see if there is something that stands out or unexpected. Here you want to think about building your data analysis with their expertise in mind where you prioritize the type of information that they found most relevant in a data analysis (for example, maybe they need to see a specific type of plot) and then move more of the technical details to the appendix.</li>
+<li><strong>A secondary non-technical audience</strong>: This is likely a non-technical manager, an executive, or someone who is crafting new policies based the results of your data analysis. These individuals will skim most of the components of your analysis and will be focused on the “headlines” of your work. You want to summarize your key findings clearly and succinctly.</li>
+<li><strong>A primary or secondary technical audience</strong>: This could be a technical manager or an advisor. Here, this individual will carefully read all components, including the main technical details in your data analysis. They may challenge you to justify your data analytic choices and push you to improve your technical writing, your code, and data visualizations. Here, you want to make sure the details of your report are easily readable, succinct (not a list of everything you did over the whole analysis), and compelling to justify the results you summarize in the conclusions.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For more information on the audience of a data analysis, I encourage you to read <a href="https://doi.org/10.6339/25-JDS1189">Quantifying the Alignment of a Data Analysis Between Analyst and Audience</a> <span class="citation" data-cites="mcgowan_peng_hicks_2025">(<a href="#ref-mcgowan_peng_hicks_2025" role="doc-biblioref">McGowan, Peng, and Hicks 2025</a>)</span>.</p>
+</div>
+</div>
+</section>
+<section id="structure" class="level2">
+<h2 class="anchored" data-anchor-id="structure">Structure</h2>
+<p>Now that you have an audience in mind, the next question you might have is how to structure a data analysis. This is typically different from other professional writing you have done (e.g.&nbsp;research article for a peer-reviewed journal) because the structure of analyses can vary so much depending on the audience. In traditional research articles, there is typically less flexibility. The other thing I should add is that this is not a skill people are born with it. It takes practice to hone this skill of writing good data analyses and the more you do it, the easier it will become.</p>
+<p>Generally speaking though, the structure of data analysis will include:</p>
+<ol type="1">
+<li>An introduction and/or motivation of the problem being addressed</li>
+<li>What is the question being asked that you will then investigate with data?</li>
+<li>The body (may or may not include many of the technical details)</li>
+<li>Key conclusions and/or discussion of limitations of the data analysis</li>
+<li>Appendix (where often more of the technical detail goes if writing for a non-technical audience)</li>
+</ol>
+<p>The ``body” is often quite different depending on who the audience is. You want to describe the computational approach(es) you took to investigate the question asked with the data available. Ideally, you are concise, but also it has to be informative.</p>
+<p>For example, instead of saying “I used regression”, you could say “I fit a linear regression model to the price of diamonds using the size and clarity of the diamond as predictors”. You want to justify why these are relevant features and the body will often contain many plots or tables. This choice is up to you, but if you think a plot would be helpful to include to explain to the audience an important detail, then include it. You don’t want to include dozens or hundreds of plots without explanation or rationale why you included these plots.</p>
+<section id="introduction-and-motivation" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-and-motivation">Introduction and motivation</h3>
+<p>Some things to consider are:</p>
+<ul>
+<li>Who is your intended audience for the data analysis?</li>
+<li>What is the question you are trying to answer?</li>
+<li>Why is this question important or interesting? If appropriate, mention prior work or background that motivated this analysis</li>
+<li>What data are you using? Identify the dataset(s), their source, and key features. This should be concise as the data can be described in greater detail elsewhere in the write up.</li>
+<li>What is the expected contribution or insight? What does this analysis add or clarify?</li>
+</ul>
+</section>
+<section id="body" class="level3">
+<h3 class="anchored" data-anchor-id="body">Body</h3>
+<p>Some things to consider are:</p>
+<ul>
+<li>You want to clearly label figures, give them informative captions, and refer to them in the text in the order they in the paper (e.g.&nbsp;Figure 1, 2, 3, etc).</li>
+<li>Showing the code could be fine for certain audiences, but it could also be useful to just show the output of the code for other audiences as evidence for the results you summarize in the conclusions.</li>
+</ul>
+</section>
+<section id="conclusion-and-discussion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion-and-discussion">Conclusion and discussion</h3>
+<p>Some things to consider are:</p>
+<ul>
+<li>What did you learn from the analysis?</li>
+<li>What are the limiations of the data used or the data analysis?</li>
+<li>Were you able to answer the original question asked or a different question?</li>
+</ul>
+</section>
+</section>
+<section id="some-dos-and-donts" class="level2">
+<h2 class="anchored" data-anchor-id="some-dos-and-donts">Some Dos and Don’ts</h2>
+<ul>
+<li>When in doubt, use shorter words and sentences.</li>
+<li>A common pitfall in report writing is to recount your thought process step by step — for example: “First I did this, but it didn’t work. Then I tried something else and found A, B, and C. I wasn’t sure what to make of B, but C seemed interesting, so I followed up with D and E.” Avoid this approach. While your attention to detail is commendable, this style comes across as unpolished and unfocused.</li>
+</ul>
 
 
 
-<div class="quarto-title-meta column-page">
+</section>
+</section>
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<table class="quarto-listing-table table caption-top">
-<tbody class="list">
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-broderick2023toward" class="csl-entry" role="listitem">
+Broderick, Tamara, Andrew Gelman, Rachael Meager, Anna L Smith, and Tian Zheng. 2023. <span>“Toward a Taxonomy of Trust for Probabilistic Machine Learning.”</span> <em>Science Advances</em> 9 (7): eabn3999.
+</div>
+<div id="ref-kimball1957errors" class="csl-entry" role="listitem">
+Kimball, AW. 1957. <span>“Errors of the Third Kind in Statistical Consulting.”</span> <em>Journal of the American Statistical Association</em> 52 (278): 133–42.
+</div>
+<div id="ref-mcgowan_peng_hicks_2025" class="csl-entry" role="listitem">
+McGowan, Lucy D’Agostino, Roger D. Peng, and Stephanie C. Hicks. 2025. <span>“Quantifying the Alignment of a Data Analysis Between Analyst and Audience.”</span> <em>Journal of Data Science</em>, 1–15. <a href="https://doi.org/10.6339/25-JDS1189">https://doi.org/10.6339/25-JDS1189</a>.
+</div>
+<div id="ref-tuke:1962" class="csl-entry" role="listitem">
+Tukey, J. W. 1962. <span>“<span class="nocase">The future of data analysis</span>.”</span> <em>The Annals of Mathematical Statistics</em> 33 (1): 1–67.
+</div>
+<div id="ref-tukeywilk1996" class="csl-entry" role="listitem">
+Tukey, W., and M. B. Wilk. 1966. <span>“Data Analysis and Statistics: An Expository Overview.”</span> In <em>Proceedings of the November 7-10, 1966, Fall Joint Computer Conference</em>, 695–709.
+</div>
+<div id="ref-yu2024veridical" class="csl-entry" role="listitem">
+Yu, Bin, and Rebecca L Barter. 2024. <em>Veridical Data Science: The Practice of Responsible Data Analysis and Decision Making</em>. MIT Press.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

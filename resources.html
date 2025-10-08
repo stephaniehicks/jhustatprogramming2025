@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Projects – Statistical Programming Paradigms and Workflows</title>
+<title>Additional Resources – Statistical Programming Paradigms and Workflows</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -70,65 +68,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
-      
-      searchColumns: [],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -196,23 +136,30 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#pre-requisites" id="toc-pre-requisites" class="nav-link active" data-scroll-target="#pre-requisites">Pre-requisites</a></li>
+  <li><a href="#resources-for-best-practice-for-data-analyses" id="toc-resources-for-best-practice-for-data-analyses" class="nav-link" data-scroll-target="#resources-for-best-practice-for-data-analyses">Resources for best practice for data analyses</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Projects</h1>
+<h1 class="title">Additional Resources</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
     
   
@@ -224,17 +171,32 @@ window.Quarto = {
 </header>
 
 
+<section id="pre-requisites" class="level2">
+<h2 class="anchored" data-anchor-id="pre-requisites">Pre-requisites</h2>
+<p>The pre-requisite for this course is 140.776. All of the lecture material is <a href="https://lcolladotor.github.io/jhustatcomputing/">available online</a>. I encourage those enrolled in 140.777 to review the material to ensure you are familiar with these topics. Please use this as a resource to fill in any gaps in knowledge that you might have missed to ensure your success in this course, including:</p>
+<ul>
+<li>Familarity with tidy principles and programming in the <code>tidyverse</code></li>
+<li>Writing functions and loops in R</li>
+<li>Debugging code in R</li>
+<li>Best practices for data analyses</li>
+<li>Leveraging Python within R using <code>reticulate</code></li>
+</ul>
+</section>
+<section id="resources-for-best-practice-for-data-analyses" class="level2">
+<h2 class="anchored" data-anchor-id="resources-for-best-practice-for-data-analyses">Resources for best practice for data analyses</h2>
+<p>In addition to this topic being covered in 140.776, we have provided additional resources for improving your skills of writing good data analyses. This also includes avoiding common pitfalls. Here are some resources that you might find useful. If you have recommendations on other resources that should be added to the list, please share and we will gladly post them.</p>
+<ul>
+<li><a href="./readings/00-best-practices-data-analysis/index.html">(Some) Best practices for writing up a data analysis</a></li>
+<li><a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004961">Ten simple rules for effective statistical practice</a></li>
+<li><a href="https://doi.org/10.1371/journal.pcbi.1005510">Good enough practices in scientific computing</a></li>
+<li><a href="https://doi.org/10.1080/00031305.2017.1375989">Data Organization in Spreadsheets</a></li>
+<li><a href="https://developers.google.com/machine-learning/guides/good-data-analysis">Good data analysis</a></li>
+</ul>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<table class="quarto-listing-table table caption-top">
-<tbody class="list">
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
