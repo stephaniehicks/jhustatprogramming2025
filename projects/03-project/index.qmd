@@ -13,8 +13,9 @@ draft: true
 
 # Background
 
+- change to incorporate R pkg dev
 
-**Due date: November 22 at 11:59pm**
+**Due date: December 1 at 11:59pm**
 
 The goal of this assignment is to practice some of the skills we have been learning about in class around working with relational databases and machine learning paradigms. Specifically, you will create a new SQL database, write SQL queries to the database, explore and summarize the data, train a prediction model, and summarize your findings.
 
