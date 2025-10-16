@@ -11,23 +11,25 @@ knitr: true
 draft: true
 ---
 
-
 # Background
 
-
-**Due date: November 15 at 11:59pm**
+**Due date: November 14 at 11:59pm**
 
 The goal of this assignment is to practice some of the skills we have been learning about in class around data collection paradigms and functional programming.
 
 ### To submit your project 
 
-You need to create a private GitHub Classroom repository  (only one per group) for you and your partner, which will be posted in CoursePlus. This creates an empty GitHub repository. You need to show all your code and submit both the `.qmd` file and the rendered HTML file. Please include section headers for each of the components below. All plots should have titles, subtitles, captions, and human-understandable axis labels. The TAs will grade the contents in the GitHub Classroom repo by cloning the repo and checking for all the things described below. 
-
-Because you will work with a partner, **please be sure to include the names, emails, and JHED IDs for both individuals in your submitted work**. 
+You need to create a private GitHub Classroom repository for you, which 
+will be posted in CoursePlus. This creates an empty GitHub repository. You 
+need to show all your code and submit both the `.qmd` file and the rendered 
+HTML file. Please include section headers for each of the components below. 
+All plots should have titles, subtitles, captions, and human-understandable 
+axis labels. The TAs will grade the contents in the GitHub Classroom repo by 
+cloning the repo and checking for all the things described below.  
 
 # Part 1 
 
-Here, you and your partner will practice using a API and making data visualizations. 
+Here, you will practice using a API and making data visualizations. 
 
 The API we will use is `tidycensus` (<https://walker-data.com/tidycensus>), which is an R package that allows users to interface with a select number of the US Census Bureau’s data APIs and return tidyverse-ready data frames, optionally with simple feature geometry included.
 
@@ -60,7 +62,7 @@ Therefore, it is strongly suggested that you create a new folder called `data` l
 
 4. Visualize the data. Create data visualizations of your choice. However, your analysis should include at least three plots with you using at least two different `geom_*()` functions from `ggplot2` (or another package with `geom_*()` functions). 
 
-5. Report your findings. Provide a paragraph summarizing your methods and key findings. Include any limitations or potential biases in pulling data from the API or the analysis. Be sure to comment and organize your code so is easy to understand what you are doing. 
+5. Report your findings. Write up your data analysis as a brief report. The report should be readable by a scientist uninvolved in the study. Include a paragraph summarizing your methods and key findings. Include any limitations or potential biases in pulling data from the API or the analysis. Be sure to comment and organize your code so is easy to understand what you are doing and consider including portions of the code in an Appendix, if helpful.  
 
 
 # Part 2
@@ -83,7 +85,7 @@ In this part, you and your partner will use the `rvest` package to scrape data f
    - Create a summary statistic (e.g., average rating, job salary, team win percentage).
    - Create a data visualization (e.g., bar chart, histogram) of an interesting metric.
 
-5. Report your findings. Provide a paragraph summarizing your methods and key findings. Include any limitations or potential biases in your scraping or analysis. Be sure to comment and organize your code so is easy to understand what you are doing. 
+5. Report your findings. Write up your data analysis as a brief report. The report should be designed for a technical audience, such as a technical manager who appreciates the technical details. Include a paragraph summarizing your methods and key findings. Include any limitations or potential biases in scraping data or the analysis. Be sure to comment and organize your code so is easy to understand what you are doing. 
 
 :::::: {.callout-caution}
 
