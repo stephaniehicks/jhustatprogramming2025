@@ -161,4 +161,6 @@ technical challenges, and what you learned. Also consider the following:
 
 # Example final projects from Fall 2024
 
-TBA
+- Team London Fog: [Github repo](https://github.com/jhu-statprogramming-fall-2024/project4-london-fog), [Website/Dashboard](https://zren0723.shinyapps.io/project4-london-fog/), [Presentation slides](https://docs.google.com/presentation/d/1ZAszbDhjHTPiguiY_f5CdBfdNWB4LE7A/edit?usp=sharing&ouid=109009761116032801036&rtpof=true&sd=true), [Final project write up](https://github.com/jhu-statprogramming-fall-2024/project4-london-fog/blob/main/Project%204%20Write-up.pdf)
+- Team CAT GPT: [Github repo](https://github.com/jhu-statprogramming-fall-2024/project4-cat-gpt), [Website/Dashboard](https://jiadili.shinyapps.io/FlexDashboard/), [Presentation slides](https://github.com/jhu-statprogramming-fall-2024/project4-cat-gpt/blob/main/CAT%20GPT%20Slides.pdf), [Final project write up](https://github.com/jhu-statprogramming-fall-2024/project4-cat-gpt/blob/main/Final%20Write%20Up.pdf)
+- TBA
