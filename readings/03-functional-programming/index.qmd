@@ -8,8 +8,9 @@ author:
 description: "Introduction to tools to work with functions and vectors in R"
 date: 2025-11-04
 knitr: true
-draft: true
+draft: false
 ---
+
 
 # Motivation 
 

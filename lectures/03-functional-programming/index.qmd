@@ -7,13 +7,12 @@ author:
     affiliation_url: https://publichealth.jhu.edu
 description: "Using the `purrr` package to work with functions and vectors"
 date: 2025-11-04
-draft: true
+draft: false
 ---
-
 
 # Pre-lecture activities
 
-::: callout-important
+::: callout-tip
 
 In advance of class, please install
 
@@ -32,13 +31,15 @@ And load the package using:
 library(purrr)
 ```
 
-:::
-
-In addition, please read through
+In addition, please familiarize yourself with the basics of functional programming and the `purrr` package: 
 
 - [Functional programming](../../readings/03-functional-programming/index.qmd)
 - <https://adv-r.hadley.nz/functionals.html>
 - <https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf>
+
+
+:::
+
 
 
 ::: callout-note
@@ -80,7 +81,7 @@ Material for this lecture was borrowed and adopted from
 
 ## Slides 
 
-- [Lecture 03: Functional programming](https://docs.google.com/presentation/d/1t-io1cFFiWopAzN1saz2j0xnmMg3O60Y5NnOvQrsdpk/edit?usp=sharing)
+- [Lecture 03: Functional programming](https://docs.google.com/presentation/d/1DLN5yxHFIt7spLrHSw-gVFh0hjU128wV79ks2UDmy8I/edit?usp=sharing)
 
 # Class activity 
 
