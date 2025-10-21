@@ -232,9 +232,22 @@ Tip
 <ol type="1">
 <li><a href="https://swcarpentry.github.io/git-novice/02-setup.html">Set up git</a></li>
 <li>Create a <a href="https://github.com%20›%20signup">GitHub Account</a></li>
-<li>Prepare your Working Directory</li>
 <li>Familarize yourself with some of the basic git commands in <a href="https://swcarpentry.github.io/git-novice">Chapters 1 to 9</a>. If you have used git before, these commands are likely familiar to you already. If you have never used git for version control, I encourage you to skim the material to learn some of the terminology and basics. You are not expected to spend multiple hours on this, but during class, I will give an overview of git comands and then we will practice the commands with an in-class activity. If you have never used git commands before or you are not comfortable with executing commands in the terminal, it will be challenging to participate in the activity at the end of lecture.</li>
+<li>Find your <a href="https://en.wikipedia.org/wiki/Working_directory">working directory</a> using the <code>pwd</code> command and create a new folder in your working directory called <code>test-folder</code> that can use <code>git init</code> to initalize a repo with a git history to test if <code>git</code> is working on your computer.</li>
 </ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Advanced topics
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you want to get to know more advanced git topics, check out the <a href="https://carpentries-incubator.github.io/advanced-git/">Advanced Git Version Control</a> from the Carpentries.</p>
 </div>
 </div>
 </section>
@@ -313,7 +326,7 @@ Tip
 <li><strong>Clone the repository</strong>. Both the Owner and Collaborator should clone the repository locally to their respective computers.</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -322,7 +335,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If using SSH:</p>
 <p><code>git clone git@github.com:&lt;change-to-owners-github-username&gt;/bikelanes.git</code></p>
@@ -346,7 +359,7 @@ Tip
 6,River Rd,3.1,Buffered,2021,Springfield</code></pre>
 <p>The Owner should create a new CSV locally titled <code>bike_lanes_data.csv</code> and paste the data into the new CSV file. Save the file and commit the file to the local repository using <code>git</code> commands.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -355,7 +368,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>cd bikelanes
 touch bike_lanes_data.csv # (and paste in the content above)
@@ -370,7 +383,7 @@ git push origin main</code></pre>
 <li><strong>Collaborator needs to pull the new changes locally to their computer</strong>. Next, the collaborator should pull the changes from the remote <code>bikelanes</code> GitHub repository to their local computer. This should make the new <code>bike_lanes_data.csv</code> appear locally on their computer.</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -379,7 +392,7 @@ git push origin main</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>cd bikelanes
 git pull origin main</code></pre>
@@ -401,7 +414,7 @@ git pull origin main</code></pre>
 </ol>
 <p>After the <code>README.md</code> file is complete, add and commit the file to the local repository using <code>git</code> commands. Push the changes to the remote <code>bikelanes</code> repository on GitHub.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -410,7 +423,7 @@ git pull origin main</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>touch README.md # (add the content)
 git status
@@ -424,7 +437,7 @@ git push</code></pre>
 <li><strong>Owner needs to pull the new changes locally to their computer</strong>. Next, the owner of the repository should pull the changes from the remote <code>bikelanes</code> GitHub repository to their local computer. This should make the new <code>REAMDE.md</code> appear locally on their computer.</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -433,7 +446,7 @@ git push</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>cd bikelanes
 git pull</code></pre>
@@ -450,7 +463,7 @@ git pull</code></pre>
 <h2 class="anchored" data-anchor-id="part-4-review-the-git-history">Part 4: Review the git history</h2>
 <p>Both partners should review the commit history using <code>git</code> commands</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -459,7 +472,7 @@ git pull</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Expected commands: <code>git log</code></p>
 </div>
@@ -482,7 +495,7 @@ git pull</code></pre>
 <section id="post-lecture" class="level1">
 <h1>Post-lecture</h1>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -491,7 +504,7 @@ git pull</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>A short example of a typical workflow in an order that will minimize merge conflicts:</p>
 <ul>
