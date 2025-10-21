@@ -7,32 +7,20 @@ author:
     affiliation_url: https://publichealth.jhu.edu
 description: "Introduction to version control"
 date: 2025-10-30
-draft: true
+draft: false
 ---
 
 
 # Pre-lecture activities
 
-::: callout-important
+::: callout-tip
 
 In advance of class, please follow the instructions on [Software Carpentry: Version Control with Git](https://swcarpentry.github.io/git-novice) to
 
-1. Installing Git
-2. Creating a GitHub Account
-3. Preparing Your Working Directory
-
-In addition, please **read through Chapters 1-9**.
-
-:::
-
-
-::: callout-note
-
-## How much should I prepare for before class? 
-
-You should be comfortable with the meaning of version control, have git installed, create a GitHub account (if you have not before), prepare your working directory, understand the meaning of most the git commands, and also executing commands on your computer before class starts. 
-
-During class, I will give an overview of these topics and then we will practice using version control in groups of two with an in-class activity. I will walk around the class answering questions and helping to address questions as they arise in practice. If you have not installed git, created a GitHub account, and prepared your working directory, it will be challenging to participate in the activity.
+1. [Set up git](https://swcarpentry.github.io/git-novice/02-setup.html)
+2. Create a [GitHub Account](https://github.com › signup)
+3. Prepare your Working Directory
+4. Familarize yourself with some of the basic git commands in [Chapters 1 to 9](https://swcarpentry.github.io/git-novice). If you have used git before, these commands are likely familiar to you already. If you have never used git for version control, I encourage you to skim the material to learn some of the terminology and basics. You are not expected to spend multiple hours on this, but during class, I will give an overview of git comands and then we will practice the commands with an in-class activity. If you have never used git commands before or you are not comfortable with executing commands in the terminal, it will be challenging to participate in the activity at the end of lecture. 
 
 :::
 
@@ -52,13 +40,14 @@ Material for this lecture was borrowed and adopted from
 
 **At the end of this lesson you will:**
 
-- Understand the benefits of an automated version control system.
-- Understand how to set up git.
-- Understand how to set up a git repository.
+- Understand the benefits of an automated version control system
+- Understand how to set up git
+- Understand how to set up a git repository
 - Understand how to track changes, explore history, and ignore files in a git 
-- Understand git remotes.
-- Understand how to use GitHub.
-- Understand collaborating. 
+- Understand git remotes
+- Understand how to use GitHub
+- Understand collaborating
+- Recognize the terminology of branching and forking
 
 :::
 
@@ -66,8 +55,7 @@ Material for this lecture was borrowed and adopted from
 
 ## Slides 
 
-- [Lecture 02: Introduction to version control](https://docs.google.com/presentation/d/1MyhQ9JMXwpkv6xyOLs-FTE5ZPzweikj-NAaHIZpbZBQ/edit?usp=sharing)
-
+- [Lecture 02: Introduction to version control](https://docs.google.com/presentation/d/1Q2Bj8QDErJ3rKzFL7lk5r5pvKm8ZQWjgw5Gc0KR3Dh8/edit?usp=sharing)
 
 # Class activity 
 
