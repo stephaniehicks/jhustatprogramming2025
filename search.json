@@ -130,7 +130,7 @@
     "href": "lectures/00-course-intro/index.html",
     "title": "Welcome to the course",
     "section": "",
-    "text": "Tip\n\n\n\nBefore each class, there will be a set optional of pre-lecture activities and/or readings. We ask students to scan these resources prior to class to familiarize yourself with the topic. During lecture, we will go into greater detail and will answer questions about the topic. However, familarizing yourself with the topic in advance will be useful to you as we will practice these topics after the lecture in a set of in-class activities.\n\n\n\nAuthoring projects and websites with Quarto\n(Some) Best practices for writing up a data analysis"
+    "text": "Important\n\n\n\nBefore each class, there will be a set optional of pre-lecture activities and/or readings. We ask students to scan these resources prior to class to familiarize yourself with the topic. During lecture, we will go into greater detail and will answer questions about the topic. However, familarizing yourself with the topic in advance will be useful to you as we will practice these topics after the lecture in a set of in-class activities.\n\n\n\n\n\n\n\n\nTip\n\n\n\nIn advance of class, please\n\nDownload and install an Integrated Developer Evironment (IDE) such as VS Code, Positron, or RStudio on your computer. It completely up to you which IDE you are most comfortable with and which one you prefer. In case it’s helpful, the instructor will use VS Code.\nDownload and install the Quarto command line interface (CLI) on your computer\nRead through Authoring projects and websites with Quarto\nRead through (Some) Best practices for writing up a data analysis"
   },
   {
     "objectID": "lectures/00-course-intro/index.html#acknowledgements",
@@ -200,7 +200,49 @@
     "href": "lectures.html",
     "title": "Course content",
     "section": "",
-    "text": "Course content for each lecture is below:\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-10-23\n\n\nWelcome to the course\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
+    "text": "Course content for each lecture is below:\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-10-23\n\n\nWelcome to the course\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-28\n\n\nIntroduction to the command-line\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "lectures/01-command-line/index.html",
+    "href": "lectures/01-command-line/index.html",
+    "title": "Introduction to the command-line",
+    "section": "",
+    "text": "Tip\n\n\n\nIn advance of class, please follow the instructions on Software Carpentry: The Unix Shell to\n\nInstall a Unix shell on your computer (if it is not already installed)\nHow to access and open the Unix shell on your computer\nHow to type commands on the Unix shell\nFamilarize yourself with some of the basic commands in Chapters 1 to 7. If you have used the Unix shell before, these commands are likely familiar to you already. If you have never used the Unix shell to write commands, I encourage you to skim the material to learn some of the terminology and basics. You are not expected to spend multiple hours on this, but during class, I will give an overview of working in the Unix shell and then we will practice the commands with an in-class activity. If you have not opened a Unix shell before or you are not comfortable with executing commands, it will be challenging to participate in the activity at the end of lecture."
+  },
+  {
+    "objectID": "lectures/01-command-line/index.html#acknowledgements",
+    "href": "lectures/01-command-line/index.html#acknowledgements",
+    "title": "Introduction to the command-line",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nMaterial for this lecture was borrowed and adopted from\n\nSoftware Carpentry: The Unix Shell\nData Science at the Command line\nApplied Computational Genomics"
+  },
+  {
+    "objectID": "lectures/01-command-line/index.html#learning-objectives",
+    "href": "lectures/01-command-line/index.html#learning-objectives",
+    "title": "Introduction to the command-line",
+    "section": "Learning objectives",
+    "text": "Learning objectives\n\n\n\n\n\n\nNoteLearning objectives\n\n\n\nAt the end of this lesson you will:\n\nUnderstand what is a command shell and why would use one.\nCreate, copy, move, rename, and delete files and folders.\nSearch for regular expressions in files.\nExecute R commands and scripts in the command line.\nRedirect a command’s output to a file with redirect operators (&gt;, &gt;&gt;).\nConstruct command pipelines with two or more stages with the pipe operator (|).\nWrite a loop that applies one or more commands separately to each file in a set of files.\nConda environments\nOpen up an interactive Python terminal\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can practice your command-line skills with the Command Challenge"
+  },
+  {
+    "objectID": "lectures/01-command-line/index.html#slides",
+    "href": "lectures/01-command-line/index.html#slides",
+    "title": "Introduction to the command-line",
+    "section": "Slides",
+    "text": "Slides\n\nLecture 01: Introduction to the command-line"
+  },
+  {
+    "objectID": "lectures/01-command-line/index.html#summary",
+    "href": "lectures/01-command-line/index.html#summary",
+    "title": "Introduction to the command-line",
+    "section": "Summary",
+    "text": "Summary\n\nShell is a text based application for viewing, handling and manipulating files\nIt is also known by the following names\n\nCLI (Command Line Interface)\nTerminal\nBash (Bourne Again Shell)\n\nUse Rscript -e or R -e to execute R scripts from the command line\nRStudio includes a Terminal (from version 1.1.383)\nExecute commands from shell script in RStudio using Ctrl + Enter\nRMarkdown and Quarto supports bash, sh and awk\nPython terminals can be opened from the command\nConda environments can be useful when install Python libraries"
+  },
+  {
+    "objectID": "lectures/01-command-line/index.html#additional-practice",
+    "href": "lectures/01-command-line/index.html#additional-practice",
+    "title": "Introduction to the command-line",
+    "section": "Additional practice",
+    "text": "Additional practice\nHere are some additional practice questions to help you think about the material discussed.\n\n\n\n\n\n\nNoteQuestions\n\n\n\n\nMove around the computer, get used to moving in and out of directories, see how different file types appear in the Unix shell. Be sure to use the pwd and cd commands, and the different flags for the ls commands.\nPractice using “Tab for Auto-complete” in the shell to autocomplete commands or file names.\nExplore the manual pages of date in the command line to show you what that looks like. Try to figure out what is the argument to print the date since the Unix epoch or 00:00:00 UTC on 1 January 1970 as a function of the number of seconds. Then try to identify what is the argument to display the date in UTC.\nPractice your command line knowledge with Command Challenge."
   },
   {
     "objectID": "projects.html",

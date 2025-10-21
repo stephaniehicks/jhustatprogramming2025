@@ -9,7 +9,8 @@
   {
     "listing": "/lectures.html",
     "items": [
-      "/lectures/00-course-intro/index.html"
+      "/lectures/00-course-intro/index.html",
+      "/lectures/01-command-line/index.html"
     ]
   },
   {
