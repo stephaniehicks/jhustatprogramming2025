@@ -31,27 +31,21 @@ And load the package using:
 library(purrr)
 ```
 
-In addition, please familiarize yourself with the basics of functional programming and the `purrr` package: 
+In addition, please 
 
-- [Functional programming](../../readings/03-functional-programming/index.qmd)
-- <https://adv-r.hadley.nz/functionals.html>
-- <https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf>
-
-
+- Familiarize yourself with the basics of [functional programming](../../readings/03-functional-programming/index.qmd) and the `purrr` package 
+- Familiarize yourself with the [`map()` function](https://adv-r.hadley.nz/functionals.html#map) along with [map variants](https://adv-r.hadley.nz/functionals.html#map-variants) in `purrr` 
+- Check out this amazing [cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf)!
 :::
 
 
+::: {.callout-note}
 
-::: callout-note
+## Advanced topics 
 
-## How much should I prepare for before class? 
-
-You should have `purrr` installed and be familiar with the [`map()` function](https://adv-r.hadley.nz/functionals.html#map) along with [map variants](https://adv-r.hadley.nz/functionals.html#map-variants) in `purrr`. 
-
-We will learn more about these functions in class, but we will also practice them at the end of class. 
+If you want a deeper dive, check out Hadley Wickham's chapter on [Functionals](https://adv-r.hadley.nz/functionals.html)
 
 :::
-
 
 # Lecture 
 
@@ -74,8 +68,8 @@ Material for this lecture was borrowed and adopted from
 - Be familiar with the concept of _functional languages_ and _functional styles_ of programming
 - Get comfortable with the major functions in  `purrr` (e.g. the `map` family of functions) provides a nice interface to functional programming and list manipulation
 - Practice the function `map` and its alternative `map_*` provide a neat way to iterate over a list or vector with the output in different data structures (instead of a `for` loop)
-- Recongize the function `map2` and `pmap` allow having more than one list as input.
-- Recongize the function `walk` and its alternatives `walk2`, `walk_*`, which do not provide any output.
+- Recognize the function `map2` and `pmap` allow having more than one list as input.
+- Recognize the function `walk` and its alternatives `walk2`, `walk_*`, which do not provide any output.
 
 :::
 

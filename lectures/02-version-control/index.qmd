@@ -19,11 +19,18 @@ In advance of class, please follow the instructions on [Software Carpentry: Vers
 
 1. [Set up git](https://swcarpentry.github.io/git-novice/02-setup.html)
 2. Create a [GitHub Account](https://github.com › signup)
-3. Prepare your Working Directory
-4. Familarize yourself with some of the basic git commands in [Chapters 1 to 9](https://swcarpentry.github.io/git-novice). If you have used git before, these commands are likely familiar to you already. If you have never used git for version control, I encourage you to skim the material to learn some of the terminology and basics. You are not expected to spend multiple hours on this, but during class, I will give an overview of git comands and then we will practice the commands with an in-class activity. If you have never used git commands before or you are not comfortable with executing commands in the terminal, it will be challenging to participate in the activity at the end of lecture. 
+3. Familarize yourself with some of the basic git commands in [Chapters 1 to 9](https://swcarpentry.github.io/git-novice). If you have used git before, these commands are likely familiar to you already. If you have never used git for version control, I encourage you to skim the material to learn some of the terminology and basics. You are not expected to spend multiple hours on this, but during class, I will give an overview of git comands and then we will practice the commands with an in-class activity. If you have never used git commands before or you are not comfortable with executing commands in the terminal, it will be challenging to participate in the activity at the end of lecture.
+4. Find your [working directory](https://en.wikipedia.org/wiki/Working_directory) using the `pwd` command and create a new folder in your working directory called `test-folder` that can use `git init` to initalize a repo with a git history to test if `git` is working on your computer. 
 
 :::
 
+::: {.callout-note}
+
+## Advanced topics 
+
+If you want to get to know more advanced git topics, check out the [Advanced Git Version Control](https://carpentries-incubator.github.io/advanced-git/) from the Carpentries. 
+
+:::
 
 # Lecture 
 
