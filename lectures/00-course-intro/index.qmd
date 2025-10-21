@@ -11,7 +11,7 @@ date: 2025-10-23
 
 # Pre-lecture activities
 
-::: {.callout-tip}
+::: {.callout-important}
 
 Before each class, there will be a set **optional** of pre-lecture activities 
 and/or readings. We ask students to scan these resources prior to class to 
@@ -22,9 +22,16 @@ these topics after the lecture in a set of in-class activities.
 
 :::
 
-- [Authoring projects and websites with Quarto](../../readings/00-quarto/index.qmd) 
-- [(Some) Best practices for writing up a data analysis](../../readings/00-best-practices-data-analysis/index.qmd) 
+::: callout-tip
 
+In advance of class, please 
+
+1. Download and install an Integrated Developer Evironment (IDE) such as [VS Code](https://code.visualstudio.com/), [Positron](https://positron.posit.co/), or [RStudio](https://posit.co/downloads/) on your computer. It completely up to you which IDE you are most comfortable with and which one you prefer. In case it's helpful, the instructor will use VS Code. 
+2. Download and install the [Quarto command line interface](https://quarto.org/docs/get-started/)  (CLI) on your computer
+3. Read through [Authoring projects and websites with Quarto](../../readings/00-quarto/index.qmd) 
+4. Read through [(Some) Best practices for writing up a data analysis](../../readings/00-best-practices-data-analysis/index.qmd) 
+
+:::
 
 # Lecture 
 
@@ -50,7 +57,6 @@ Material for this lecture was borrowed and adopted from
 -   Be able to create a Quarto project and Quarto website for yourself
 
 :::
-
 
 
 ## Slides 

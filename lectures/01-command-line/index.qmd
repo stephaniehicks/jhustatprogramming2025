@@ -8,51 +8,21 @@ author:
 description: "Introduction to the command-line"
 date: 2025-10-28
 engine: knitr
-draft: true
+draft: false
 ---
-
-
-# Announcements
-
-The next lecture falls right before `{r} emojifont::emoji('ghost')` Halloween ! 
-I plan to give the lecture dressed up in a costume. 
-This is entirely optional, but I encourage students to come in costume if you wish! 
-**Candy `{r} emojifont::emoji('candy')` will be offered to anyone in costume!** 
-
 
 # Pre-lecture activities
 
-::: callout-important
+::: callout-tip
 
 In advance of class, please follow the instructions on [Software Carpentry: The Unix Shell](https://swcarpentry.github.io/shell-novice) to 
 
 1. Install a Unix shell on your computer (if it is not already installed)
 2. How to access and open the Unix shell on your computer
 3. How to type commands on the Unix shell
+4. Familarize yourself with some of the basic commands in [Chapters 1 to 7](https://swcarpentry.github.io/shell-novice). If you have used the Unix shell before, these commands are likely familiar to you already. If you have never used the Unix shell to write commands, I encourage you to skim the material to learn some of the terminology and basics. You are not expected to spend multiple hours on this, but during class, I will give an overview of working in the Unix shell and then we will practice the commands with an in-class activity. If you have not opened a Unix shell before or you are not comfortable with executing commands, it will be challenging to participate in the activity at the end of lecture. 
 
 :::
-
-In addition, please read through Chapters 1-7
-
-- <https://swcarpentry.github.io/shell-novice/01-intro>
-- <https://swcarpentry.github.io/shell-novice/02-filedir>
-- <https://swcarpentry.github.io/shell-novice/03-create>
-- <https://swcarpentry.github.io/shell-novice/04-pipefilter>
-- <https://swcarpentry.github.io/shell-novice/05-loop>
-- <https://swcarpentry.github.io/shell-novice/06-script>
-- <https://swcarpentry.github.io/shell-novice/07-find>
-
-
-::: callout-note
-
-## How much should I prepare for before class? 
-
-You should be comfortable with the meaning of most the commands and also executing commands in a Unix shell on your computer before class starts. 
-
-During class, I will give an overview of working in the Unix shell and then we will practice the commands with an in-class activity. If you have not opened a Unix shell before or you are not comfortable with executing commands, it will be challenging to participate in the activity.
-
-:::
-
 
 
 # Lecture 
@@ -80,6 +50,7 @@ Material for this lecture was borrowed and adopted from
 -   Construct command pipelines with two or more stages with the pipe operator (`|`).
 -   Write a loop that applies one or more commands separately to each file in a set of files.
 -   Conda environments
+-   Open up an interactive Python terminal
 
 :::
 
@@ -91,7 +62,7 @@ You can practice your command-line skills with the [Command Challenge](https://c
 
 ## Slides 
 
-- [Lecture 01: Introduction to the command-line](https://docs.google.com/presentation/d/1SSx6P4t_N66GIiB316PjBWrmKtTkwYLRVRMs44iCBhU/edit?usp=sharing)
+- [Lecture 01: Introduction to the command-line](https://docs.google.com/presentation/d/17Ydwdc92s7VNXn6CxN5JV_bIumlDPwURf4Rb1r1te08/edit?usp=sharing)
 
 # Class activity 
 
@@ -260,6 +231,8 @@ Use `awk` to extract and display only the song titles and durations from this fi
 - RStudio includes a Terminal (from version 1.1.383)
 - Execute commands from shell script in RStudio using Ctrl + Enter
 - RMarkdown and Quarto supports bash, sh and awk
+- Python terminals can be opened from the command
+- Conda environments can be useful when install Python libraries
 
 ## Additional practice
 
