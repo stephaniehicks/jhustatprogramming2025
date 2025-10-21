@@ -1,2 +1,1362 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"></html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stephanie Hicks">
+<meta name="dcterms.date" content="2025-11-04">
+<meta name="description" content="Using the purrr package to work with functions and vectors">
+
+<title>Functional programming – Statistical Programming Paradigms and Workflows</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fc1a281c15ae91fd4173f431b0abd564.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Statistical Programming Paradigms and Workflows</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-home" role="img">
+</i> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../lectures.html"> <i class="bi bi-book-half" role="img">
+</i> 
+<span class="menu-text">Course</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-box-seam-fill" role="img">
+</i> 
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../readings.html">
+ <span class="dropdown-text">Pre-reading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../projects.html">
+ <span class="dropdown-text">Projects</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../resources.html">
+ <span class="dropdown-text">Additional Resources</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/stephaniehicks/jhustatprogramming2025"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#pre-lecture-activities" id="toc-pre-lecture-activities" class="nav-link active" data-scroll-target="#pre-lecture-activities">Pre-lecture activities</a></li>
+  <li><a href="#lecture" id="toc-lecture" class="nav-link" data-scroll-target="#lecture">Lecture</a>
+  <ul class="collapse">
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
+  </ul></li>
+  <li><a href="#class-activity" id="toc-class-activity" class="nav-link" data-scroll-target="#class-activity">Class activity</a></li>
+  <li><a href="#post-lecture" id="toc-post-lecture" class="nav-link" data-scroll-target="#post-lecture">Post-lecture</a>
+  <ul class="collapse">
+  <li><a href="#additional-practice" id="toc-additional-practice" class="nav-link" data-scroll-target="#additional-practice">Additional practice</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Functional programming</h1>
+</div>
+
+<div>
+  <div class="description">
+    Using the <code>purrr</code> package to work with functions and vectors
+  </div>
+</div>
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author"><a href="https://stephaniehicks.com">Stephanie Hicks</a> </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Department of Biostatistics, Johns Hopkins
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 4, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="pre-lecture-activities" class="level1">
+<h1>Pre-lecture activities</h1>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In advance of class, please install</p>
+<ul>
+<li><code>purrr</code> - this provides a consistent functional programming interface to work with functions and vectors</li>
+</ul>
+<p>You can do this by calling</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"purrr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>And load the package using:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In addition, please familiarize yourself with the basics of functional programming and the <code>purrr</code> package:</p>
+<ul>
+<li><a href="../../readings/03-functional-programming/index.html">Functional programming</a></li>
+<li><a href="https://adv-r.hadley.nz/functionals.html" class="uri">https://adv-r.hadley.nz/functionals.html</a></li>
+<li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf" class="uri">https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf</a></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>How much should I prepare for before class?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You should have <code>purrr</code> installed and be familiar with the <a href="https://adv-r.hadley.nz/functionals.html#map"><code>map()</code> function</a> along with <a href="https://adv-r.hadley.nz/functionals.html#map-variants">map variants</a> in <code>purrr</code>.</p>
+<p>We will learn more about these functions in class, but we will also practice them at the end of class.</p>
+</div>
+</div>
+</section>
+<section id="lecture" class="level1">
+<h1>Lecture</h1>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>Material for this lecture was borrowed and adopted from</p>
+<ul>
+<li><a href="https://adv-r.hadley.nz/fp.html" class="uri">https://adv-r.hadley.nz/fp.html</a></li>
+<li><a href="https://adv-r.hadley.nz/functionals.html" class="uri">https://adv-r.hadley.nz/functionals.html</a></li>
+<li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf" class="uri">https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf</a></li>
+</ul>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Learning objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>At the end of this lesson you will:</strong></p>
+<ul>
+<li>Be familiar with the concept of <em>functional languages</em> and <em>functional styles</em> of programming</li>
+<li>Get comfortable with the major functions in <code>purrr</code> (e.g.&nbsp;the <code>map</code> family of functions) provides a nice interface to functional programming and list manipulation</li>
+<li>Practice the function <code>map</code> and its alternative <code>map_*</code> provide a neat way to iterate over a list or vector with the output in different data structures (instead of a <code>for</code> loop)</li>
+<li>Recongize the function <code>map2</code> and <code>pmap</code> allow having more than one list as input.</li>
+<li>Recongize the function <code>walk</code> and its alternatives <code>walk2</code>, <code>walk_*</code>, which do not provide any output.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<ul>
+<li><a href="https://docs.google.com/presentation/d/1DLN5yxHFIt7spLrHSw-gVFh0hjU128wV79ks2UDmy8I/edit?usp=sharing">Lecture 03: Functional programming</a></li>
+</ul>
+</section>
+</section>
+<section id="class-activity" class="level1">
+<h1>Class activity</h1>
+<p>For the rest of the time in class, we will use the <code>mtcars</code> dataset to practice using functions from the <code>purrr</code> package. The purpose is to demonstrates how functional programming can simplify repeated operations on datasets. This dataset contains various measurements for different car models. Find a partner and complete the activities below together. After running each step, I encourage you to look at the outputs and transformations to understand how <code>purrr</code> is working with each column in the dataset.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Objectives of the activity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Use <code>purrr::map_*</code> functions to calculate summary statistics for each column.</li>
+<li>Transform specific columns using functions from <code>purrr</code>.</li>
+<li>Apply a conditional transformation across the dataset.</li>
+</ul>
+</div>
+</div>
+<p>First, we will load two packages and create a copy of the <code>mtcars</code> dataset</p>
+<div class="cell" data-messages="false">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> mtcars</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="part-1-basic-column-summaries" class="level4">
+<h4 class="anchored" data-anchor-id="part-1-basic-column-summaries">Part 1: Basic column summaries</h4>
+<ul>
+<li>Use <code>map_dbl()</code> to calculate the mean of each column in the mtcars dataset.</li>
+</ul>
+<p>Hint: <code>map_dbl(data, mean)</code> will apply the mean function to each column and return a vector of means.</p>
+<ul>
+<li><p>Use <code>map_dbl()</code> to calculate the standard deviation of each column.</p></li>
+<li><p>Use <code>map()</code> to create a named list where each element is the range of values in a column.</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean of each column</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>column_means <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(data, mean)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>column_means</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       mpg        cyl       disp         hp       drat         wt       qsec 
+ 20.090625   6.187500 230.721875 146.687500   3.596563   3.217250  17.848750 
+        vs         am       gear       carb 
+  0.437500   0.406250   3.687500   2.812500 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the standard deviation of each column</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>column_sds <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(data, sd)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>column_sds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        mpg         cyl        disp          hp        drat          wt 
+  6.0269481   1.7859216 123.9386938  68.5628685   0.5346787   0.9784574 
+       qsec          vs          am        gear        carb 
+  1.7869432   0.5040161   0.4989909   0.7378041   1.6152000 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the range of each column</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>column_ranges <span class="ot">&lt;-</span> <span class="fu">map</span>(data, range)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>column_ranges</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$mpg
+[1] 10.4 33.9
+
+$cyl
+[1] 4 8
+
+$disp
+[1]  71.1 472.0
+
+$hp
+[1]  52 335
+
+$drat
+[1] 2.76 4.93
+
+$wt
+[1] 1.513 5.424
+
+$qsec
+[1] 14.5 22.9
+
+$vs
+[1] 0 1
+
+$am
+[1] 0 1
+
+$gear
+[1] 3 5
+
+$carb
+[1] 1 8</code></pre>
+</div>
+</div>
+<p>The first one will return a named vector of mean values for each column. The last one returns a named list where each element is a vector of the minimum and maximum values for each column.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="part-2-conditional-transformation-with-map_if" class="level4">
+<h4 class="anchored" data-anchor-id="part-2-conditional-transformation-with-map_if">Part 2: Conditional transformation with <code>map_if()</code></h4>
+<ul>
+<li>Use <code>map_if()</code> to multiply by 100 all columns where the mean is less than 20. For example, if the column represents miles per gallon, multiply each value by 100.</li>
+<li>Check the resulting data frame.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>transformed_data <span class="ot">&lt;-</span> <span class="fu">map_if</span>(data, <span class="sc">~</span> <span class="fu">mean</span>(.x) <span class="sc">&lt;</span> <span class="dv">20</span>, <span class="sc">~</span> .x <span class="sc">*</span> <span class="dv">100</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>transformed_data <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(transformed_data)  <span class="co"># Convert back to data frame if desired</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>transformed_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    mpg cyl  disp  hp drat    wt qsec  vs  am gear carb
+1  21.0 600 160.0 110  390 262.0 1646   0 100  400  400
+2  21.0 600 160.0 110  390 287.5 1702   0 100  400  400
+3  22.8 400 108.0  93  385 232.0 1861 100 100  400  100
+4  21.4 600 258.0 110  308 321.5 1944 100   0  300  100
+5  18.7 800 360.0 175  315 344.0 1702   0   0  300  200
+6  18.1 600 225.0 105  276 346.0 2022 100   0  300  100
+7  14.3 800 360.0 245  321 357.0 1584   0   0  300  400
+8  24.4 400 146.7  62  369 319.0 2000 100   0  400  200
+9  22.8 400 140.8  95  392 315.0 2290 100   0  400  200
+10 19.2 600 167.6 123  392 344.0 1830 100   0  400  400
+11 17.8 600 167.6 123  392 344.0 1890 100   0  400  400
+12 16.4 800 275.8 180  307 407.0 1740   0   0  300  300
+13 17.3 800 275.8 180  307 373.0 1760   0   0  300  300
+14 15.2 800 275.8 180  307 378.0 1800   0   0  300  300
+15 10.4 800 472.0 205  293 525.0 1798   0   0  300  400
+16 10.4 800 460.0 215  300 542.4 1782   0   0  300  400
+17 14.7 800 440.0 230  323 534.5 1742   0   0  300  400
+18 32.4 400  78.7  66  408 220.0 1947 100 100  400  100
+19 30.4 400  75.7  52  493 161.5 1852 100 100  400  200
+20 33.9 400  71.1  65  422 183.5 1990 100 100  400  100
+21 21.5 400 120.1  97  370 246.5 2001 100   0  300  100
+22 15.5 800 318.0 150  276 352.0 1687   0   0  300  200
+23 15.2 800 304.0 150  315 343.5 1730   0   0  300  200
+24 13.3 800 350.0 245  373 384.0 1541   0   0  300  400
+25 19.2 800 400.0 175  308 384.5 1705   0   0  300  200
+26 27.3 400  79.0  66  408 193.5 1890 100 100  400  100
+27 26.0 400 120.3  91  443 214.0 1670   0 100  500  200
+28 30.4 400  95.1 113  377 151.3 1690 100 100  500  200
+29 15.8 800 351.0 264  422 317.0 1450   0 100  500  400
+30 19.7 600 145.0 175  362 277.0 1550   0 100  500  600
+31 15.0 800 301.0 335  354 357.0 1460   0 100  500  800
+32 21.4 400 121.0 109  411 278.0 1860 100 100  400  200</code></pre>
+</div>
+</div>
+<p>This will multiply each element in columns where the mean is less than 20 by 100. Note that the output is a list; converting it back to a data frame makes it easier to view the result.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="part-3-apply-a-custom-function-with-map" class="level4">
+<h4 class="anchored" data-anchor-id="part-3-apply-a-custom-function-with-map">Part 3: Apply a custom function with <code>map()</code></h4>
+<ul>
+<li><p>Write a custom function that takes a column and returns the log-transformed values if the mean of the column is greater than 20, otherwise returns the square root of the values.</p></li>
+<li><p>Use <code>map()</code> to apply this custom function to each column.</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>transform_column <span class="ot">&lt;-</span> <span class="cf">function</span>(column) {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">mean</span>(column) <span class="sc">&gt;</span> <span class="dv">20</span>) {</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log</span>(column)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sqrt</span>(column)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>transformed_data_custom <span class="ot">&lt;-</span> <span class="fu">map</span>(data, transform_column)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>transformed_data_custom <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(transformed_data_custom)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>transformed_data_custom</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        mpg      cyl     disp       hp     drat       wt     qsec vs am
+1  3.044522 2.449490 5.075174 4.700480 1.974842 1.618641 4.057093  0  1
+2  3.044522 2.449490 5.075174 4.700480 1.974842 1.695582 4.125530  0  1
+3  3.126761 2.000000 4.682131 4.532599 1.962142 1.523155 4.313931  1  1
+4  3.063391 2.449490 5.552960 4.700480 1.754993 1.793042 4.409082  1  0
+5  2.928524 2.828427 5.886104 5.164786 1.774824 1.854724 4.125530  0  0
+6  2.895912 2.449490 5.416100 4.653960 1.661325 1.860108 4.496665  1  0
+7  2.660260 2.828427 5.886104 5.501258 1.791647 1.889444 3.979950  0  0
+8  3.194583 2.000000 4.988390 4.127134 1.920937 1.786057 4.472136  1  0
+9  3.126761 2.000000 4.947340 4.553877 1.979899 1.774824 4.785394  1  0
+10 2.954910 2.449490 5.121580 4.812184 1.979899 1.854724 4.277850  1  0
+11 2.879198 2.449490 5.121580 4.812184 1.979899 1.854724 4.347413  1  0
+12 2.797281 2.828427 5.619676 5.192957 1.752142 2.017424 4.171331  0  0
+13 2.850707 2.828427 5.619676 5.192957 1.752142 1.931321 4.195235  0  0
+14 2.721295 2.828427 5.619676 5.192957 1.752142 1.944222 4.242641  0  0
+15 2.341806 2.828427 6.156979 5.323010 1.711724 2.291288 4.240283  0  0
+16 2.341806 2.828427 6.131226 5.370638 1.732051 2.328948 4.221374  0  0
+17 2.687847 2.828427 6.086775 5.438079 1.797220 2.311926 4.173727  0  0
+18 3.478158 2.000000 4.365643 4.189655 2.019901 1.483240 4.412482  1  1
+19 3.414443 2.000000 4.326778 3.951244 2.220360 1.270827 4.303487  1  1
+20 3.523415 2.000000 4.264087 4.174387 2.054264 1.354622 4.460942  1  1
+21 3.068053 2.000000 4.788325 4.574711 1.923538 1.570032 4.473254  1  0
+22 2.740840 2.828427 5.762051 5.010635 1.661325 1.876166 4.107311  0  0
+23 2.721295 2.828427 5.717028 5.010635 1.774824 1.853375 4.159327  0  0
+24 2.587764 2.828427 5.857933 5.501258 1.931321 1.959592 3.925557  0  0
+25 2.954910 2.828427 5.991465 5.164786 1.754993 1.960867 4.129165  0  0
+26 3.306887 2.000000 4.369448 4.189655 2.019901 1.391043 4.347413  1  1
+27 3.258097 2.000000 4.789989 4.510860 2.104757 1.462874 4.086563  0  1
+28 3.414443 2.000000 4.554929 4.727388 1.941649 1.230041 4.110961  1  1
+29 2.760010 2.828427 5.860786 5.575949 2.054264 1.780449 3.807887  0  1
+30 2.980619 2.449490 4.976734 5.164786 1.902630 1.664332 3.937004  0  1
+31 2.708050 2.828427 5.707110 5.814131 1.881489 1.889444 3.820995  0  1
+32 3.063391 2.000000 4.795791 4.691348 2.027313 1.667333 4.312772  1  1
+       gear     carb
+1  2.000000 2.000000
+2  2.000000 2.000000
+3  2.000000 1.000000
+4  1.732051 1.000000
+5  1.732051 1.414214
+6  1.732051 1.000000
+7  1.732051 2.000000
+8  2.000000 1.414214
+9  2.000000 1.414214
+10 2.000000 2.000000
+11 2.000000 2.000000
+12 1.732051 1.732051
+13 1.732051 1.732051
+14 1.732051 1.732051
+15 1.732051 2.000000
+16 1.732051 2.000000
+17 1.732051 2.000000
+18 2.000000 1.000000
+19 2.000000 1.414214
+20 2.000000 1.000000
+21 1.732051 1.000000
+22 1.732051 1.414214
+23 1.732051 1.414214
+24 1.732051 2.000000
+25 1.732051 1.414214
+26 2.000000 1.000000
+27 2.236068 1.414214
+28 2.236068 1.414214
+29 2.236068 2.000000
+30 2.236068 2.449490
+31 2.236068 2.828427
+32 2.000000 1.414214</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="part-4-row-wise-transformation-and-aggregation" class="level4">
+<h4 class="anchored" data-anchor-id="part-4-row-wise-transformation-and-aggregation">Part 4: Row-wise transformation and aggregation</h4>
+<ul>
+<li><p>First, define a function that assigns each row a fuel efficiency category based on <code>mpg</code>:</p>
+<ul>
+<li>“High” if <code>mpg</code> &gt; 25</li>
+<li>“Medium” if <code>mpg</code> is between 20 and 25</li>
+<li>“Low” if <code>mpg</code> &lt; 20</li>
+</ul></li>
+<li><p>Use <code>map()</code> to apply this function row-wise and add the results as a new column in <code>mtcars</code>.</p></li>
+<li><p>Then, split the dataset by fuel efficiency category from the previous step. For each category, calculate the mean values of <code>hp</code>, <code>wt</code>, and <code>qsec</code> (1/4 mile time).</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to assign fuel efficiency category based on mpg</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>fuel_efficiency <span class="ot">&lt;-</span> <span class="cf">function</span>(row) {</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  mpg <span class="ot">&lt;-</span> row[<span class="st">"mpg"</span>]</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (mpg <span class="sc">&gt;</span> <span class="dv">25</span>) {</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"High"</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (mpg <span class="sc">&gt;=</span> <span class="dv">20</span>) {</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Medium"</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Low"</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Add fuel efficiency as a new column</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>fuel_efficiency <span class="ot">&lt;-</span> <span class="fu">map_chr</span>(<span class="fu">asplit</span>(mtcars, <span class="dv">1</span>), fuel_efficiency)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>mtcars</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+                    fuel_efficiency
+Mazda RX4                    Medium
+Mazda RX4 Wag                Medium
+Datsun 710                   Medium
+Hornet 4 Drive               Medium
+Hornet Sportabout               Low
+Valiant                         Low
+Duster 360                      Low
+Merc 240D                    Medium
+Merc 230                     Medium
+Merc 280                        Low
+Merc 280C                       Low
+Merc 450SE                      Low
+Merc 450SL                      Low
+Merc 450SLC                     Low
+Cadillac Fleetwood              Low
+Lincoln Continental             Low
+Chrysler Imperial               Low
+Fiat 128                       High
+Honda Civic                    High
+Toyota Corolla                 High
+Toyota Corona                Medium
+Dodge Challenger                Low
+AMC Javelin                     Low
+Camaro Z28                      Low
+Pontiac Firebird                Low
+Fiat X1-9                      High
+Porsche 914-2                  High
+Lotus Europa                   High
+Ford Pantera L                  Low
+Ferrari Dino                    Low
+Maserati Bora                   Low
+Volvo 142E                   Medium</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split by fuel efficiency</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>efficiency_groups <span class="ot">&lt;-</span> <span class="fu">split</span>(mtcars, mtcars<span class="sc">$</span>fuel_efficiency)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean hp, wt, and qsec for each group</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>efficiency_summary <span class="ot">&lt;-</span> <span class="fu">map</span>(efficiency_groups, <span class="sc">~</span> <span class="fu">map_dbl</span>(.x[, <span class="fu">c</span>(<span class="st">"hp"</span>, <span class="st">"wt"</span>, <span class="st">"qsec"</span>)], mean))</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>efficiency_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$High
+      hp       wt     qsec 
+75.50000  1.87300 18.39833 
+
+$Low
+        hp         wt       qsec 
+191.944444   3.838833  17.096111 
+
+$Medium
+       hp        wt      qsec 
+98.250000  2.826875 19.130000 </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="part-5-visualizations-and-transformations" class="level4">
+<h4 class="anchored" data-anchor-id="part-5-visualizations-and-transformations">Part 5: Visualizations and transformations</h4>
+<ul>
+<li><p>Write a function that, for each row, converts <code>mpg</code> to a “fuel cost” using a hypothetical rate of $3 per gallon for a 100-mile journey where “fuel cost” = (100 mile journey / <code>mpg</code>) * $3 per gallon</p></li>
+<li><p>Use <code>map_dbl()</code> to apply this transformation to the <code>mpg</code> column and add it as a new column called <code>fuel_cost</code>.</p></li>
+<li><p>Using <code>map()</code> with <code>ggplot2</code>, create a bar plot of the average <code>fuel_cost</code> for each <code>cyl</code>. For each cylinder group, plot the average values of <code>mpg</code>, <code>hp</code>, and <code>wt</code>.</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate fuel cost based on mpg</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>calculate_fuel_cost <span class="ot">&lt;-</span> <span class="cf">function</span>(mpg) {</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">100</span> <span class="sc">/</span> mpg) <span class="sc">*</span> <span class="dv">3</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply transformation to mpg column</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>fuel_cost <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(mtcars<span class="sc">$</span>mpg, calculate_fuel_cost)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>mtcars</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+                    fuel_efficiency fuel_cost
+Mazda RX4                    Medium 14.285714
+Mazda RX4 Wag                Medium 14.285714
+Datsun 710                   Medium 13.157895
+Hornet 4 Drive               Medium 14.018692
+Hornet Sportabout               Low 16.042781
+Valiant                         Low 16.574586
+Duster 360                      Low 20.979021
+Merc 240D                    Medium 12.295082
+Merc 230                     Medium 13.157895
+Merc 280                        Low 15.625000
+Merc 280C                       Low 16.853933
+Merc 450SE                      Low 18.292683
+Merc 450SL                      Low 17.341040
+Merc 450SLC                     Low 19.736842
+Cadillac Fleetwood              Low 28.846154
+Lincoln Continental             Low 28.846154
+Chrysler Imperial               Low 20.408163
+Fiat 128                       High  9.259259
+Honda Civic                    High  9.868421
+Toyota Corolla                 High  8.849558
+Toyota Corona                Medium 13.953488
+Dodge Challenger                Low 19.354839
+AMC Javelin                     Low 19.736842
+Camaro Z28                      Low 22.556391
+Pontiac Firebird                Low 15.625000
+Fiat X1-9                      High 10.989011
+Porsche 914-2                  High 11.538462
+Lotus Europa                   High  9.868421
+Ford Pantera L                  Low 18.987342
+Ferrari Dino                    Low 15.228426
+Maserati Bora                   Low 20.000000
+Volvo 142E                   Medium 14.018692</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average fuel cost for each cylinder group</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>avg_fuel_cost <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_fuel_cost =</span> <span class="fu">mean</span>(fuel_cost))</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot average fuel cost by cylinder count</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(avg_fuel_cost, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(cyl), <span class="at">y =</span> avg_fuel_cost)) <span class="sc">+</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Number of Cylinders"</span>, </span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Average Fuel Cost ($)"</span>, </span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Fuel Cost by Cylinder Group"</span>) <span class="sc">+</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="post-lecture" class="level1">
+<h1>Post-lecture</h1>
+<section id="additional-practice" class="level2">
+<h2 class="anchored" data-anchor-id="additional-practice">Additional practice</h2>
+<p>Here are some additional practice questions to help you think about the material discussed.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Questions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Use <code>as_mapper()</code> to explore how purrr generates anonymous functions for the integer, character, and list helpers. What helper allows you to extract attributes? Read the documentation to find out.</p></li>
+<li><p><code>map(1:3, ~ runif(2))</code> is a useful pattern for generating random numbers, but <code>map(1:3, runif(2))</code> is not. Why not? Can you explain why it returns the result that it does?</p></li>
+<li><p>Can you write a section of code to demonstrate the central limit theorem primarily using the <code>purrr</code> package and/or using the R base package?</p></li>
+<li><p>Use the appropriate <code>map()</code> function to:</p>
+<ol type="a">
+<li><p>Compute the standard deviation of every column in a numeric data frame.</p></li>
+<li><p>Compute the standard deviation of every numeric column in a mixed data frame. (Hint: you will need to do it in two steps.)</p></li>
+<li><p>Compute the number of levels for every factor in a data frame.</p></li>
+</ol></li>
+<li><p>The following code simulates the performance of a t-test for non-normal data. Extract the p-value from each test, then visualise.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>trials <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="sc">~</span> <span class="fu">t.test</span>(<span class="fu">rpois</span>(<span class="dv">10</span>, <span class="dv">10</span>), <span class="fu">rpois</span>(<span class="dv">7</span>, <span class="dv">10</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li><p>Use <code>map()</code> to fit linear models to the <code>mtcars</code> dataset using the formulas stored in this list:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>formulas <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  mpg <span class="sc">~</span> disp,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  mpg <span class="sc">~</span> <span class="fu">I</span>(<span class="dv">1</span> <span class="sc">/</span> disp),</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  mpg <span class="sc">~</span> disp <span class="sc">+</span> wt,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  mpg <span class="sc">~</span> <span class="fu">I</span>(<span class="dv">1</span> <span class="sc">/</span> disp) <span class="sc">+</span> wt</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li><p>Fit the model <code>mpg ~ disp</code> to each of the bootstrap replicates of <code>mtcars</code> in the list below, then extract the <span class="math inline">\(R^2\)</span> of the model fit (Hint: you can compute the <span class="math inline">\(R^2\)</span> with <code>summary()</code>.)</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>bootstrap <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  df[<span class="fu">sample</span>(<span class="fu">nrow</span>(df), <span class="at">replace =</span> <span class="cn">TRUE</span>), , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>bootstraps <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="sc">~</span> <span class="fu">bootstrap</span>(mtcars))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li><p>How does <code>purrr</code> make it easier to perform repeated transformations compared to base R? What are some use cases where conditional transformations like <code>map_if()</code> could be helpful in real-world data?</p></li>
+</ol>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/stephaniehicks\.github\.io\/jhustatprogramming2025\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
