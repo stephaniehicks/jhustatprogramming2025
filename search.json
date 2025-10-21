@@ -126,6 +126,83 @@
     "text": "5. Share your website\nGo to the Discussion Board in CoursePlus and write a short post with a link (URL) to your website (and URL to the corresponding GitHub repository) that you created. Also, list the URLs below for the purposes of grading.\nAs you read the introductions from other folks in the class, feel free to comment/reply using Discussion board.\n\nLink to your GitHub repository: [Delete this text and replace the text with the link to the public GitHub repo you created above for your website]\nLink to your deployed website: [Delete this and replace the text with the link to the public deployed website you created above]"
   },
   {
+    "objectID": "lectures/02-version-control/index.html",
+    "href": "lectures/02-version-control/index.html",
+    "title": "Introduction to version control",
+    "section": "",
+    "text": "Tip\n\n\n\nIn advance of class, please follow the instructions on Software Carpentry: Version Control with Git to\n\nSet up git\nCreate a GitHub Account\nPrepare your Working Directory\nFamilarize yourself with some of the basic git commands in Chapters 1 to 9. If you have used git before, these commands are likely familiar to you already. If you have never used git for version control, I encourage you to skim the material to learn some of the terminology and basics. You are not expected to spend multiple hours on this, but during class, I will give an overview of git comands and then we will practice the commands with an in-class activity. If you have never used git commands before or you are not comfortable with executing commands in the terminal, it will be challenging to participate in the activity at the end of lecture."
+  },
+  {
+    "objectID": "lectures/02-version-control/index.html#acknowledgements",
+    "href": "lectures/02-version-control/index.html#acknowledgements",
+    "title": "Introduction to version control",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nMaterial for this lecture was borrowed and adopted from\n\nSoftware Carpentry: Version Control with Git"
+  },
+  {
+    "objectID": "lectures/02-version-control/index.html#learning-objectives",
+    "href": "lectures/02-version-control/index.html#learning-objectives",
+    "title": "Introduction to version control",
+    "section": "Learning objectives",
+    "text": "Learning objectives\n\n\n\n\n\n\nNoteLearning objectives\n\n\n\nAt the end of this lesson you will:\n\nUnderstand the benefits of an automated version control system\nUnderstand how to set up git\nUnderstand how to set up a git repository\nUnderstand how to track changes, explore history, and ignore files in a git\nUnderstand git remotes\nUnderstand how to use GitHub\nUnderstand collaborating\nRecognize the terminology of branching and forking"
+  },
+  {
+    "objectID": "lectures/02-version-control/index.html#slides",
+    "href": "lectures/02-version-control/index.html#slides",
+    "title": "Introduction to version control",
+    "section": "Slides",
+    "text": "Slides\n\nLecture 02: Introduction to version control"
+  },
+  {
+    "objectID": "lectures/02-version-control/index.html#part-1-repository-setup",
+    "href": "lectures/02-version-control/index.html#part-1-repository-setup",
+    "title": "Introduction to version control",
+    "section": "Part 1: Repository Setup",
+    "text": "Part 1: Repository Setup\n\nCreate a new repository. One partner (the “Owner” of the GitHub repo) should create a GitHub repository titled bikelanes in their own personal GitHub repository.\nInvite a collaborator. The repository owner needs to invite their partner as a collaborator by going to Settings &gt; Collaborators &gt; Manage Access. Specifically, on GitHub, click the “Settings” button on the right, select “Collaborators”, click “Add people”, and then enter your partner’s GitHub username.\n\nTo accept access to the Owner’s repo, the Collaborator needs to go to https://github.com/notifications or check for email notification. Once there you can accept access to the Owner’s repo.\n\nClone the repository. Both the Owner and Collaborator should clone the repository locally to their respective computers.\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\nIf using SSH:\ngit clone git@github.com:&lt;change-to-owners-github-username&gt;/bikelanes.git\nIf using HTTPS:\ngit clone https://github.com/&lt;change-to-owners-github-username&gt;/bikelanes.git"
+  },
+  {
+    "objectID": "lectures/02-version-control/index.html#part-2-adding-content-to-the-repository",
+    "href": "lectures/02-version-control/index.html#part-2-adding-content-to-the-repository",
+    "title": "Introduction to version control",
+    "section": "Part 2: Adding content to the repository",
+    "text": "Part 2: Adding content to the repository\n\nAdd a CSV file to the local repository. Consider the dataset called bike_lanes_data.csv with the following contents:\n\nLane_ID,Street_Name,Length_km,Type,Year_Installed,City\n1,Main St,1.2,Protected,2018,Springfield\n2,Elm St,0.8,Shared,2016,Springfield\n3,Maple Ave,2.3,Buffered,2020,Springfield\n4,Oak St,1.5,Protected,2019,Springfield\n5,Pine St,0.5,Shared,2015,Springfield\n6,River Rd,3.1,Buffered,2021,Springfield\nThe Owner should create a new CSV locally titled bike_lanes_data.csv and paste the data into the new CSV file. Save the file and commit the file to the local repository using git commands.\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\ncd bikelanes\ntouch bike_lanes_data.csv # (and paste in the content above)\ngit status\ngit add bike_lanes_data.csv\ngit commit -m \"adding bike lanes data\"\ngit push origin main\n\n\n\n\nCollaborator needs to pull the new changes locally to their computer. Next, the collaborator should pull the changes from the remote bikelanes GitHub repository to their local computer. This should make the new bike_lanes_data.csv appear locally on their computer.\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\ncd bikelanes\ngit pull origin main\n\n\n\n\nAdd a README.md file. The collaborator should create a new file called README.md in the bikelanes repository. Please add the following information to it:\n\n\nThe names of the owner and collaborator of the project\nThe emails of the owner and collaborator of the project\nAnswers to the following questions:\n\nDo you enjoy biking?\nWhat type of biking (e.g. road biking, mountain biking, no biking, etc ) do you enjoy?\nIf not biking, what hobbies do you enjoy doing?\n\n\nAfter the README.md file is complete, add and commit the file to the local repository using git commands. Push the changes to the remote bikelanes repository on GitHub.\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\ntouch README.md # (add the content)\ngit status\ngit add README.md\ngit commit -m \"adding readme file\"\ngit push\n\n\n\n\nOwner needs to pull the new changes locally to their computer. Next, the owner of the repository should pull the changes from the remote bikelanes GitHub repository to their local computer. This should make the new REAMDE.md appear locally on their computer.\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\ncd bikelanes\ngit pull"
+  },
+  {
+    "objectID": "lectures/02-version-control/index.html#part-3-create-github-issues-to-assign-tasks",
+    "href": "lectures/02-version-control/index.html#part-3-create-github-issues-to-assign-tasks",
+    "title": "Introduction to version control",
+    "section": "Part 3: Create GitHub issues to assign tasks",
+    "text": "Part 3: Create GitHub issues to assign tasks\nThe partners should create at least one Github Issue for a set of future tasks for the project (e.g., “Add bike lane data from our local area” or “Write code to analyze bike lane usage trends”).\nAssign these issues to each other and set a due date, if desired."
+  },
+  {
+    "objectID": "lectures/02-version-control/index.html#part-4-review-the-git-history",
+    "href": "lectures/02-version-control/index.html#part-4-review-the-git-history",
+    "title": "Introduction to version control",
+    "section": "Part 4: Review the git history",
+    "text": "Part 4: Review the git history\nBoth partners should review the commit history using git commands\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\nExpected commands: git log"
+  },
+  {
+    "objectID": "lectures/02-version-control/index.html#part-5-switch-roles-and-repeat-process",
+    "href": "lectures/02-version-control/index.html#part-5-switch-roles-and-repeat-process",
+    "title": "Introduction to version control",
+    "section": "Part 5: Switch roles and repeat process",
+    "text": "Part 5: Switch roles and repeat process\nSwitch roles and repeat the whole process."
+  },
+  {
+    "objectID": "lectures/02-version-control/index.html#reflection-questions",
+    "href": "lectures/02-version-control/index.html#reflection-questions",
+    "title": "Introduction to version control",
+    "section": "Reflection Questions",
+    "text": "Reflection Questions\n\nWhat challenges did you encounter when collaborating on GitHub?\nHow did using Issues help you coordinate work?\nIn what ways could GitHub features be useful for larger projects, such as full bike lane data studies?"
+  },
+  {
+    "objectID": "lectures/02-version-control/index.html#additional-practice",
+    "href": "lectures/02-version-control/index.html#additional-practice",
+    "title": "Introduction to version control",
+    "section": "Additional practice",
+    "text": "Additional practice\nHere are some additional practice questions to help you think about the material discussed.\n\n\n\n\n\n\nNoteQuestions\n\n\n\n\nInitialize a new Git repository.\n\nCreate a new folder on your computer.\nUse the git init command to turn it into a Git repository.\nConfigure your name and email using git config –global user.name “Your Name”andgit config –global user.email “you@example.com”`.\n\n\nGoal: Learn to set up Git for the first time and understand how Git tracks your identity.\n\nCreate a new file and commit it.\n\nCreate a simple text file in your repository (e.g., README.md).\nUse git add &lt;filename&gt; to stage the file.\nUse git commit -m \"Initial commit\" to commit it to the repository.\n\n\nGoal: Understand how to add and commit files in Git.\n\nModify a file and create a new commit.\n\nMake changes to the file (e.g., add some text to the README.md).\nStage the changes and commit them using git add and git commit.\nUse git log to see the history of your commits.\n\n\nGoal: Learn how to track changes over time and inspect the commit history.\n\nWork with branches.\n\nCreate a new branch using git checkout -b feature-branch.\nMake changes to a file, stage, and commit them.\nSwitch back to the main branch (git checkout main).\nMerge your changes from feature-branch into main using git merge feature-branch.\n\n\nGoal: Understand how branching works and how to merge changes from different branches.\n\nSimulate and resolve a merge conflict.\n\nOn the main branch, edit a line in a file and commit the change.\nSwitch to a new branch (git checkout -b conflicting-branch), edit the same line differently, and commit it.\nMerge the conflicting-branch back into main and resolve the merge conflict manually.\nUse git status to see the files with conflicts and edit them to resolve.\nCommit the resolved changes.\n\n\nGoal: Learn how to handle merge conflicts and understand conflict markers."
+  },
+  {
     "objectID": "lectures/00-course-intro/index.html",
     "href": "lectures/00-course-intro/index.html",
     "title": "Welcome to the course",
@@ -200,7 +277,7 @@
     "href": "lectures.html",
     "title": "Course content",
     "section": "",
-    "text": "Course content for each lecture is below:\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-10-23\n\n\nWelcome to the course\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-28\n\n\nIntroduction to the command-line\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
+    "text": "Course content for each lecture is below:\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-10-23\n\n\nWelcome to the course\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-28\n\n\nIntroduction to the command-line\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-30\n\n\nIntroduction to version control\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "lectures/01-command-line/index.html",
