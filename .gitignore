@@ -12,6 +12,9 @@ results/
 
 *.Rproj
 
+lectures/00-course-intro/*_cache
+lectures/00-course-intro/*_files
+lectures/00-course-intro/*.html
 lectures/12-programming-in-python/*_cache
 lectures/12-programming-in-python/*_files
 lectures/12-programming-in-python/*.html

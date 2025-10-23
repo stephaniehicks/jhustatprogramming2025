@@ -4,6 +4,7 @@ project:
   render:
     - "*.qmd"
     - "!readings/00-quarto/diamond-sizes.qmd"
+    - "!lectures/00-course-intro/quarto-with*.qmd"
     - "!readings/10-flexdashboard/*.Rmd"
     - "!readings/09-r-pkg-dev-1/*.qmd"
     - "!readings/01-command-line-1/*.qmd"
