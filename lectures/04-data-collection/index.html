@@ -1,2 +1,1126 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"></html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stephanie Hicks">
+<meta name="dcterms.date" content="2025-11-06">
+<meta name="description" content="Using APIs and extracting data from HTMLs">
+
+<title>Data Collection – Statistical Programming Paradigms and Workflows</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fc1a281c15ae91fd4173f431b0abd564.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Statistical Programming Paradigms and Workflows</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-home" role="img">
+</i> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../lectures.html"> <i class="bi bi-book-half" role="img">
+</i> 
+<span class="menu-text">Course</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-box-seam-fill" role="img">
+</i> 
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../readings.html">
+ <span class="dropdown-text">Pre-reading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../projects.html">
+ <span class="dropdown-text">Projects</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../resources.html">
+ <span class="dropdown-text">Additional Resources</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/stephaniehicks/jhustatprogramming2025"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#pre-lecture-activities" id="toc-pre-lecture-activities" class="nav-link active" data-scroll-target="#pre-lecture-activities">Pre-lecture activities</a></li>
+  <li><a href="#lecture" id="toc-lecture" class="nav-link" data-scroll-target="#lecture">Lecture</a>
+  <ul class="collapse">
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
+  </ul></li>
+  <li><a href="#class-activity" id="toc-class-activity" class="nav-link" data-scroll-target="#class-activity">Class activity</a>
+  <ul class="collapse">
+  <li><a href="#part-1-extracting-tables" id="toc-part-1-extracting-tables" class="nav-link" data-scroll-target="#part-1-extracting-tables">Part 1: Extracting tables</a></li>
+  <li><a href="#part-2-extract-text" id="toc-part-2-extract-text" class="nav-link" data-scroll-target="#part-2-extract-text">Part 2: Extract text</a></li>
+  <li><a href="#part-3-extract-external-links" id="toc-part-3-extract-external-links" class="nav-link" data-scroll-target="#part-3-extract-external-links">Part 3: Extract external links</a></li>
+  <li><a href="#part-4-extract-links-from-images" id="toc-part-4-extract-links-from-images" class="nav-link" data-scroll-target="#part-4-extract-links-from-images">Part 4: Extract links from images</a></li>
+  </ul></li>
+  <li><a href="#post-lecture" id="toc-post-lecture" class="nav-link" data-scroll-target="#post-lecture">Post-lecture</a>
+  <ul class="collapse">
+  <li><a href="#other-good-r-packages-to-know-about" id="toc-other-good-r-packages-to-know-about" class="nav-link" data-scroll-target="#other-good-r-packages-to-know-about">Other good R packages to know about</a></li>
+  <li><a href="#additional-practice" id="toc-additional-practice" class="nav-link" data-scroll-target="#additional-practice">Additional practice</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data Collection</h1>
+</div>
+
+<div>
+  <div class="description">
+    Using APIs and extracting data from HTMLs
+  </div>
+</div>
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author"><a href="https://stephaniehicks.com">Stephanie Hicks</a> </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Department of Biostatistics, Johns Hopkins
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 6, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="pre-lecture-activities" class="level1">
+<h1>Pre-lecture activities</h1>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In advance of class, please install the following R packages</p>
+<ol type="1">
+<li><code>jsonlite</code> (<a href="https://jeroen.cran.dev/jsonlite" class="uri">https://jeroen.cran.dev/jsonlite</a>)</li>
+<li><code>httr2</code> (<a href="https://httr2.r-lib.org" class="uri">https://httr2.r-lib.org</a>)</li>
+<li><code>rvest</code> (<a href="https://rvest.tidyverse.org" class="uri">https://rvest.tidyverse.org</a>) (should be installed already with the <code>tidyverse</code>)</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"jsonlite"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"httr2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In addition, please read through</p>
+<ul>
+<li><a href="../../readings/04-data-collection-apis/index.html">Data collection with APIs</a></li>
+<li><a href="../../readings/04-data-collection-html/index.html">Data collection from HTMLs</a></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="lecture" class="level1">
+<h1>Lecture</h1>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>Material for this lecture was borrowed and adopted from</p>
+<ul>
+<li><a href="https://jeroen.cran.dev/jsonlite" class="uri">https://jeroen.cran.dev/jsonlite</a></li>
+<li><a href="https://httr2.r-lib.org" class="uri">https://httr2.r-lib.org</a></li>
+<li><a href="https://rvest.tidyverse.org" class="uri">https://rvest.tidyverse.org</a></li>
+</ul>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Learning objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>At the end of this lesson you will:</strong></p>
+<ul>
+<li>Introduce the JSON file format</li>
+<li>Demonstrate how to convert JSON file format into data frames in R</li>
+<li>Know what does API mean and state four types of API architectures</li>
+<li>Practice with the GitHub API and make authenticated requests</li>
+<li>Practice a range of <code>rvest</code> functions to scrape data from HTML pages</li>
+<li>Recognize various HTML elements on the page (text, links, images, lists, etc.)</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<ul>
+<li><a href="https://docs.google.com/presentation/d/16-EftiaXXzYlr70mov1iYzrwn9Uyg6nio3P5clrstUU/edit?usp=sharing">Lecture 04: Data collection paradigms</a></li>
+</ul>
+</section>
+</section>
+<section id="class-activity" class="level1">
+<h1>Class activity</h1>
+<p>For the rest of the time in class, we will practice using <code>rvest</code> to learn how to scrape data from HTML pages. To do this, we will load the following packages and extract data from the <a href="https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup">FIFA Women’s World Cup</a> HTML page.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest) <span class="co"># should be installed with the tidyverse</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xml2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Objectives of the activity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Practice a range of <code>rvest</code> functions to scrape data from the web</li>
+<li>Understand various various HTML elements on the page (text, links, images, lists, etc.).</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If any tables are nested within specific sections, you may need to target them individually using CSS selectors.</p>
+</div>
+</div>
+<section id="part-1-extracting-tables" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-extracting-tables">Part 1: Extracting tables</h2>
+<ul>
+<li>Use <code>html_table</code> to extract a table containing the <a href="https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup">FIFA Women’s World Cup</a> and the corresponding runner-up for each World Cup year. This is the first table under “Results”.</li>
+<li>Show the first few rows with <code>head()</code>.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the URL we want to scrape data from</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a local HTML file to avoid scraping data from it each time I compile this quarto file. </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>html_worldcup <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"world-cup.html"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">file.exists</span>(html_worldcup)){</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  page <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_html</span>(page, html_worldcup)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  page <span class="ot">&lt;-</span> <span class="fu">read_html</span>(html_worldcup)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the table and show the first few rows</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>page <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  .[[<span class="dv">5</span>]] <span class="sc">%&gt;%</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 13
+  X1    X2    X3     X4    X5    X6    X7    X8    X9    X10   X11   X12   X13  
+  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;lgl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt; &lt;chr&gt;
+1 Ed.   Year  Hosts  NA    Final Final Final NA    Thir… Thir… Thir… NA    No. …
+2 Ed.   Year  Hosts  NA    Cham… Score Runn… NA    Thir… Score Four… NA    No. …
+3 1     1991  China  NA    Unit… 2–1   Norw… NA    Swed… 4–0   Germ… NA    12   
+4 2     1995  Sweden NA    Norw… 2–0   Germ… NA    Unit… 2–0   China NA    12   
+5 3     1999  Unite… NA    Unit… 0–0 … China NA    Braz… 0–0[… Norw… NA    16   
+6 4     2003  Unite… NA    Germ… 2–1 … Swed… NA    Unit… 3–1   Cana… NA    16   </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>Use <code>html_table()</code> to extract a table containing the number of goal scored by country. This is the second table under “Top goalscores”.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the table and show the first few rows</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>page <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  .[[<span class="dv">9</span>]] <span class="sc">%&gt;%</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+   Rank Country       `Goals scored`
+  &lt;int&gt; &lt;chr&gt;                  &lt;int&gt;
+1     1 United States            142
+2     2 Germany                  129
+3     3 Norway                   100
+4     4 Sweden                    83
+5     5 Brazil                    71
+6     6 England                   56</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="part-2-extract-text" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-extract-text">Part 2: Extract text</h2>
+<ul>
+<li>Use <code>html_elements()</code> to select the introductory paragraph(s) of text (e.g., the first three <code>&lt;p&gt;</code> tags under the main content) from the introductory section of the Wikipedia page, where key information about the World Cup is provided.</li>
+<li>Use <code>html_text2()</code> to retrieve the text.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>page <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">"p"</span>) <span class="sc">%&gt;%</span>   <span class="co"># Selecting the first few paragraphs</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  .[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>] <span class="sc">%&gt;%</span>            <span class="co"># Adjust based on the number of paragraphs you want</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text2</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] ""                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+[2] ""                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+[3] "The FIFA Women's World Cup is an international association football competition contested by the senior women's national teams of the members of the Fédération Internationale de Football Association (FIFA), the sport's international governing body. The competition has been held every four years and one year after the men's FIFA World Cup since 1991, when the inaugural tournament, then called the FIFA Women's World Championship, was held in China."</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="part-3-extract-external-links" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-extract-external-links">Part 3: Extract external links</h2>
+<p>Here, we will extract a list of external links related to the FIFA Women’s World Cup from the “References” section at the bottom.</p>
+<ul>
+<li>Use <code>html_elements()</code> to select all the references.</li>
+<li>Use <code>html_elements()</code> to select all links (<code>&lt;a&gt;</code> tags) in the references section.</li>
+<li>Use <code>html_attr()</code> to extract the URLs (<code>href</code>) for these links.</li>
+<li>Display a list of all unique URLs (hint: use <code>unique()</code> function)</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>page <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">".mw-references-columns"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">"li"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">"a"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_attr</span>(<span class="st">"href"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "#cite_ref-1"                                                                                                                                                                           
+  [2] "https://web.archive.org/web/20150706151332/http://www.ussoccer.com/stories/2015/07/05/21/19/150705-wnt-v-jpn-game-story"                                                               
+  [3] "http://www.ussoccer.com/stories/2015/07/05/21/19/150705-wnt-v-jpn-game-story"                                                                                                          
+  [4] "#cite_ref-FIFAformat_2-0"                                                                                                                                                              
+  [5] "#cite_ref-FIFAformat_2-1"                                                                                                                                                              
+  [6] "#cite_ref-FIFAformat_2-2"                                                                                                                                                              
+  [7] "https://web.archive.org/web/20141209162112/http://resources.fifa.com/mm/document/tournament/competition/02/07/47/91/regulationsfwwccanada2015e_neutral.pdf"                            
+  [8] "http://resources.fifa.com/mm/document/tournament/competition/02/07/47/91/regulationsfwwccanada2015e_neutral.pdf"                                                                       
+  [9] "#cite_ref-3"                                                                                                                                                                           
+ [10] "https://www.rsssf.org/tablesm/mondo-women70.html"                                                                                                                                      
+ [11] "/wiki/RSSSF"                                                                                                                                                                           
+ [12] "https://web.archive.org/web/20220728155233/https://www.rsssf.org/tablesm/mondo-women70.html"                                                                                           
+ [13] "#cite_ref-4"                                                                                                                                                                           
+ [14] "https://www.bbc.co.uk/news/business-46149887"                                                                                                                                          
+ [15] "/wiki/British_Broadcasting_Cooperation"                                                                                                                                                
+ [16] "https://web.archive.org/web/20181207214128/https://www.bbc.com/news/business-46149887"                                                                                                 
+ [17] "#cite_ref-5"                                                                                                                                                                           
+ [18] "https://www.rsssf.org/tablesm/mundo-women71.html"                                                                                                                                      
+ [19] "https://web.archive.org/web/20220728155235/https://www.rsssf.org/tablesm/mundo-women71.html"                                                                                           
+ [20] "#cite_ref-6"                                                                                                                                                                           
+ [21] "https://www.theguardian.com/football/blog/2015/jun/04/womens-world-cup-unofficial-record-breaking"                                                                                     
+ [22] "/wiki/The_Guardian"                                                                                                                                                                    
+ [23] "https://web.archive.org/web/20150605044132/https://www.theguardian.com/football/blog/2015/jun/04/womens-world-cup-unofficial-record-breaking"                                          
+ [24] "#cite_ref-7"                                                                                                                                                                           
+ [25] "https://www.rsssf.org/tablesm/mundialito-women.html"                                                                                                                                   
+ [26] "https://web.archive.org/web/20220803221248/https://www.rsssf.org/tablesm/mundialito-women.html"                                                                                        
+ [27] "#cite_ref-8"                                                                                                                                                                           
+ [28] "http://www.the-afc.com/competitions/afc-womens-asian-cup/latest/news/foundation-of-asian-brilliance"                                                                                   
+ [29] "https://web.archive.org/web/20190703193448/http://www.the-afc.com/competitions/afc-womens-asian-cup/latest/news/foundation-of-asian-brilliance"                                        
+ [30] "#cite_ref-9"                                                                                                                                                                           
+ [31] "https://web.archive.org/web/20190608195632/https://www.fifa.com/womensworldcup/news/ellen-wille-mother-norwegian-women-football-1462830"                                               
+ [32] "https://www.fifa.com/womensworldcup/news/ellen-wille-mother-norwegian-women-football-1462830"                                                                                          
+ [33] "#cite_ref-10"                                                                                                                                                                          
+ [34] "http://www.fifamuseum.com/stories/blog/a-green-and-gold-shirt-steeped-in-history-500107/"                                                                                              
+ [35] "https://web.archive.org/web/20190629110059/http://www.fifamuseum.com/stories/blog/a-green-and-gold-shirt-steeped-in-history-500107/"                                                   
+ [36] "#cite_ref-11"                                                                                                                                                                          
+ [37] "https://web.archive.org/web/20181213173348/https://www.fifa.com/womensworldcup/news/when-akers-and-usa-got-the-party-started"                                                          
+ [38] "https://www.fifa.com/womensworldcup/news/when-akers-and-usa-got-the-party-started"                                                                                                     
+ [39] "#cite_ref-12"                                                                                                                                                                          
+ [40] "https://web.archive.org/web/20190524061602/https://www.fifa.com/womensworldcup/news/fifa-women-world-cup-sweden-1995-501999"                                                           
+ [41] "https://www.fifa.com/womensworldcup/news/fifa-women-world-cup-sweden-1995-501999"                                                                                                      
+ [42] "#cite_ref-13"                                                                                                                                                                          
+ [43] "http://www.sportsnetwork.com/default.asp?c=sportsnetwork&amp;page=SOC-WWC/STAT/WWC-HISTORY.htm"                                                                                            
+ [44] "/wiki/Wikipedia:Link_rot"                                                                                                                                                              
+ [45] "#cite_ref-14"                                                                                                                                                                          
+ [46] "https://www.usatoday.com/sports/soccer/world/2003-05-03-womens-cup-sars_x.htm"                                                                                                         
+ [47] "https://web.archive.org/web/20090212124055/https://www.usatoday.com/sports/soccer/world/2003-05-03-womens-cup-sars_x.htm"                                                              
+ [48] "#cite_ref-15"                                                                                                                                                                          
+ [49] "https://www.cbc.ca/sports/soccer/canada-gets-2015-women-s-world-cup-of-soccer-1.988843"                                                                                                
+ [50] "/wiki/Canadian_Broadcasting_Company"                                                                                                                                                   
+ [51] "https://web.archive.org/web/20110304143611/http://www.cbc.ca/sports/soccer/story/2011/03/03/sp-womens-world-cup.html"                                                                  
+ [52] "#cite_ref-16"                                                                                                                                                                          
+ [53] "https://web.archive.org/web/20160821094856/http://uk.reuters.com/article/uk-soccer-women-japan-idUKKBN0NM3D120150501"                                                                  
+ [54] "http://uk.reuters.com/article/uk-soccer-women-japan-idUKKBN0NM3D120150501"                                                                                                             
+ [55] "#cite_ref-17"                                                                                                                                                                          
+ [56] "http://www.huffingtonpost.com/2015/06/17/christie-rampone-oldest-player_n_7599882.html"                                                                                                
+ [57] "https://web.archive.org/web/20150617061147/http://www.huffingtonpost.com/2015/06/17/christie-rampone-oldest-player_n_7599882.html"                                                     
+ [58] "#cite_ref-18"                                                                                                                                                                          
+ [59] "https://web.archive.org/web/20150320194817/http://www.fifa.com/womensworldcup/news/y=2015/m=3/news=france-to-host-the-fifa-women-s-world-cup-in-2019-2567761.html"                     
+ [60] "https://www.fifa.com/womensworldcup/news/y=2015/m=3/news=france-to-host-the-fifa-women-s-world-cup-in-2019-2567761.html"                                                               
+ [61] "#cite_ref-19"                                                                                                                                                                          
+ [62] "https://www.bbc.com/sport/football/articles/cr4z0g6e234o"                                                                                                                              
+ [63] "#cite_ref-20"                                                                                                                                                                          
+ [64] "https://www.fifamuseum.com/en/blog-stories/blog/the-fifa-women-s-world-cuptm-original-trophy-is-back-at-the-fifa-museu-2620371/"                                                       
+ [65] "https://web.archive.org/web/20240311034417/https://www.fifamuseum.com/en/blog-stories/blog/the-fifa-women-s-world-cuptm-original-trophy-is-back-at-the-fifa-museu-2620371/"            
+ [66] "#cite_ref-21"                                                                                                                                                                          
+ [67] "https://web.archive.org/web/20170319113103/http://www.fifa.com/marketinghighlights/canada2015/marketing-higlights/the-brand/the-official-womens-world-cup-trophy.html"                 
+ [68] "https://www.fifa.com/marketinghighlights/canada2015/marketing-higlights/the-brand/the-official-womens-world-cup-trophy.html"                                                           
+ [69] "#cite_ref-22"                                                                                                                                                                          
+ [70] "https://thejewelerblog.wordpress.com/2015/07/06/womens-world-cup-trophy-is-made-of-gold-glad-sterling-silver-mens-version-is-18-karat-gold/"                                           
+ [71] "https://web.archive.org/web/20181013211741/https://thejewelerblog.wordpress.com/2015/07/06/womens-world-cup-trophy-is-made-of-gold-glad-sterling-silver-mens-version-is-18-karat-gold/"
+ [72] "#cite_ref-23"                                                                                                                                                                          
+ [73] "https://web.archive.org/web/20191222125210/https://www.fifa.com/clubworldcup/news/fifa-world-champions-badge-honours-real-madrid-s-impeccable-year-2494968"                            
+ [74] "/wiki/FIFA"                                                                                                                                                                            
+ [75] "https://www.fifa.com/clubworldcup/news/fifa-world-champions-badge-honours-real-madrid-s-impeccable-year-2494968"                                                                       
+ [76] "#cite_ref-24"                                                                                                                                                                          
+ [77] "https://www.foxsports.com.mx/2025/05/27/mexico-es-elegido-sede-del-mundial-femenil-2031-junto-a-estados-unidos-fmf-lo-adelanta/"                                                       
+ [78] "#cite_ref-25"                                                                                                                                                                          
+ [79] "https://www.espn.com/soccer/story/_/id/44515026/uk-set-host-2035-women-world-cup-rival-bids-drop-out"                                                                                  
+ [80] "#cite_ref-26"                                                                                                                                                                          
+ [81] "https://digitalhub.fifa.com/m/1816849eda4db6/original/jaeq2lvmczqjofxccj3u-pdf.pdf"                                                                                                    
+ [82] "https://web.archive.org/web/20210831030705/https://digitalhub.fifa.com/m/1816849eda4db6/original/jaeq2lvmczqjofxccj3u-pdf.pdf"                                                         
+ [83] "#cite_ref-2015_keyfacts_27-0"                                                                                                                                                          
+ [84] "#cite_ref-2015_keyfacts_27-1"                                                                                                                                                          
+ [85] "https://web.archive.org/web/20150711210112/http://www.fifa.com/womensworldcup/news/y=2015/m=7/news=key-figures-from-the-fifa-women-s-world-cup-canada-2015tm-2661648.html"             
+ [86] "https://www.fifa.com/womensworldcup/news/y=2015/m=7/news=key-figures-from-the-fifa-women-s-world-cup-canada-2015tm-2661648.html"                                                       
+ [87] "#cite_ref-28"                                                                                                                                                                          
+ [88] "https://www.nytimes.com/2003/05/27/sports/soccer-us-replaces-china-as-host-of-soccer-s-women-s-world-cup.html"                                                                         
+ [89] "/wiki/The_New_York_Times"                                                                                                                                                              
+ [90] "https://web.archive.org/web/20180908054348/https://www.nytimes.com/2003/05/27/sports/soccer-us-replaces-china-as-host-of-soccer-s-women-s-world-cup.html"                              
+ [91] "#cite_ref-29"                                                                                                                                                                          
+ [92] "https://web.archive.org/web/20020228035519/http://sportsillustrated.cnn.com/soccer/world/1999/womens_worldcup/news/1999/07/10/brazil_norway/"                                          
+ [93] "http://sportsillustrated.cnn.com/soccer/world/1999/womens_worldcup/news/1999/07/10/brazil_norway/"                                                                                     
+ [94] "#cite_ref-ussf_070815_32-0"                                                                                                                                                            
+ [95] "#cite_ref-ussf_070815_32-1"                                                                                                                                                            
+ [96] "https://web.archive.org/web/20150709161003/http://www.ussoccer.com/stories/2015/07/08/16/59/150708-wnt-victory-breaks-tv-records"                                                      
+ [97] "http://www.ussoccer.com/stories/2015/07/08/16/59/150708-wnt-victory-breaks-tv-records"                                                                                                 
+ [98] "#cite_ref-33"                                                                                                                                                                          
+ [99] "https://www.sbnation.com/2015/7/6/8900299/more-americans-watched-the-womens-world-cup-final-than-the-nba-finals"                                                                       
+[100] "https://web.archive.org/web/20150707222336/https://www.sbnation.com/2015/7/6/8900299/more-americans-watched-the-womens-world-cup-final-than-the-nba-finals"                            
+[101] "#cite_ref-34"                                                                                                                                                                          
+[102] "https://web.archive.org/web/20151218034246/http://www.fifa.com/womensworldcup/news/y=2015/m=12/news=record-breaking-fifa-women-s-world-cup-tops-750-million-tv-viewers-2745963.html"   
+[103] "https://www.fifa.com/womensworldcup/news/y=2015/m=12/news=record-breaking-fifa-women-s-world-cup-tops-750-million-tv-viewers-2745963.html"                                             
+[104] "#cite_ref-35"                                                                                                                                                                          
+[105] "https://www.reuters.com/sports/soccer/best-womens-world-cup-generates-570m-fifa-infantino-2023-08-18/"                                                                                 
+[106] "https://web.archive.org/web/20230124175112/https://www.nbcsports.com/northwest/world-cup/equal-pay-womens-world-cup-players-seriously"                                                 
+[107] "#cite_ref-36"                                                                                                                                                                          
+[108] "https://pluralist.com/uswnt-equal-pay-controversy/"                                                                                                                                    
+[109] "https://web.archive.org/web/20190703120647/https://pluralist.com/uswnt-equal-pay-controversy/"                                                                                         
+[110] "#cite_ref-37"                                                                                                                                                                          
+[111] "https://www.nytimes.com/2018/06/12/sports/fifa-revenue.html"                                                                                                                           
+[112] "https://ghostarchive.org/archive/20220102/https://www.nytimes.com/2018/06/12/sports/fifa-revenue.html"                                                                                 
+[113] "#cite_ref-38"                                                                                                                                                                          
+[114] "https://boxscorenews.com/fifa-calls-womens-world-cup-broadcast-offers-disappointing-p168538-199.htm"                                                                                   
+[115] "https://web.archive.org/web/20230518034444/https://boxscorenews.com/fifa-calls-womens-world-cup-broadcast-offers-disappointing-p168538-199.htm"                                        
+[116] "#cite_ref-ath-2023-broadcast_39-0"                                                                                                                                                     
+[117] "#cite_ref-ath-2023-broadcast_39-1"                                                                                                                                                     
+[118] "https://www.nytimes.com/athletic/4575427/2023/06/04/womens-world-cup-commercial-tv-rights/"                                                                                            
+[119] "/wiki/The_Athletic"                                                                                                                                                                    
+[120] "https://web.archive.org/web/20230605201409/https://theathletic.com/4575427/2023/06/04/womens-world-cup-commercial-tv-rights/?source=twitterhq"                                         
+[121] "#cite_ref-40"                                                                                                                                                                          
+[122] "https://digitalhub.fifa.com/m/6bd2fa3c769ee09c/original/lnpeuvaoc1v5tih9rf7p-pdf.pdf"                                                                                                  
+[123] "https://web.archive.org/web/20210727190318/https://digitalhub.fifa.com/m/6bd2fa3c769ee09c/original/lnpeuvaoc1v5tih9rf7p-pdf.pdf"                                                       </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="part-4-extract-links-from-images" class="level2">
+<h2 class="anchored" data-anchor-id="part-4-extract-links-from-images">Part 4: Extract links from images</h2>
+<p>Here we will extract the URLs for images on the page, particularly images related to tournament trophies or logos.</p>
+<ul>
+<li>Use <code>html_elements()</code> to select <img> tags.</li>
+<li>Use <code>html_attr()</code> to get the image source (<code>src</code>) URLs.</li>
+<li>Filter for images that contain keywords like “FIFA”, “World Cup”, or “Logo” in their src using the <code>grepl</code> function.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>page <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">"img"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_attr</span>(<span class="st">"src"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">url =</span> .) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">"FIFA|World_Cup|Logo"</span>, url))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 1
+  url                                                                           
+  &lt;chr&gt;                                                                         
+1 //upload.wikimedia.org/wikipedia/commons/thumb/a/aa/FIFA_logo_without_slogan.…
+2 //upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Womens_World_Cup_countrie…
+3 //upload.wikimedia.org/wikipedia/commons/thumb/a/aa/FIFA_logo_without_slogan.…
+4 //upload.wikimedia.org/wikipedia/commons/thumb/2/26/World_Map_FIFA.svg/120px-…
+5 //upload.wikimedia.org/wikipedia/commons/thumb/2/26/World_Map_FIFA.svg/250px-…</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="post-lecture" class="level1">
+<h1>Post-lecture</h1>
+<section id="other-good-r-packages-to-know-about" class="level2">
+<h2 class="anchored" data-anchor-id="other-good-r-packages-to-know-about">Other good R packages to know about</h2>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/googlesheets4/index.html">googlesheets4</a> to interact with Google Sheets in R</li>
+<li><a href="https://googledrive.tidyverse.org/">googledrive</a> to interact with files on your Google Drive</li>
+</ul>
+</section>
+<section id="additional-practice" class="level2">
+<h2 class="anchored" data-anchor-id="additional-practice">Additional practice</h2>
+<p>Here are some additional practice questions to help you think about the material discussed.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Questions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Using the GitHub API, access the repository information and ask how many open github issues you have?</li>
+<li>Pick another API that we have not discussed here and use <code>httr</code> to retreive data from it.</li>
+<li>Look how many open issues there are in the <code>dplyr</code> package in the <code>tidyverse</code>.</li>
+<li>Practice requesting data from the <a href="https://open.fda.gov">openFDA API</a>, which returns JSON files. This API provides create easy access to public data, to create a new level of openness and accountability, to ensure the privacy and security of public FDA data, and ultimately to educate the public and save lives. See <a href="https://open.fda.gov/data/datadictionary">data definitions</a> for all included data.</li>
+</ol>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/stephaniehicks\.github\.io\/jhustatprogramming2025\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
