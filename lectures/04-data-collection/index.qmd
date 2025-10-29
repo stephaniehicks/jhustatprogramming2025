@@ -7,12 +7,13 @@ author:
     affiliation_url: https://publichealth.jhu.edu
 description: "Using APIs and extracting data from HTMLs"
 date: 2025-11-06
-draft: true
+draft: false
 ---
+
 
 # Pre-lecture activities
 
-::: callout-important
+::: callout-tip
 
 In advance of class, please install the following R packages
 
@@ -26,12 +27,14 @@ install.packages("jsonlite")
 install.packages("httr2")
 ```
 
-:::
-
 In addition, please read through
 
 - [Data collection with APIs](../../readings/04-data-collection-apis/index.qmd)
 - [Data collection from HTMLs](../../readings/04-data-collection-html/index.qmd)
+
+:::
+
+
 
 # Lecture 
 
@@ -62,7 +65,7 @@ Material for this lecture was borrowed and adopted from
 
 ## Slides 
 
-- [Lecture 04: Data collection paradigms](https://docs.google.com/presentation/d/14gae5qmv_cHAZP0zX-XMZbGN26BY4aCnTDqPEa_vmFU/edit?usp=sharing)
+- [Lecture 04: Data collection paradigms](https://docs.google.com/presentation/d/16-EftiaXXzYlr70mov1iYzrwn9Uyg6nio3P5clrstUU/edit?usp=sharing)
 
 # Class activity 
 

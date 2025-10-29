@@ -7,7 +7,7 @@ author:
     affiliation_url: https://publichealth.jhu.edu
 description: "Introduction to JSON files and interacting with APIs with `httr2`"
 date: 2025-11-06
-draft: true
+draft: false
 ---
 
 Before we begin, let's load a few R packages
@@ -519,7 +519,7 @@ We convert the response to a parsed JSON file (or a list).
 
 Let's have a bit of fun and explore some questions:  
 
-- How many public repositories do I have? 
+- How many public repositories do I have that people have forked? 
 
 ```{r}
 stephanie$forks
