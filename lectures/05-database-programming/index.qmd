@@ -7,12 +7,12 @@ author:
     affiliation_url: https://publichealth.jhu.edu
 description: "Relational databases and SQL basics"
 date: 2025-11-11
-draft: true
+draft: false
 ---
 
 # Pre-lecture activities
 
-::: callout-important
+::: callout-tip
 
 For this lecture, we will use Unix shell, plus [SQLite3](https://www.sqlite.org/index.html) or [DB Browser for SQLite](https://sqlitebrowser.org).
 
@@ -35,23 +35,10 @@ install.packages("RSQLite")
 install.packages("dbplyr")
 ```
 
-:::
-
 In addition, please read through
 
 - [Relational databases and SQL basics](../../readings/05-database-programming/index.qmd)
 - <https://swcarpentry.github.io/sql-novice-survey> (Chapters 1-4)
-
-
-::: callout-note
-
-## How much should I prepare for before class? 
-
-Please install the packages above and be comfortable with running the functions in the example code here: 
-
-- <https://dbi.r-dbi.org>
-- <https://solutions.posit.co/connections/db/databases/sqlite/>
-- <https://dbplyr.tidyverse.org>
 
 :::
 
@@ -86,7 +73,7 @@ Material for this lecture was borrowed and adopted from
 
 ## Slides 
 
-- [Lecture 05: Database programming paradigms](https://docs.google.com/presentation/d/1KzExDgW77QqyPbPRKpnd0GNHZbzfl9IgtLKIyEW6Bp0/edit?usp=sharing)
+- [Lecture 05: Database programming paradigms](https://docs.google.com/presentation/d/1xY1izHen_7yfhoIOWK0jMWSD5a7r1TRMXxyjITraEr4/edit?usp=sharing)
 
 # Class activity 
 
@@ -95,7 +82,7 @@ For the rest of the time in class, we will practice creating a SQL database and 
 ::: callout-note
 ### Objectives of the activity
 
-- Practice creating a SQL database in R .
+- Practice creating a SQL database in R.
 - Practice filtering, grouping, and joining data using SQL commands.
 
 :::
