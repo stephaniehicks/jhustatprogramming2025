@@ -62,12 +62,12 @@ Therefore, it is strongly suggested that you create a new folder called `data` l
 
 4. Visualize the data. Create data visualizations of your choice. However, your analysis should include at least three plots with you using at least two different `geom_*()` functions from `ggplot2` (or another package with `geom_*()` functions). 
 
-5. Report your findings. Write up your data analysis as a brief report. The report should be readable by a scientist uninvolved in the study. Include a paragraph summarizing your methods and key findings. Include any limitations or potential biases in pulling data from the API or the analysis. Be sure to comment and organize your code so is easy to understand what you are doing and consider including portions of the code in an Appendix, if helpful.  
+5. Report your findings. Write up your data analysis as a brief report. The **report should be readable by a scientist uninvolved in the study**. Think about how you can write a data analysis that is both concise, but also informative. Include a paragraph summarizing your methods and key findings. Include any limitations or potential biases in pulling data from the API or the analysis. Be sure to comment and organize your code so is easy to understand what you are doing and consider including portions of the code in an Appendix, if helpful.  
 
 
 # Part 2
 
-In this part, you and your partner will use the `rvest` package to scrape data from a website, wrangle and analyze the data, and summarize your findings. 
+In this part, you will use the `rvest` package to scrape data from a website, wrangle and analyze the data, and summarize your findings. 
 
 1. Choose a website to scrape. Select a website with structured data in HTML tables or well-defined sections. Some examples could include: 
 
@@ -85,7 +85,7 @@ In this part, you and your partner will use the `rvest` package to scrape data f
    - Create a summary statistic (e.g., average rating, job salary, team win percentage).
    - Create a data visualization (e.g., bar chart, histogram) of an interesting metric.
 
-5. Report your findings. Write up your data analysis as a brief report. The report should be designed for a technical audience, such as a technical manager who appreciates the technical details. Include a paragraph summarizing your methods and key findings. Include any limitations or potential biases in scraping data or the analysis. Be sure to comment and organize your code so is easy to understand what you are doing. 
+5. Report your findings. Write up your data analysis as a brief report. The **report should be designed for a technical audience**, such as a technical manager who appreciates the technical details. Think about how you can write a data analysis that is both concise, but also informative. Include a paragraph summarizing your methods and key findings. Include any limitations or potential biases in scraping data or the analysis. Be sure to comment and organize your code so is easy to understand what you are doing. 
 
 :::::: {.callout-caution}
 
