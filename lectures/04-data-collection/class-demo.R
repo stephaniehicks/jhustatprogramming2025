@@ -1,55 +1,4 @@
 ######## 
-## Explore more about anonymous functions in R and with map()
-########
-
-df <- data.frame(
- x = 1:3,
- y = 6:4)
-
-# Let’s guess the output
-map(df, ~ .x)
-map(df, ~ .x * 2)
-map(df, ~ length(.x))
-map(df, ~ runif(2))
-map(df, ~ mean(1:5))
-
-
-
-
-
-######## 
-## Use map() to apply this function row-wise and add the results as a new column in mtcars
-######## 
-
-# Function to assign fuel efficiency category based on mpg
-fuel_efficiency <- function(row) {
-  mpg <- row["mpg"]
-  if (mpg > 25) {
-    "High"
-  } else if (mpg >= 20) {
-    "Medium"
-  } else {
-    "Low"
-  }
-}
-
-
-
-######## 
-## Explore more about anonymous functions in R and with map()
-########
-
-# splits the data frame along the rows
-asplit(mtcars, MARGIN = 1) 
-
-# Apply fuel efficiency function to each row
-map_chr(asplit(mtcars, 1), fuel_efficiency) 
-
-# assign it a new column
-mtcars$fuel_efficiency <- map_chr(asplit(mtcars, 1), fuel_efficiency)
-
-
-######## 
 ## GitHub API
 ########
 
@@ -61,9 +10,6 @@ library(jsonlite)
 library(tidyverse)
 jsonData <- read_json(github_url, simplifyVector = TRUE)
 glimpse(jsonData)
-
-
-
 
 
 
