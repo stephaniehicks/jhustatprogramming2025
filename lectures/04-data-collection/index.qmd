@@ -27,7 +27,8 @@ install.packages("jsonlite")
 install.packages("httr2")
 ```
 
-In addition, please read through
+In addition, please skim through these resources to familarize yourself
+with how these packages (`httr2` and `rvest`) work:
 
 - [Data collection with APIs](../../readings/04-data-collection-apis/index.qmd)
 - [Data collection from HTMLs](../../readings/04-data-collection-html/index.qmd)
@@ -108,7 +109,7 @@ If any tables are nested within specific sections, you may need to target them i
 url <- "https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup"
 
 # This is a local HTML file to avoid scraping data from it each time I compile this quarto file. 
-html_worldcup <- here::here("world-cup.html")
+html_worldcup <- here::here("lectures", "04-data-collection", "world-cup.html")
 
 if(!file.exists(html_worldcup)){
   page <- read_html(url)
@@ -116,6 +117,7 @@ if(!file.exists(html_worldcup)){
 } else {
   page <- read_html(html_worldcup)
 }
+
 ```
 
 ```{r}
