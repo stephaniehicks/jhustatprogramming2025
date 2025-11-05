@@ -17,6 +17,8 @@ glimpse(jsonData)
 ## Use httr2 to make a request to GitHub API
 ########
 
+library(httr2)
+
 # Create the GET request
 request(github_url)
 
@@ -62,6 +64,8 @@ head(stephanie)
 ######## 
 ## Try out the most important CSS selectors in rvest with a simple example
 ########
+
+library(rvest)
 
 html <- minimal_html("
   <h1>This is a heading</h1>
@@ -130,6 +134,8 @@ html %>%
 html %>% 
   html_elements("img") %>% 
   html_attr("width")
+
+
 
 
 ######## 
