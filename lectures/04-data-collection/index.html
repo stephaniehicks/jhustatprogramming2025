@@ -272,7 +272,7 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"jsonlite"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"httr2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>In addition, please read through</p>
+<p>In addition, please skim through these resources to familarize yourself with how these packages (<code>httr2</code> and <code>rvest</code>) work:</p>
 <ul>
 <li><a href="../../readings/04-data-collection-apis/index.html">Data collection with APIs</a></li>
 <li><a href="../../readings/04-data-collection-html/index.html">Data collection from HTMLs</a></li>
@@ -382,7 +382,7 @@ Tip
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a local HTML file to avoid scraping data from it each time I compile this quarto file. </span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>html_worldcup <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"world-cup.html"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>html_worldcup <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"lectures"</span>, <span class="st">"04-data-collection"</span>, <span class="st">"world-cup.html"</span>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">file.exists</span>(html_worldcup)){</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  page <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
@@ -670,7 +670,7 @@ Tip
 <pre><code># A tibble: 5 × 1
   url                                                                           
   &lt;chr&gt;                                                                         
-1 //upload.wikimedia.org/wikipedia/commons/thumb/a/aa/FIFA_logo_without_slogan.…
+1 //upload.wikimedia.org/wikipedia/commons/thumb/a/a2/FIFA_museum%2C_Zurich_06_…
 2 //upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Womens_World_Cup_countrie…
 3 //upload.wikimedia.org/wikipedia/commons/thumb/a/aa/FIFA_logo_without_slogan.…
 4 //upload.wikimedia.org/wikipedia/commons/thumb/2/26/World_Map_FIFA.svg/120px-…
