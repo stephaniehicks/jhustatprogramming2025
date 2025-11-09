@@ -2,82 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://stephaniehicks.github.io/jhustatprogramming2025/resources.html</loc>
-    <lastmod>2025-11-05T03:24:58.982Z</lastmod>
+    <lastmod>2025-11-09T12:02:19.375Z</lastmod>
   </url>
   <url>
     <loc>https://stephaniehicks.github.io/jhustatprogramming2025/readings/05-database-programming/index.html</loc>
-    <lastmod>2025-11-05T03:24:58.980Z</lastmod>
+    <lastmod>2025-11-09T12:02:19.373Z</lastmod>
   </url>
   <url>
     <loc>https://stephaniehicks.github.io/jhustatprogramming2025/readings/04-data-collection-apis/index.html</loc>
-    <lastmod>2025-11-05T03:24:58.972Z</lastmod>
+    <lastmod>2025-11-09T12:02:19.365Z</lastmod>
   </url>
   <url>
     <loc>https://stephaniehicks.github.io/jhustatprogramming2025/readings/00-quarto/index.html</loc>
-    <lastmod>2025-11-05T03:24:58.971Z</lastmod>
+    <lastmod>2025-11-09T12:02:19.365Z</lastmod>
   </url>
   <url>
     <loc>https://stephaniehicks.github.io/jhustatprogramming2025/readings.html</loc>
-    <lastmod>2025-11-05T03:24:58.971Z</lastmod>
+    <lastmod>2025-11-09T12:02:19.364Z</lastmod>
   </url>
   <url>
     <loc>https://stephaniehicks.github.io/jhustatprogramming2025/projects/01-project/index.html</loc>
-    <lastmod>2025-11-05T03:24:58.971Z</lastmod>
-  </url>
-  <url>
-    <loc>https://stephaniehicks.github.io/jhustatprogramming2025/lectures/04-data-collection/index.html</loc>
-    <lastmod>2025-11-05T03:24:58.968Z</lastmod>
-  </url>
-  <url>
-    <loc>https://stephaniehicks.github.io/jhustatprogramming2025/lectures/02-version-control/index.html</loc>
-    <lastmod>2025-11-05T03:24:58.968Z</lastmod>
-  </url>
-  <url>
-    <loc>https://stephaniehicks.github.io/jhustatprogramming2025/lectures/00-course-intro/index.html</loc>
-    <lastmod>2025-11-05T03:24:58.967Z</lastmod>
-  </url>
-  <url>
-    <loc>https://stephaniehicks.github.io/jhustatprogramming2025/index.html</loc>
-    <lastmod>2025-11-05T03:24:58.967Z</lastmod>
-  </url>
-  <url>
-    <loc>https://stephaniehicks.github.io/jhustatprogramming2025/lectures.html</loc>
-    <lastmod>2025-11-05T03:24:58.967Z</lastmod>
-  </url>
-  <url>
-    <loc>https://stephaniehicks.github.io/jhustatprogramming2025/lectures/01-command-line/index.html</loc>
-    <lastmod>2025-11-05T03:24:58.968Z</lastmod>
-  </url>
-  <url>
-    <loc>https://stephaniehicks.github.io/jhustatprogramming2025/lectures/03-functional-programming/index.html</loc>
-    <lastmod>2025-11-05T03:24:58.968Z</lastmod>
+    <lastmod>2025-11-09T12:02:19.364Z</lastmod>
   </url>
   <url>
     <loc>https://stephaniehicks.github.io/jhustatprogramming2025/lectures/05-database-programming/index.html</loc>
-    <lastmod>2025-11-05T03:24:58.970Z</lastmod>
+    <lastmod>2025-11-09T12:02:19.363Z</lastmod>
+  </url>
+  <url>
+    <loc>https://stephaniehicks.github.io/jhustatprogramming2025/lectures/03-functional-programming/index.html</loc>
+    <lastmod>2025-11-09T12:02:19.361Z</lastmod>
+  </url>
+  <url>
+    <loc>https://stephaniehicks.github.io/jhustatprogramming2025/lectures/01-command-line/index.html</loc>
+    <lastmod>2025-11-09T12:02:19.361Z</lastmod>
+  </url>
+  <url>
+    <loc>https://stephaniehicks.github.io/jhustatprogramming2025/lectures.html</loc>
+    <lastmod>2025-11-09T12:02:19.360Z</lastmod>
+  </url>
+  <url>
+    <loc>https://stephaniehicks.github.io/jhustatprogramming2025/index.html</loc>
+    <lastmod>2025-11-09T12:02:19.360Z</lastmod>
+  </url>
+  <url>
+    <loc>https://stephaniehicks.github.io/jhustatprogramming2025/lectures/00-course-intro/index.html</loc>
+    <lastmod>2025-11-09T12:02:19.361Z</lastmod>
+  </url>
+  <url>
+    <loc>https://stephaniehicks.github.io/jhustatprogramming2025/lectures/02-version-control/index.html</loc>
+    <lastmod>2025-11-09T12:02:19.361Z</lastmod>
+  </url>
+  <url>
+    <loc>https://stephaniehicks.github.io/jhustatprogramming2025/lectures/04-data-collection/index.html</loc>
+    <lastmod>2025-11-09T12:02:19.361Z</lastmod>
+  </url>
+  <url>
+    <loc>https://stephaniehicks.github.io/jhustatprogramming2025/lectures/06-ml-paradigms-part01/index.html</loc>
+    <lastmod>2025-11-09T12:02:19.363Z</lastmod>
   </url>
   <url>
     <loc>https://stephaniehicks.github.io/jhustatprogramming2025/projects.html</loc>
-    <lastmod>2025-11-05T03:24:58.971Z</lastmod>
+    <lastmod>2025-11-09T12:02:19.364Z</lastmod>
   </url>
   <url>
     <loc>https://stephaniehicks.github.io/jhustatprogramming2025/projects/02-project/index.html</loc>
-    <lastmod>2025-11-05T03:24:58.971Z</lastmod>
+    <lastmod>2025-11-09T12:02:19.364Z</lastmod>
   </url>
   <url>
     <loc>https://stephaniehicks.github.io/jhustatprogramming2025/projects/04-project/index.html</loc>
-    <lastmod>2025-11-05T03:24:58.971Z</lastmod>
+    <lastmod>2025-11-09T12:02:19.364Z</lastmod>
   </url>
   <url>
     <loc>https://stephaniehicks.github.io/jhustatprogramming2025/readings/00-best-practices-data-analysis/index.html</loc>
-    <lastmod>2025-11-05T03:24:58.971Z</lastmod>
+    <lastmod>2025-11-09T12:02:19.365Z</lastmod>
   </url>
   <url>
     <loc>https://stephaniehicks.github.io/jhustatprogramming2025/readings/03-functional-programming/index.html</loc>
-    <lastmod>2025-11-05T03:24:58.972Z</lastmod>
+    <lastmod>2025-11-09T12:02:19.365Z</lastmod>
   </url>
   <url>
     <loc>https://stephaniehicks.github.io/jhustatprogramming2025/readings/04-data-collection-html/index.html</loc>
-    <lastmod>2025-11-05T03:24:58.976Z</lastmod>
+    <lastmod>2025-11-09T12:02:19.369Z</lastmod>
   </url>
 </urlset>
