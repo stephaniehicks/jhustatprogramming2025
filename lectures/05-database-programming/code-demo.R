@@ -23,6 +23,6 @@ dbListTables(conn = connection)
 
 # chinook database
 connection <- dbConnect(drv = SQLite(), 
-                        dbname = here("readings", "05-database-programming", "data", "Chinook.sqlite"))
+                        dbname = here::here("readings", "05-database-programming", "data", "Chinook.sqlite"))
 dbListTables(connection)
 dbGetQuery(connection, "SELECT * FROM Artist")
