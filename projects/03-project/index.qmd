@@ -5,91 +5,326 @@ author:
     url: https://stephaniehicks.com
     affiliation: Department of Biostatistics, Johns Hopkins
     affiliation_url: https://publichealth.jhu.edu
-description: "Practicing machine learning paradigms and using SQL databases to predict flight delays"
+description: "Practicing relational databases, machine learning paradigms, and R package development"
 date: 2025-11-11
 knitr: true
-draft: true
 ---
 
 # Background
 
-- change to incorporate R pkg dev
-
 **Due date: December 1 at 11:59pm**
 
-The goal of this assignment is to practice some of the skills we have been learning about in class around working with relational databases and machine learning paradigms. Specifically, you will create a new SQL database, write SQL queries to the database, explore and summarize the data, train a prediction model, and summarize your findings.
+The goal of this assignment is to practice some of the skills we have been 
+learning about in class around working with relational databases, machine 
+learning paradigms, and reproducible software development. 
+
+In Part 1, you will: 
+
+- Use a SQL database to write SQL queries to explore and summarize data using `DBI` and `RSQLite`.
+- Train a prediction model using `tidymodels` using the data from the SQL database.
+
+In Part 2, you will: 
+
+- Create a small R package and apply some of the functions to simulated data or data from Part 1. 
 
 ### To submit your project 
 
-You need to create a private GitHub Classroom repository (only one per group) for you and your partner, which will be posted in CoursePlus. This creates an empty GitHub repository. You need to show all your code and submit both the `.qmd` file and the rendered HTML file. Please include section headers for each of the components below. All plots should have titles, subtitles, captions, and human-understandable axis labels. The TAs will grade the contents in the GitHub Classroom repo by cloning the repo and checking for all the things described below. 
+You need to create two private GitHub Classroom repositories. The links to both 
+will be found in CoursePlus. The first link will be the primary project 03 
+(`project03-<username>`) repo where you will submit this `.qmd` analysis file and a 
+rendered `.html` file. In this `.qmd` file, you will also submit a link to 
+the second repo (`project03pkg-<username>`) where you will create a small R package. 
+The reason there are two github repos is because it is easier to use and to 
+install R packages when they are in standalone github repos. 
 
-:::::: {.callout-important}
-Because you will work with a partner, **please be sure to include the names, emails, and JHED IDs for both individuals in your submitted work**. 
+::: {.callout-important}
 
-Both of you should commit to the repository! 
+All plots should have titles, subtitles, captions, and human-understandable 
+axis labels. The TAs will clone both repositories and check for completeness, 
+correctness, clarity, and documentation. The second repository will also be 
+installed by the TAs to check the package is installable and functions run 
+without errors.
+
+To check your package for warnings or errors, you can use `devtools`:
+
+```{r}
+#| eval: false
+devtools::load_all()
+devtools::document()
+devtools::check()
+devtools::install()
+```
 
 :::
+
 
 # Data
 
 You are welcome to pick your own datasets, but here are some ideas (which you are not limited to): 
 
 - [nycflights13 dataset](https://nycflights13.tidyverse.org) -- contains data on flights that departed NYC in 2013, including tables for weather, planes, airports, and airlines. This dataset is useful for exploring what causes delays. To practice SQL queries, you could consider aggregations and group by queries across airlines or days of the week. To practice machine learning, you could predict flight delays. Also, here are two related datasets you might interesting too: 
-    - [nycflights](https://github.com/jayleetx/nycflights) for flights departing 
-  from NYC in the _last_ year.
     - [anyflights](https://github.com/simonpcouch/anyflights) for flights departing
   from any airport in any year.
-- [IMDB dataset](https://developer.imdb.com/non-commercial-datasets/) -- Contains data on movies, including tables for titles, ratings, cast, and crew. This dataset is useful for exploring movie information, reviews, and ratings. To practice SQL queries, you could consider nested queries, joins, filtering, and text-based queries on genres or keywords. To practice machine learning, you could predict ratings. 
-- [Lahman Baseball dataset](https://github.com/cdalzell/Lahman) -- contains historical baseball data, with tables for teams, players, games, and statistics. To practice SQL queries, you could consider aggregation, and time-based queries to calculate baseball statistics. To practice machine learning, you could predict the number of runs a team will score. 
+- [IMDB dataset](https://developer.imdb.com/non-commercial-datasets/) -- Contains data on movies, including tables for titles, ratings, cast, and crew. This dataset is useful for exploring movie information, reviews, and ratings. To practice SQL queries, you could consider nested queries, joins, filtering, and text-based queries on genres or keywords. To practice machine learning, you could predict movie ratings. 
+- [Lahman Baseball dataset](https://github.com/cdalzell/Lahman) -- contains historical baseball data, with tables for teams, players, games, and statistics. To practice SQL queries, you could consider aggregation, and time-based queries to calculate baseball statistics. To practice machine learning, you could  predict team performance or predict player statistics, such as the number of runs a team will score. 
 - [World Bank Open datasets](https://data.worldbank.org/) -- contains extensive economic and social data on countries worldwide, such as population, GDP, education, life expectancy, and health indicators. To practice SQL queries, you could perform time-based queries such as filtering by regions or income levels, and aggregating metrics by country or year. To practice machine learning, you could predict life expectancy. 
 
-:::::: {.callout-important}
+::: {.callout-important}
 ## Important things to consider when thinking about which dataset to pick
 
-1. You will either use an SQL database with at least three tables in it or you will make a SQL database with at least 3 tables in it. So you need to pick a dataset with at least 3 tables available. 
-2. You will use this data to practice SQL queries (Part 1) **and** to practice building a machine learning model (Part 2). So you want to make sure you consider both parts while pondering which dataset to use (e.g. What kind of SQL queries might we use with this database? What kind of data visualization do we want to make? What would our prediction task be?). 
+1. You must use or create an SQL database with **at least three related tables**. 
+2. You will use this data throughout the project. 
+ 
+Useful questions to consider when deciding on the dataset:
+
+- What questions can we ask with SQL?
+- What prediction task makes sense for this data?
 
 :::
 
 # Part 1 
 
-In this part, you and your partner will use the `DBI` and `RSQLite` packages to write SQL queries, explore and summarize the data, visualize the data, and summarize your findings. 
+## Part 1A: SQL data exploration and visualization
 
-Using the data you picked, choose a question to investigate. For example, if you are using the `nycflights13` dataset, maybe you want to understand if there are certain days of the week that flights are more delayed than other days of the week. Describe what is the question you aim to answer with the data and what you want to visualize. 
+Use `DBI` and `RSQLite` to connect to or create a SQL database. Explore and 
+visualize the data and summarize your findings using SQL queries.
 
-1. If it's already a SQL database, read into R using the `DBI` and `RSQLite` packages. If it's not already a SQL database, create a new SQL database and use the `dbWriteTable()` function to add at minimum three tables to the SQL database.
+Using the data you picked, choose a question to investigate. For example, 
+if you are using the `nycflights13` dataset, maybe you want to understand 
+if there are certain days of the week that flights are more delayed than 
+other days of the week. Describe what is the question you aim to answer 
+with the data and what you want to visualize. 
 
-2. Write three SQL queries using `dbGetQuery()` to **explore and summarize the data**. You must use at least five different SQL functions (e.g. `SELECT`, `GROUP BY`, `DISTINCT`, `SUM`, etc). 
+1. **Create or connect to the database**. If it is not already a SQL database, create a database and add at least 3 tables using `dbWriteTable()`.
 
-3. Write two SQL queries to **create new features** from existing data. For example, if using `nycflights13`, you could think about how to 
+2. **Write three SQL queries to explore and summarize** the data. With the `dbGetQuery()` function, use at least five different SQL functions (e.g. `SELECT`, `GROUP BY`, `DISTINCT`, `SUM`, `AVG`, `JOIN` etc). 
+
+3. **Write two SQL queries to create new features inside the database**. For example, if using `nycflights13`, you could think about how to 
 
    - Bin departure times into time-of-day categories (e.g., morning, afternoon, evening).
    - Lag features like the previous day’s average delay by carrier, which can be helpful for predictions.
    - Merge additional weather data (such as hourly temperature, precipitation, etc., if available). e.g. this could be done using SQL joins.
 
-4. Visualize your data by creating a plot with `ggplot2`.  For example, if using `nycflights13`, you could think about how to visualize delays by month, carrier, or weather conditions.
+4. **Visualize your results** using `ggplot2`. For example, if using `nycflights13`, you could think about how to visualize delays by month, carrier, or weather conditions.
 
-5. Report your findings. Provide a paragraph summarizing your methods and key findings. Include any limitations or potential biases in your analysis. Be sure to comment and organize your code so is easy to understand what you are doing. 
+5. **Summarize your methods and key findings** in a short paragraph. What did you learn from your SQL exploration? Include any limitations or potential biases in your analysis. Be sure to comment and organize your code so is easy to understand what you are doing. 
 
-:::::: {.callout-important}
+::: {.callout-important}
 
-At the end of the data analysis, list out each of the SQL functions you used to help the TA with respect to making sure you met all the requirements described above. 
-
+At the end of the data analysis, list out each of the SQL functions you used 
+to help the TA with respect to making sure you met all the requirements 
+described above. 
 
 :::
  
+```{r}
+## add your code here 
 
-# Part 2
+```
 
-In this part, you and your partner will use use `caret` or `tidymodels` to train a predictive model for a task or outcome, perform model evaluation, and summarize your findings. For this part, you can use the data directly in R as standard dataframes or tibbles. You do not need to build the models In this section, you must do the following when building your prediction model: 
 
-- Split the data into training and test sets.
-- Choose a machine learning model appropriate for the task (e.g. consider if it's a binary or continuous outcome and choose an appropriate model). For example, if you are using the `nycflights13` dataset, you could could pick 
+## Part 1B: Building a machine learning model
+
+Use `tidymodels` to train and evaluate a predictive model for a task or 
+outcome, perform model evaluation, and summarize your findings. For this part, 
+you can use the data directly in R as standard `data.frame`s or `tibble`s as 
+input to the models. 
+
+1. Split the data into **training** and **test** sets. For example, you can use a simple split into 80% and 20% or you can also use cross-validation approaches, if you wish. 
+2. Choose an appropriate **machine learning model** appropriate for the task (e.g. consider if it's a binary or continuous outcome and choose an appropriate model). For example, if you are using the `nycflights13` dataset, you could could pick 
     - Logistic Regression (if predicting delay as a binary outcome, e.g., delay/no delay).
     - Linear Regression (if predicting the length of delay in minutes).
     - Decision Trees or Random Forests (for both binary classification or regression).
-- Train the model using `caret` or `tidymodels` in R using the training data. 
-- Assess the model performance both the training and test datasets using metrics like Accuracy or area under the curve (AUC) (if classification) or root mean squared error (RMSE) (if regression). 
+3. Train the model `tidymodels` and and evaluate it using an appropriate **evaluation metric**, such as (i) accuracy or AUC for classification, (ii) root mean squared error (RMSE) for regression. Show this for both the training and the test data. 
+4. **Visualize model results or feature importance**.
+5. **Summarize your methods and and key findings**. For example, if you are predicting flight delays, provide 1-2 practical recommendations for reducing delays. What features matter most? How well does the model perform? What could improve performance? Be sure to comment and organize your code so is easy to understand what you are doing. 
 
-Finally, report your findings. For example, if you are predicting flight delays, provide 1-2 practical recommendations for reducing delays. Broadly, provide a paragraph summarizing your methods and key findings. Include limitations or potential biases in training and evaluation your machine learning model. Be sure to comment and organize your code so is easy to understand what you are doing. 
+```{r}
+## add your code here 
+
+```
+
+# Part 2
+
+In this part of the project, we will practice building a small R package with 
+simple functions. In addition to constructing the functions in the package, 
+you will also demonstrate applying your functions with the data from Part 1. 
+
+::: {.callout-important}
+
+- The link to create a private GitHub repository for yourself to complete Part 2 will be posted in CoursePlus.
+- Build your R package locally and then push the files to the private Github repository that you created for yourself via GitHub Classroom. 
+- The TA will grade the R package by cloning the repository, installing it, and checking for all the things described below. **It must be installable without any errors**. 
+
+**Link to your R package on Github classroom**: [Delete this text and replace the text with the link to the private GitHub repo you created above for your package]
+:::
+
+
+
+## Part 2A: Cosine and sine transformation 
+
+The cosine and sine of a number can be written as an infinite series expansion of the form
+
+$$
+\cos(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!}  \cdots
+$$
+
+$$
+\sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} \cdots
+$$
+
+Write two functions that compute the cosine and sine (respectively) of a number using the truncated series expansion. Each function should take two arguments:
+
+- `x`: the number to be transformed
+- `k`: the number of terms to be used in the series expansion beyond the constant 1. The value of `k` is always $\geq 1$.
+
+:::{.callout-tip}
+
+### Notes
+
+- You can assume that the input value `x` will always be a *single* number. 
+- You can assume that the value `k` will always be an integer $\geq 1$. 
+- Do not use the `cos()` or `sin()` functions in R.
+
+:::
+
+```{r}
+fn_cos <- function(x, k) {
+        # Add your solution here
+}
+
+fun_sin <- function(x, k) { 
+        # Add your solution here
+}
+```
+
+## Part 2B: Calculating confidence intervals
+
+Write the following set of functions:
+
+* `sample_mean()`, which calculates the sample mean
+
+$$
+\bar{x} = \frac{1}{N} \sum_{i=1}^n x_i
+$$
+
+* `sample_sd()`, which calculates the sample standard deviation
+
+$$
+s = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (x_i - \overline{x})^2}
+$$
+
+* `calculate_CI()`, which calculates the confidence intervals of a sample mean and returns a named vector of length 2, where the first value is the `lower_bound`, the second value is the `upper_bound`.
+
+$$
+\bar{x} \pm t_{\alpha/2, N-1} s_{\bar{x}}
+$$ 
+
+:::{.callout-tip}
+
+### Notes
+
+- You can assume that the input value `x` will always be a *vector* of numbers of length *N*.
+- Do not use the `mean()` and `sd()` functions in R.
+
+:::
+
+```{r}
+sample_mean <- function(x) {
+        # Add your solution here
+}
+
+sample_sd <- function(x) {
+        # Add your solution here
+}
+
+calculate_CI <- function(x, conf = 0.95) {
+        # Add your solution here
+}
+```
+
+## Part 2C: Put functions into an R package
+
+Create an R package for the functions you wrote from Part 2A and 2B. Your package will have three exported functions for users to call (see below). You will need to write documentation for each function that you export using `roxygen2` comments (e.g., `#' @param`, `#' @return`, `#' @examples`).
+
+Your package should include the functions: 
+
+* `fn_cos()`, which computes the approximation to the cosine function (**exported**)
+* `fn_sin()`, which computes the approximation to the sine function (**exported**)
+* `sample_mean()`, which calculates the sample mean (**not exported**)
+* `sample_sd()`, which calculates the sample standard deviation (**not exported**)
+* `calculate_CI()`, which calculates the confidence intervals from simulated data (**exported**)
+
+:::{.callout-tip}
+
+### Notes
+
+* Remember that you should only export the functions that you want the user to use.
+* Functions that are *not* exported do not require any documentation.
+* Each exported function should have at least **one example** of its usage (using the `@example` directive in the documentation).
+* In the functions in your package, consider using control structures and include checks (e.g. `is.na()`, `is.numeric()`, `if()`) to make sure the input is as you expect it to be. For example, try to break the the function with unexpected values that a user might provide (e.g. providing a negative value to a log transformation). This can help guide you on ways to address the possible ways to break the function. 
+* Your package should be installable without any warnings or errors.
+:::
+
+## Part 2D: Create a `README.md` file 
+
+Create a `README.md` file in the R package, which will be useful to readers when they learn about your package. The readme must include: 
+
+- The title of package
+- The author of the package
+- A goal / description of the package
+- A list of **exported** functions that are in the package. Briefly describe each function. 
+- A basic example with one of the functions. 
+
+:::{.callout-tip}
+
+### Note 
+
+You might find the `use_readme_md()` [function](https://usethis.r-lib.org/reference/use_readme_rmd.html) from the `usethis` R package helpful. 
+
+:::
+
+## Part 2E: Create a vignette
+
+In this part, you will create a vignette where you demonstrate the functions in your R package. 
+Specifically, you will create a `.qmd` file and put it in a folder called `/vignettes` within your R package. The purpose of a vignette is to demonstrate the functions of your package in a longer tutorial instead of just short examples within the documentation of your functions (i.e. using the `@example` directive in the documentation). 
+
+:::{.callout-tip}
+
+### Note 
+
+You might find the `use_vignette()` [function](https://usethis.r-lib.org/reference/use_vignette.html) from the `usethis` R package helpful. 
+
+:::
+
+
+### Demonstrate `fn_cos()`
+
+In the vignette, make a plot and show the output of your function `fn_cos(x,k)` and how it approximates the `cos(x)` function from base R as $k$ increases. 
+
+:::{.callout-tip}
+
+### Notes
+
+- The x-axis should range between 0 and 10. 
+- The y-axis should be the output from `fn_cos(x,k)` or `cos(x)`.
+- Plot the output from `cos(x)` as points on the graph. 
+- Plot the output from `fn_cos(x,k)` as lines on the graph. 
+- Show 5 lines for values `k` = 1, 3, 5, 7, 9. Each line should be a different color. 
+
+:::
+
+
+### Demonstrate `fn_sin()`
+
+Repeat a similar task and make a similar plot as above, but here 
+using `fn_sin()` instead of `fn_cos()`. 
+
+
+### Demonstrate `calculate_CI()`
+
+The goal here is to demonstrate the `calculate_CI()` function in your 
+package inside the vignette. You can use simulated data or some subset of 
+your data used in Part 1. 
+
 
