@@ -245,6 +245,62 @@
     "text": "The following contains relevant reading materials you should read prior to each class:\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-10-23\n\n\n(Some) Best practices for writing up a data analysis\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-23\n\n\nAuthoring projects and websites with Quarto\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-04\n\n\nFunctional Programming with purrr\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-06\n\n\nRetrieving data from APIs with httr2\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-06\n\n\nScraping data from the web with rvest\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-11\n\n\nRelational databases and SQL basics\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "projects/03-project/index.html",
+    "href": "projects/03-project/index.html",
+    "title": "Project 3",
+    "section": "",
+    "text": "Due date: December 1 at 11:59pm\nThe goal of this assignment is to practice some of the skills we have been learning about in class around working with relational databases, machine learning paradigms, and reproducible software development.\nIn Part 1, you will:\n\nUse a SQL database to write SQL queries to explore and summarize data using DBI and RSQLite.\nTrain a prediction model using tidymodels using the data from the SQL database.\n\nIn Part 2, you will:\n\nCreate a small R package and apply some of the functions to simulated data or data from Part 1.\n\n\n\nYou need to create two private GitHub Classroom repositories. The links to both will be found in CoursePlus. The first link will be the primary project 03 (project03-&lt;username&gt;) repo where you will submit this .qmd analysis file and a rendered .html file. In this .qmd file, you will also submit a link to the second repo (project03pkg-&lt;username&gt;) where you will create a small R package. The reason there are two github repos is because it is easier to use and to install R packages when they are in standalone github repos.\n\n\n\n\n\n\nImportant\n\n\n\nAll plots should have titles, subtitles, captions, and human-understandable axis labels. The TAs will clone both repositories and check for completeness, correctness, clarity, and documentation. The second repository will also be installed by the TAs to check the package is installable and functions run without errors.\nTo check your package for warnings or errors, you can use devtools:\n\ndevtools::load_all()\ndevtools::document()\ndevtools::check()\ndevtools::install()"
+  },
+  {
+    "objectID": "projects/03-project/index.html#part-1a-sql-data-exploration-and-visualization",
+    "href": "projects/03-project/index.html#part-1a-sql-data-exploration-and-visualization",
+    "title": "Project 3",
+    "section": "Part 1A: SQL data exploration and visualization",
+    "text": "Part 1A: SQL data exploration and visualization\nUse DBI and RSQLite to connect to or create a SQL database. Explore and visualize the data and summarize your findings using SQL queries.\nUsing the data you picked, choose a question to investigate. For example, if you are using the nycflights13 dataset, maybe you want to understand if there are certain days of the week that flights are more delayed than other days of the week. Describe what is the question you aim to answer with the data and what you want to visualize.\n\nCreate or connect to the database. If it is not already a SQL database, create a database and add at least 3 tables using dbWriteTable().\nWrite three SQL queries to explore and summarize the data. With the dbGetQuery() function, use at least five different SQL functions (e.g. SELECT, GROUP BY, DISTINCT, SUM, AVG, JOIN etc).\nWrite two SQL queries to create new features inside the database. For example, if using nycflights13, you could think about how to\n\nBin departure times into time-of-day categories (e.g., morning, afternoon, evening).\nLag features like the previous day’s average delay by carrier, which can be helpful for predictions.\nMerge additional weather data (such as hourly temperature, precipitation, etc., if available). e.g. this could be done using SQL joins.\n\nVisualize your results using ggplot2. For example, if using nycflights13, you could think about how to visualize delays by month, carrier, or weather conditions.\nSummarize your methods and key findings in a short paragraph. What did you learn from your SQL exploration? Include any limitations or potential biases in your analysis. Be sure to comment and organize your code so is easy to understand what you are doing.\n\n\n\n\n\n\n\nImportant\n\n\n\nAt the end of the data analysis, list out each of the SQL functions you used to help the TA with respect to making sure you met all the requirements described above.\n\n\n\n## add your code here"
+  },
+  {
+    "objectID": "projects/03-project/index.html#part-1b-building-a-machine-learning-model",
+    "href": "projects/03-project/index.html#part-1b-building-a-machine-learning-model",
+    "title": "Project 3",
+    "section": "Part 1B: Building a machine learning model",
+    "text": "Part 1B: Building a machine learning model\nUse tidymodels to train and evaluate a predictive model for a task or outcome, perform model evaluation, and summarize your findings. For this part, you can use the data directly in R as standard data.frames or tibbles as input to the models.\n\nSplit the data into training and test sets. For example, you can use a simple split into 80% and 20% or you can also use cross-validation approaches, if you wish.\nChoose an appropriate machine learning model appropriate for the task (e.g. consider if it’s a binary or continuous outcome and choose an appropriate model). For example, if you are using the nycflights13 dataset, you could could pick\n\nLogistic Regression (if predicting delay as a binary outcome, e.g., delay/no delay).\nLinear Regression (if predicting the length of delay in minutes).\nDecision Trees or Random Forests (for both binary classification or regression).\n\nTrain the model tidymodels and and evaluate it using an appropriate evaluation metric, such as (i) accuracy or AUC for classification, (ii) root mean squared error (RMSE) for regression. Show this for both the training and the test data.\nVisualize model results or feature importance.\nSummarize your methods and and key findings. For example, if you are predicting flight delays, provide 1-2 practical recommendations for reducing delays. What features matter most? How well does the model perform? What could improve performance? Be sure to comment and organize your code so is easy to understand what you are doing.\n\n\n## add your code here"
+  },
+  {
+    "objectID": "projects/03-project/index.html#part-2a-cosine-and-sine-transformation",
+    "href": "projects/03-project/index.html#part-2a-cosine-and-sine-transformation",
+    "title": "Project 3",
+    "section": "Part 2A: Cosine and sine transformation",
+    "text": "Part 2A: Cosine and sine transformation\nThe cosine and sine of a number can be written as an infinite series expansion of the form\n\\[\n\\cos(x) = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\frac{x^6}{6!}  \\cdots\n\\]\n\\[\n\\sin(x) = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\frac{x^7}{7!} \\cdots\n\\]\nWrite two functions that compute the cosine and sine (respectively) of a number using the truncated series expansion. Each function should take two arguments:\n\nx: the number to be transformed\nk: the number of terms to be used in the series expansion beyond the constant 1. The value of k is always \\(\\geq 1\\).\n\n\n\n\n\n\n\nTipNotes\n\n\n\n\nYou can assume that the input value x will always be a single number.\nYou can assume that the value k will always be an integer \\(\\geq 1\\).\nDo not use the cos() or sin() functions in R.\n\n\n\n\nfn_cos &lt;- function(x, k) {\n        # Add your solution here\n}\n\nfun_sin &lt;- function(x, k) { \n        # Add your solution here\n}"
+  },
+  {
+    "objectID": "projects/03-project/index.html#part-2b-calculating-confidence-intervals",
+    "href": "projects/03-project/index.html#part-2b-calculating-confidence-intervals",
+    "title": "Project 3",
+    "section": "Part 2B: Calculating confidence intervals",
+    "text": "Part 2B: Calculating confidence intervals\nWrite the following set of functions:\n\nsample_mean(), which calculates the sample mean\n\n\\[\n\\bar{x} = \\frac{1}{N} \\sum_{i=1}^n x_i\n\\]\n\nsample_sd(), which calculates the sample standard deviation\n\n\\[\ns = \\sqrt{\\frac{1}{N-1} \\sum_{i=1}^N (x_i - \\overline{x})^2}\n\\]\n\ncalculate_CI(), which calculates the confidence intervals of a sample mean and returns a named vector of length 2, where the first value is the lower_bound, the second value is the upper_bound.\n\n\\[\n\\bar{x} \\pm t_{\\alpha/2, N-1} s_{\\bar{x}}\n\\]\n\n\n\n\n\n\nTipNotes\n\n\n\n\nYou can assume that the input value x will always be a vector of numbers of length N.\nDo not use the mean() and sd() functions in R.\n\n\n\n\nsample_mean &lt;- function(x) {\n        # Add your solution here\n}\n\nsample_sd &lt;- function(x) {\n        # Add your solution here\n}\n\ncalculate_CI &lt;- function(x, conf = 0.95) {\n        # Add your solution here\n}"
+  },
+  {
+    "objectID": "projects/03-project/index.html#part-2c-put-functions-into-an-r-package",
+    "href": "projects/03-project/index.html#part-2c-put-functions-into-an-r-package",
+    "title": "Project 3",
+    "section": "Part 2C: Put functions into an R package",
+    "text": "Part 2C: Put functions into an R package\nCreate an R package for the functions you wrote from Part 2A and 2B. Your package will have three exported functions for users to call (see below). You will need to write documentation for each function that you export using roxygen2 comments (e.g., #' @param, #' @return, #' @examples).\nYour package should include the functions:\n\nfn_cos(), which computes the approximation to the cosine function (exported)\nfn_sin(), which computes the approximation to the sine function (exported)\nsample_mean(), which calculates the sample mean (not exported)\nsample_sd(), which calculates the sample standard deviation (not exported)\ncalculate_CI(), which calculates the confidence intervals from simulated data (exported)\n\n\n\n\n\n\n\nTipNotes\n\n\n\n\nRemember that you should only export the functions that you want the user to use.\nFunctions that are not exported do not require any documentation.\nEach exported function should have at least one example of its usage (using the @example directive in the documentation).\nIn the functions in your package, consider using control structures and include checks (e.g. is.na(), is.numeric(), if()) to make sure the input is as you expect it to be. For example, try to break the the function with unexpected values that a user might provide (e.g. providing a negative value to a log transformation). This can help guide you on ways to address the possible ways to break the function.\nYour package should be installable without any warnings or errors."
+  },
+  {
+    "objectID": "projects/03-project/index.html#part-2d-create-a-readme.md-file",
+    "href": "projects/03-project/index.html#part-2d-create-a-readme.md-file",
+    "title": "Project 3",
+    "section": "Part 2D: Create a README.md file",
+    "text": "Part 2D: Create a README.md file\nCreate a README.md file in the R package, which will be useful to readers when they learn about your package. The readme must include:\n\nThe title of package\nThe author of the package\nA goal / description of the package\nA list of exported functions that are in the package. Briefly describe each function.\nA basic example with one of the functions.\n\n\n\n\n\n\n\nTipNote\n\n\n\nYou might find the use_readme_md() function from the usethis R package helpful."
+  },
+  {
+    "objectID": "projects/03-project/index.html#part-2e-create-a-vignette",
+    "href": "projects/03-project/index.html#part-2e-create-a-vignette",
+    "title": "Project 3",
+    "section": "Part 2E: Create a vignette",
+    "text": "Part 2E: Create a vignette\nIn this part, you will create a vignette where you demonstrate the functions in your R package. Specifically, you will create a .qmd file and put it in a folder called /vignettes within your R package. The purpose of a vignette is to demonstrate the functions of your package in a longer tutorial instead of just short examples within the documentation of your functions (i.e. using the @example directive in the documentation).\n\n\n\n\n\n\nTipNote\n\n\n\nYou might find the use_vignette() function from the usethis R package helpful.\n\n\n\nDemonstrate fn_cos()\nIn the vignette, make a plot and show the output of your function fn_cos(x,k) and how it approximates the cos(x) function from base R as \\(k\\) increases.\n\n\n\n\n\n\nTipNotes\n\n\n\n\nThe x-axis should range between 0 and 10.\nThe y-axis should be the output from fn_cos(x,k) or cos(x).\nPlot the output from cos(x) as points on the graph.\nPlot the output from fn_cos(x,k) as lines on the graph.\nShow 5 lines for values k = 1, 3, 5, 7, 9. Each line should be a different color.\n\n\n\n\n\nDemonstrate fn_sin()\nRepeat a similar task and make a similar plot as above, but here using fn_sin() instead of fn_cos().\n\n\nDemonstrate calculate_CI()\nThe goal here is to demonstrate the calculate_CI() function in your package inside the vignette. You can use simulated data or some subset of your data used in Part 1."
+  },
+  {
     "objectID": "projects/01-project/index.html",
     "href": "projects/01-project/index.html",
     "title": "Project 1",
@@ -683,7 +739,7 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "Date\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-11-04\n\n\nProject 2\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-23\n\n\nProject 1\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-23\n\n\nProject 4\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-11-11\n\n\nProject 3\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-04\n\n\nProject 2\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-23\n\n\nProject 1\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-23\n\n\nProject 4\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/02-project/index.html",
