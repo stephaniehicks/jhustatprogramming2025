@@ -10,7 +10,6 @@ date: 2025-11-18
 draft: false
 ---
 
-
 # Pre-lecture activities
 
 We will continue with [`tidymodels`](https://www.tidymodels.org/start/), so no additional pre-lecture activities.
