@@ -7,13 +7,13 @@ author:
     affiliation_url: https://publichealth.jhu.edu
 description: "Overview of ML paradigms and workflows in R"
 date: 2025-11-18
-draft: true
+draft: false
 ---
 
 
 # Pre-lecture activities
 
-No Pre-lecture readings today! Just focus on Project 2 and Project 4 (Part 2) -- both due tomorrow (Friday November 15th at 11:59pm). 
+We will continue with [`tidymodels`](https://www.tidymodels.org/start/), so no additional pre-lecture activities.
 
 # Lecture 
 
@@ -30,10 +30,9 @@ Material for this lecture was borrowed and adopted from
 
 **At the end of this lesson you will:**
 
--  State the differences between machine learning paradigms including supervised, unsupervised, semi-supervised, and reinforcement Learning
--  Be familiar with logistic regression and random forests as two types of classification methods in supervised learning  
--  Recognize evaluation techniques
--  Use tidymodels 
+-  Be familiar with linear regression as a type of regression methods used for prediction in supervised learning 
+-  Recognize cross-validation techniques
+-  Use `tidymodels` as collection of packages for modeling and machine learning using `tidyverse` principles
 
 :::
 
@@ -41,8 +40,9 @@ Material for this lecture was borrowed and adopted from
 
 ## Slides 
 
-- [Lecture 07: Machine learning paradgims -- Part 02]()
+- [Lecture 07: Machine learning paradgims -- Part 02](https://docs.google.com/presentation/d/1T9Ezz8iBqzCzkfBHWuSntvyD-KfIqacxaS1glgEBsBE/edit?usp=sharing)
 
 # Class activity 
 
 For the rest of the time in class, you and your team will work on the final project. Stephanie will be on zoom  to answer questions and happy to help in anyway! 
+
