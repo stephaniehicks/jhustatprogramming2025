@@ -343,6 +343,34 @@
     "text": "5. Share your website\nGo to the Discussion Board in CoursePlus and write a short post with a link (URL) to your website (and URL to the corresponding GitHub repository) that you created. Also, list the URLs below for the purposes of grading.\nAs you read the introductions from other folks in the class, feel free to comment/reply using Discussion board.\n\nLink to your GitHub repository: [Delete this text and replace the text with the link to the public GitHub repo you created above for your website]\nLink to your deployed website: [Delete this and replace the text with the link to the public deployed website you created above]"
   },
   {
+    "objectID": "lectures/07-ml-paradigms-part02/index.html",
+    "href": "lectures/07-ml-paradigms-part02/index.html",
+    "title": "Machine learning paradigms and workflows – Part 02",
+    "section": "",
+    "text": "We will continue with tidymodels, so no additional pre-lecture activities."
+  },
+  {
+    "objectID": "lectures/07-ml-paradigms-part02/index.html#acknowledgements",
+    "href": "lectures/07-ml-paradigms-part02/index.html#acknowledgements",
+    "title": "Machine learning paradigms and workflows – Part 02",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nMaterial for this lecture was borrowed and adopted from\n\nAn Introduction to Statistical Learning"
+  },
+  {
+    "objectID": "lectures/07-ml-paradigms-part02/index.html#learning-objectives",
+    "href": "lectures/07-ml-paradigms-part02/index.html#learning-objectives",
+    "title": "Machine learning paradigms and workflows – Part 02",
+    "section": "Learning objectives",
+    "text": "Learning objectives\n\n\n\n\n\n\nNoteLearning objectives\n\n\n\nAt the end of this lesson you will:\n\nBe familiar with linear regression as a type of regression methods used for prediction in supervised learning\nRecognize cross-validation techniques\nUse tidymodels as collection of packages for modeling and machine learning using tidyverse principles"
+  },
+  {
+    "objectID": "lectures/07-ml-paradigms-part02/index.html#slides",
+    "href": "lectures/07-ml-paradigms-part02/index.html#slides",
+    "title": "Machine learning paradigms and workflows – Part 02",
+    "section": "Slides",
+    "text": "Slides\n\nLecture 07: Machine learning paradgims – Part 02"
+  },
+  {
     "objectID": "lectures/05-database-programming/index.html",
     "href": "lectures/05-database-programming/index.html",
     "title": "Database programming paradigms",
@@ -480,7 +508,7 @@
     "href": "lectures.html",
     "title": "Course content",
     "section": "",
-    "text": "Course content for each lecture is below:\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-10-23\n\n\nWelcome to the course\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-28\n\n\nIntroduction to the command-line\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-30\n\n\nIntroduction to version control\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-04\n\n\nFunctional programming\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-06\n\n\nData Collection\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-11\n\n\nDatabase programming paradigms\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-13\n\n\nMachine learning paradigms and workflows – Part 01\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
+    "text": "Course content for each lecture is below:\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-10-23\n\n\nWelcome to the course\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-28\n\n\nIntroduction to the command-line\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-30\n\n\nIntroduction to version control\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-04\n\n\nFunctional programming\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-06\n\n\nData Collection\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-11\n\n\nDatabase programming paradigms\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-13\n\n\nMachine learning paradigms and workflows – Part 01\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-18\n\n\nMachine learning paradigms and workflows – Part 02\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
