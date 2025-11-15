@@ -7,12 +7,12 @@ author:
     affiliation_url: https://publichealth.jhu.edu
 description: "Introduction to building dashboards in R with `flexdashboard`"
 date: 2025-12-02
-draft: true
+draft: false
 ---
 
 # Pre-lecture activities
 
-::: callout-important
+::: callout-tip
 
 In advance of class, please install three additional packages:
 
@@ -27,12 +27,12 @@ You can do this by calling
 install.packages(c("flexdashboard", "DT", "shiny"))
 ```
 
-:::
-
 In addition, please read through
 
 1. Information about creating dashboards: <https://pkgs.rstudio.com/flexdashboard>
 2. Examples of `flexdashboard` dashboards: <https://pkgs.rstudio.com/flexdashboard/articles/examples>
+
+:::
 
 
 # Lecture 
@@ -61,7 +61,7 @@ Material for this lecture was borrowed and adopted from
 
 ## Slides 
 
-- [Lecture 10: Building dashboards with flexdashboard](https://docs.google.com/presentation/d/1ZaZIPhhu_VtSoKAGcfkViDc_S3sghdagbGQeYhpNpAg/edit?usp=sharing)
+- [Lecture 10: Building dashboards with flexdashboard](https://docs.google.com/presentation/d/1vxpDDHh3p5Gms902nhtBx_bNjADgnTuYtUq83h76b_o/edit?usp=sharing)
 
 
 ## Deploying a dashboard
@@ -84,13 +84,13 @@ Here are some helpful pointers for getting a free `Shinyapps.io` account and the
 I have deployed the Old Faithful dashboard to my own Shiny account and linked the public github repo (on GitHub Classroom) to give as an example: 
 
 - Deployed dashboard: <https://stephaniehicks.shinyapps.io/OldFaithfulGeyser>
-- GitHub repository: <https://github.com/jhu-statprogramming-fall-2024/project4-stephanieteam>
+- GitHub repository: <https://github.com/jhu-statprogramming-fall-2025/project04-stephanieteam>
 
 
 
 # Class activity 
 
-For the rest of the time in class, you and your team will work on the final project. Stephanie will walk around to answer questions and to help in anyway I can. 
+For the rest of the time in class, you and your team will work on the final project. Stephanie will walk around to answer questions. 
 
 # Post-lecture
 

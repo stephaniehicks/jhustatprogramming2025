@@ -7,7 +7,7 @@ author:
     affiliation_url: https://publichealth.jhu.edu
 description: "Introduction to building dashboards in R with `flexdashboard`"
 date: 2025-12-02
-draft: true
+draft: false
 ---
 
 
@@ -446,10 +446,9 @@ Here are some helpful pointers for getting a free `Shinyapps.io` account and the
 I have deployed the Old Faithful dashboard to my own Shiny account and linked the public github repo (on GitHub Classroom) to give as an example: 
 
 - Deployed dashboard: <https://stephaniehicks.shinyapps.io/OldFaithfulGeyser>
-- GitHub repository: <https://github.com/jhu-statprogramming-fall-2023/biostat777-project4-stephaniehicks>
+- GitHub repository: <https://github.com/jhu-statprogramming-fall-2024/biostat777-project4-stephaniehicks>
 
-#### Some example dashboards from last year
+#### Some example dashboards from previous years
 
-- <https://acolumbus.shinyapps.io/biostat840-project4>
 - <https://lilykoff.shinyapps.io/METransport>
 - <https://anikbuman.shinyapps.io/pr4shiny>
