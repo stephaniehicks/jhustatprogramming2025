@@ -1,0 +1,170 @@
+---
+title: "R package development and pkgdown"
+author: 
+  - name: Stephanie Hicks
+    url: https://stephaniehicks.com
+    affiliation: Department of Biostatistics, Johns Hopkins
+    affiliation_url: https://publichealth.jhu.edu
+description: "Introduction to building and documenting R packages"
+date: 2025-11-20
+draft: false
+---
+
+# Pre-lecture activities
+
+::: callout-tip
+
+In advance of class, please install two additional packages:
+
+* `devtools` - this provides many additional tools for building packages
+* `roxygen2` - this provides tools for writing documentation
+* `pkgdown`  - this helps you to build a package website with little effort
+* `usethis`  - an automation package that simplifies project creation and setup
+
+You can do this by calling
+
+```{r}
+#| eval: false
+install.packages(c("devtools", "roxygen2",
+                   "usethis", "pkgdown"))
+```
+
+In addition, please read through: 
+
+- <https://r-pkgs.org>
+- <https://stat545.com/package-overview>
+- <https://usethis.r-lib.org>
+- <https://pkgdown.r-lib.org/articles/pkgdown>
+
+:::
+
+
+# Lecture 
+
+## Acknowledgements
+
+Material for this lecture was borrowed and adopted from
+
+- <https://pkgdown.r-lib.org/index.html>
+- <https://bookdown.org/yihui/rmarkdown/pkgdown-components.html>
+
+
+## Learning objectives
+
+::: callout-note
+### Learning objectives
+
+**At the end of this lesson you will:**
+ 
+- Create an empty R package 
+- Design a R function and write documentation
+- Describe what a `DESCRIPTION` file is and what goes in it
+- Be able to build and install a R package
+- Build a website for your package
+
+:::
+
+
+## Slides 
+
+- [Lecture 08: R package development -- Part 01](https://docs.google.com/presentation/d/1NyF0xTjrQfGM-MlxbAGiXGptM2Tikpv36t6nZGCCvpE/edit?usp=sharing)
+
+# Class activity 
+
+For the rest of the time in class, you and your team will work on the final project. Stephanie will walk around to answer questions and happy to help in any way! 
+
+
+# Post-lecture
+
+## Additional practice
+
+Here are some additional practice questions to help you think about the material discussed.
+
+## Part 1
+
+Here, our goal is to build a minimal R package. We will practice setting up 
+a new package using `usethis`, writing functions, and documenting the 
+functions using `roxygen2`.
+
+1. Create a package
+
+- Use `usethis::create_package("simpleutils")`
+- Look at the files created: `DESCRIPTION`, `NAMESPACE`, `R/`, etc
+
+2. Add two functions
+
+- function 01: `rescale01(x)` = rescales a numeric vector to the range 0–1
+- function 02: `count_missing(x)` = returns the number of missing values
+
+3. Document each function using `roxygen2`
+
+- Add title, description, `@param`, `@return`, and an example
+- Then run `devtools::document()` to automatically create the help files (`.Rd`) and the NAMESPACE
+
+4. Install and test manually
+
+- Install with `devtools::install()`.
+
+5. Load it and try running the some example code e.g.
+
+```{r}
+#| eval: false
+library(simpleutils)
+rescale01(c(1,5,10))
+count_missing(c(1,NA,2,NA))
+```
+
+## Part 2
+
+Next, we will add a small dataset to the package and write documentation for 
+the dataset. 
+
+1. Make a small tibble or data frame (e.g., 30 rows, with 2 numeric vars and 1 factor). Save it to the package using:
+
+```{r}
+#| eval: false
+usethis::use_data(secret_data)
+```
+
+
+2. Create an R file under `R/` with a roxygen block like:
+
+```{r}
+#| eval: false
+#' Example dataset: secret_data
+#' 
+#' A small example dataset for demonstration.
+#' 
+#' @format A data frame with 30 rows and 3 variables:
+#' \describe{
+#'   \item{x}{numeric}
+#'   \item{y}{numeric}
+#'   \item{group}{factor}
+#' }
+#' @source Simulated
+"secret_data"
+
+```
+
+3. Run `devtools::document()` then `devtools::install()` to document and install the package.
+
+```{r}
+#| eval: false
+library(simpleutils)
+mydata
+```
+
+
+## Part 3
+
+Finally, we will add a small vignette for our package. 
+
+1. Create a short vignette using `usethis::use_vignette("getting-started")`
+
+2. Add text to it describing 
+
+- what the package is for?
+- how to use `rescale01()`?
+- how to use your dataset?
+
+3. Build and view the vignette using `devtools::build_vignettes()`. You can view it using `browseVignettes("simpleutils")` too. 
