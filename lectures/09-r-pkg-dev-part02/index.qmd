@@ -1,29 +1,29 @@
 ---
-title: "Object-oriented programming"
+title: "R package unit tests and intro to OOP -- Part 02"
 author: 
   - name: Stephanie Hicks
     url: https://stephaniehicks.com
     affiliation: Department of Biostatistics, Johns Hopkins
     affiliation_url: https://publichealth.jhu.edu
-description: "Introduction to S3, S4, or reference class with generics and methods"
-date: 2025-11-20
-draft: true
+description: "Introduction to unit testing and object-oriented programming with R packages"
+date: 2025-11-25
+draft: false
 ---
-
 
 # Pre-lecture activities
 
-::: callout-important
+::: callout-tip
 
-In advance of class, please read through: 
+For unit testing, please install 
 
-- [Lecture 08: Object-Oriented Programming](../../readings/08-oop-paradigm/index.qmd)
+- `testthat` - this provides utilities for unit testing package for R 
 
-:::
-
-In addition, please have a brief look through these four sections of the book: 
+For reading more about object-oriented programming, please have a brief 
+look through these four sections of the book: 
 
 - <https://adv-r.hadley.nz/oo> (Chapters 12-16)
+
+:::
 
 
 # Lecture 
@@ -32,7 +32,9 @@ In addition, please have a brief look through these four sections of the book:
 
 Material for this lecture was borrowed and adopted from
 
+- <https://testthat.r-lib.org>
 - <https://adv-r.hadley.nz/oo> (Chapters 12-16)
+
 
 ## Learning objectives
 
@@ -40,21 +42,22 @@ Material for this lecture was borrowed and adopted from
 ### Learning objectives
 
 **At the end of this lesson you will:**
-
+ 
+- Create unit tests for the function in your R package using `testthat`
 - Recognize the primary object-oriented systems in R: S3, S4, R6, and Reference Classes (RC). 
 - Understand the terminology of a **class**, **object**, **method**, **constructor** and **generic**.
-- Be able to create a new S3 or S4 with generics and methods
+- Be able to create a new S3 with generics and methods
 
 :::
 
+
 ## Slides 
 
-- [Lecture 08: Object-oriented programming](https://docs.google.com/presentation/d/1LZKegMEbiF1Q3uk7ddQ_rEhD2AA3HO6pwCZQcB29-og/edit?usp=sharing)
+- [Lecture 09: R package development -- Part 01](https://docs.google.com/presentation/d/1kbauy6d45zb2mEtFpBt5fo2j8S9--lTwGcGruFBrAXM/edit?usp=sharing)
 
 # Class activity 
 
-For the rest of the time in class, you and your team will work on the final project. Stephanie will walk around to answer questions and to help answer questions and support team projects. 
-
+For the rest of the time in class, you and your team will work on the final project. Stephanie will walk around to answer questions and happy to help in any way! 
 
 # Post-lecture
 
