@@ -347,7 +347,7 @@
     "href": "lectures/07-ml-paradigms-part02/index.html",
     "title": "Machine learning paradigms and workflows – Part 02",
     "section": "",
-    "text": "We will continue with tidymodels, so no additional pre-lecture activities."
+    "text": "Tip\n\n\n\nWe will continue with tidymodels, so there is nothing else to install for the lecture. However, if you want to see a different linear regression model workflow with the penguins dataset, checkout this tutorial:\n\nRegression in tidymodels"
   },
   {
     "objectID": "lectures/07-ml-paradigms-part02/index.html#acknowledgements",
@@ -361,7 +361,7 @@
     "href": "lectures/07-ml-paradigms-part02/index.html#learning-objectives",
     "title": "Machine learning paradigms and workflows – Part 02",
     "section": "Learning objectives",
-    "text": "Learning objectives\n\n\n\n\n\n\nNoteLearning objectives\n\n\n\nAt the end of this lesson you will:\n\nBe familiar with linear regression as a type of regression methods used for prediction in supervised learning\nRecognize cross-validation techniques\nUse tidymodels as collection of packages for modeling and machine learning using tidyverse principles"
+    "text": "Learning objectives\n\n\n\n\n\n\nNoteLearning objectives\n\n\n\nAt the end of this lesson you will:\n\nUse tidymodels as collection of packages for modeling and machine learning using tidyverse principles\nBe able to fit a linear regression model and a random forest model to be used for prediction in supervised learning\nBe able to split data into “train” and “test” to reduce overfitting and improve model performance"
   },
   {
     "objectID": "lectures/07-ml-paradigms-part02/index.html#slides",
@@ -369,6 +369,27 @@
     "title": "Machine learning paradigms and workflows – Part 02",
     "section": "Slides",
     "text": "Slides\n\nLecture 07: Machine learning paradgims – Part 02"
+  },
+  {
+    "objectID": "lectures/07-ml-paradigms-part02/index.html#question-1",
+    "href": "lectures/07-ml-paradigms-part02/index.html#question-1",
+    "title": "Machine learning paradigms and workflows – Part 02",
+    "section": "Question 1",
+    "text": "Question 1\nUsing penguins dataset discussed in class, we will first extend the linear regression example using additional predictors and compare the model performances. Using this dataset, build two linear regression models predicting body_mass_g using:\n\nModel A: bill_length_mm + species\nModel B: bill_length_mm + flipper_length_mm + species + sex\n\nUse the same train/test split for both models. Then, compare RMSE and R^2 between Model A and Model B on:\n\nthe training set\nthe test set\n\nThink about and discuss these questions with a partner (or to yourself):\n\nWhich model performs better?\nDid adding predictors help?\nIs there evidence of overfitting?"
+  },
+  {
+    "objectID": "lectures/07-ml-paradigms-part02/index.html#question-2",
+    "href": "lectures/07-ml-paradigms-part02/index.html#question-2",
+    "title": "Machine learning paradigms and workflows – Part 02",
+    "section": "Question 2",
+    "text": "Question 2\nIn this question, we will use the training set from above, but now we will switch to random forests. There is an argument called mtry = 3 used to identify the number of features sampled for each tree. Let’s try changing it and we can “tune” the this parameter (also known as a “hyperparameter”). We will ask if this changes the model’s performance.\nUsing the training dataset, fit three random forest models with different mtry values:\n\nmtry = 2\nmtry = 3\nmtry = 5\n\nFor each model:\n\nFit on the training data\nEvaluate on the test data (e.g. rmse and rsq)\nPlot mtry vs test rmse.\n\nThink about and discuss these questions with a partner (or to yourself):\n\nWhich mtry yields the lowest test rmse?\nWhy might increasing mtry help or hurt performance?"
+  },
+  {
+    "objectID": "lectures/07-ml-paradigms-part02/index.html#question-3",
+    "href": "lectures/07-ml-paradigms-part02/index.html#question-3",
+    "title": "Machine learning paradigms and workflows – Part 02",
+    "section": "Question 3",
+    "text": "Question 3\nIn this question, fit two linear regression models to predict body_mass_g:\n\nModel without interaction: body_mass_g ~ bill_length_mm + flipper_length_mm + species\nModel with interaction: body_mass_g ~ bill_length_mm * species + flipper_length_mm\n\nYou want want to compare both models on the train and test rmse. Then, create a visualization of predicted vs actual body mass for the test set for each model.\nThink about and discuss these questions with a partner (or to yourself):\n\nDid adding interactions help?\nWhy might interactions between bill_length_mm and species matter biologically?"
   },
   {
     "objectID": "lectures/05-database-programming/index.html",

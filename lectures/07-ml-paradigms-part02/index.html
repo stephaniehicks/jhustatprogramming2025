@@ -152,7 +152,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
   <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
   </ul></li>
-  <li><a href="#class-activity" id="toc-class-activity" class="nav-link" data-scroll-target="#class-activity">Class activity</a></li>
+  <li><a href="#class-activity" id="toc-class-activity" class="nav-link" data-scroll-target="#class-activity">Class activity</a>
+  <ul class="collapse">
+  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a></li>
+  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
+  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -204,7 +209,22 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="pre-lecture-activities" class="level1">
 <h1>Pre-lecture activities</h1>
-<p>We will continue with <a href="https://www.tidymodels.org/start/"><code>tidymodels</code></a>, so no additional pre-lecture activities.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We will continue with <a href="https://www.tidymodels.org/start/"><code>tidymodels</code></a>, so there is nothing else to install for the lecture. However, if you want to see a different linear regression model workflow with the <code>penguins</code> dataset, checkout this tutorial:</p>
+<ul>
+<li><a href="https://cmu-delphi.github.io/delphi-tooling-book/tidymodels-regression.html">Regression in tidymodels</a></li>
+</ul>
+</div>
+</div>
 </section>
 <section id="lecture" class="level1">
 <h1>Lecture</h1>
@@ -229,9 +249,9 @@ ul.task-list li input[type="checkbox"] {
 <div class="callout-body-container callout-body">
 <p><strong>At the end of this lesson you will:</strong></p>
 <ul>
-<li>Be familiar with linear regression as a type of regression methods used for prediction in supervised learning</li>
-<li>Recognize cross-validation techniques</li>
 <li>Use <code>tidymodels</code> as collection of packages for modeling and machine learning using <code>tidyverse</code> principles</li>
+<li>Be able to fit a linear regression model and a random forest model to be used for prediction in supervised learning</li>
+<li>Be able to split data into “train” and “test” to reduce overfitting and improve model performance</li>
 </ul>
 </div>
 </div>
@@ -245,9 +265,81 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="class-activity" class="level1">
 <h1>Class activity</h1>
-<p>For the rest of the time in class, you and your team will work on the final project. Stephanie will be on zoom to answer questions and happy to help in anyway!</p>
+<p>For the rest of the time in class, we will practice implementing more ML models with the same <code>penguins</code> dataset.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Objectives of the activity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Extend the linear regression example using additional predictors and compare performance</li>
+<li>Understand how a playing with hyperparameters can change model performance</li>
+<li>Explore whether adding interaction terms improves predictions</li>
+</ul>
+</div>
+</div>
+<p>For this in-class activity, you can work alone or find a partner. I encourage you to find a partner so you can discuss the questions asked below.</p>
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<p>Using <code>penguins</code> dataset discussed in class, we will first extend the linear regression example using additional predictors and compare the model performances. Using this dataset, build two linear regression models predicting <code>body_mass_g</code> using:</p>
+<ul>
+<li>Model A: <code>bill_length_mm</code> + <code>species</code></li>
+<li>Model B: <code>bill_length_mm</code> + <code>flipper_length_mm</code> + <code>species</code> + <code>sex</code></li>
+</ul>
+<p>Use the same train/test split for both models. Then, compare RMSE and R^2 between Model A and Model B on:</p>
+<ul>
+<li>the training set</li>
+<li>the test set</li>
+</ul>
+<p>Think about and discuss these questions with a partner (or to yourself):</p>
+<ul>
+<li>Which model performs better?</li>
+<li>Did adding predictors help?</li>
+<li>Is there evidence of overfitting?</li>
+</ul>
+</section>
+<section id="question-2" class="level2">
+<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
+<p>In this question, we will use the training set from above, but now we will switch to random forests. There is an argument called <code>mtry = 3</code> used to identify the number of features sampled for each tree. Let’s try changing it and we can “tune” the this parameter (also known as a “hyperparameter”). We will ask if this changes the model’s performance.</p>
+<p>Using the training dataset, fit three random forest models with different <code>mtry</code> values:</p>
+<ul>
+<li><code>mtry = 2</code></li>
+<li><code>mtry = 3</code></li>
+<li><code>mtry = 5</code></li>
+</ul>
+<p>For each model:</p>
+<ul>
+<li>Fit on the training data</li>
+<li>Evaluate on the test data (e.g.&nbsp;rmse and rsq)</li>
+<li>Plot <code>mtry</code> vs test rmse.</li>
+</ul>
+<p>Think about and discuss these questions with a partner (or to yourself):</p>
+<ul>
+<li>Which <code>mtry</code> yields the lowest test rmse?</li>
+<li>Why might increasing <code>mtry</code> help or hurt performance?</li>
+</ul>
+</section>
+<section id="question-3" class="level2">
+<h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
+<p>In this question, fit two linear regression models to predict <code>body_mass_g</code>:</p>
+<ul>
+<li>Model without interaction: <code>body_mass_g ~ bill_length_mm + flipper_length_mm + species</code></li>
+<li>Model with interaction: <code>body_mass_g ~ bill_length_mm * species + flipper_length_mm</code></li>
+</ul>
+<p>You want want to compare both models on the train and test rmse. Then, create a visualization of predicted vs actual body mass for the test set for each model.</p>
+<p>Think about and discuss these questions with a partner (or to yourself):</p>
+<ul>
+<li>Did adding interactions help?</li>
+<li>Why might interactions between <code>bill_length_mm</code> and <code>species</code> matter biologically?</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
