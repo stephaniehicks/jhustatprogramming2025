@@ -242,7 +242,7 @@
     "href": "readings.html",
     "title": "Important reading materials",
     "section": "",
-    "text": "The following contains relevant reading materials you should read prior to each class:\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-10-23\n\n\n(Some) Best practices for writing up a data analysis\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-23\n\n\nAuthoring projects and websites with Quarto\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-04\n\n\nFunctional Programming with purrr\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-06\n\n\nRetrieving data from APIs with httr2\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-06\n\n\nScraping data from the web with rvest\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-11\n\n\nRelational databases and SQL basics\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
+    "text": "The following contains relevant reading materials you should read prior to each class:\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-10-23\n\n\n(Some) Best practices for writing up a data analysis\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-23\n\n\nAuthoring projects and websites with Quarto\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-04\n\n\nFunctional Programming with purrr\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-06\n\n\nRetrieving data from APIs with httr2\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-06\n\n\nScraping data from the web with rvest\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-11\n\n\nRelational databases and SQL basics\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-12-04\n\n\nStrategies for dealing with large data\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/03-project/index.html",
@@ -343,60 +343,74 @@
     "text": "5. Share your website\nGo to the Discussion Board in CoursePlus and write a short post with a link (URL) to your website (and URL to the corresponding GitHub repository) that you created. Also, list the URLs below for the purposes of grading.\nAs you read the introductions from other folks in the class, feel free to comment/reply using Discussion board.\n\nLink to your GitHub repository: [Delete this text and replace the text with the link to the public GitHub repo you created above for your website]\nLink to your deployed website: [Delete this and replace the text with the link to the public deployed website you created above]"
   },
   {
-    "objectID": "lectures/08-r-pkg-dev-part01/index.html",
-    "href": "lectures/08-r-pkg-dev-part01/index.html",
-    "title": "R package development and pkgdown – Part 01",
+    "objectID": "lectures/11-parallel-programming/index.html",
+    "href": "lectures/11-parallel-programming/index.html",
+    "title": "Parallel programming",
     "section": "",
-    "text": "Tip\n\n\n\nIn advance of class, please install two additional packages:\n\ndevtools - this provides many additional tools for building packages\nroxygen2 - this provides tools for writing documentation\npkgdown - this helps you to build a package website with little effort\nusethis - an automation package that simplifies project creation and setup\n\nYou can do this by calling\n\ninstall.packages(c(\"devtools\", \"roxygen2\",\n                   \"usethis\", \"pkgdown\"))\n\nIn addition, please read through:\n\nhttps://r-pkgs.org\nhttps://stat545.com/package-overview\nhttps://usethis.r-lib.org\nhttps://pkgdown.r-lib.org/articles/pkgdown"
+    "text": "Tip\n\n\n\nIn advance of class, please install\n\nfuture - this provides a unified parallel framework in R consistent\n\nIn addition, please read through\n\nStrategies for dealing with large data\nhttps://www.futureverse.org/packages-overview.html (just the future R package)\n\n\n\n\n\n\n\n\n\nNoteHow much should I prepare for before class?\n\n\n\nYou should have future installed and be familiar with the three basic functions - plan(), future(), and value().\nWe will learn more about these functions in class."
   },
   {
-    "objectID": "lectures/08-r-pkg-dev-part01/index.html#acknowledgements",
-    "href": "lectures/08-r-pkg-dev-part01/index.html#acknowledgements",
-    "title": "R package development and pkgdown – Part 01",
+    "objectID": "lectures/11-parallel-programming/index.html#acknowledgements",
+    "href": "lectures/11-parallel-programming/index.html#acknowledgements",
+    "title": "Parallel programming",
     "section": "Acknowledgements",
-    "text": "Acknowledgements\nMaterial for this lecture was borrowed and adopted from\n\nhttps://pkgdown.r-lib.org/index.html\nhttps://bookdown.org/yihui/rmarkdown/pkgdown-components.html"
+    "text": "Acknowledgements\nMaterial for this lecture was borrowed and adopted from\n\nhttps://www.futureverse.org/packages-overview"
   },
   {
-    "objectID": "lectures/08-r-pkg-dev-part01/index.html#learning-objectives",
-    "href": "lectures/08-r-pkg-dev-part01/index.html#learning-objectives",
-    "title": "R package development and pkgdown – Part 01",
+    "objectID": "lectures/11-parallel-programming/index.html#learning-objectives",
+    "href": "lectures/11-parallel-programming/index.html#learning-objectives",
+    "title": "Parallel programming",
     "section": "Learning objectives",
-    "text": "Learning objectives\n\n\n\n\n\n\nNoteLearning objectives\n\n\n\nAt the end of this lesson you will:\n\nCreate an empty R package\nDesign a R function and write documentation\nDescribe what a DESCRIPTION file is and what goes in it\nBe able to build and install a R package\nBuild a website for your package"
+    "text": "Learning objectives\n\n\n\n\n\n\nNoteLearning objectives\n\n\n\nAt the end of this lesson you will:\n\nUnderstand the basics of parallel computing\nBecome familiar with basic functions in the future package\nRecognize different file formats to work with large data not locally\nImplement three ways to work with large data:\n\n“sample and model”\n“chunk and pull”\n“push compute to data”"
   },
   {
-    "objectID": "lectures/08-r-pkg-dev-part01/index.html#slides",
-    "href": "lectures/08-r-pkg-dev-part01/index.html#slides",
-    "title": "R package development and pkgdown – Part 01",
+    "objectID": "lectures/11-parallel-programming/index.html#slides",
+    "href": "lectures/11-parallel-programming/index.html#slides",
+    "title": "Parallel programming",
     "section": "Slides",
-    "text": "Slides\n\nLecture 08: R package development – Part 01"
+    "text": "Slides\n\nLecture 11: Parallel computing (and dealing with large data)"
   },
   {
-    "objectID": "lectures/08-r-pkg-dev-part01/index.html#additional-practice",
-    "href": "lectures/08-r-pkg-dev-part01/index.html#additional-practice",
-    "title": "R package development and pkgdown – Part 01",
+    "objectID": "lectures/09-r-pkg-dev-part02/index.html",
+    "href": "lectures/09-r-pkg-dev-part02/index.html",
+    "title": "R package unit tests and intro to OOP – Part 02",
+    "section": "",
+    "text": "Tip\n\n\n\nFor unit testing, please install\n\ntestthat - this provides utilities for unit testing package for R\n\nFor reading more about object-oriented programming, please have a brief look through these four sections of the book:\n\nhttps://adv-r.hadley.nz/oo (Chapters 12-16)"
+  },
+  {
+    "objectID": "lectures/09-r-pkg-dev-part02/index.html#acknowledgements",
+    "href": "lectures/09-r-pkg-dev-part02/index.html#acknowledgements",
+    "title": "R package unit tests and intro to OOP – Part 02",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nMaterial for this lecture was borrowed and adopted from\n\nhttps://testthat.r-lib.org\nhttps://adv-r.hadley.nz/oo (Chapters 12-16)"
+  },
+  {
+    "objectID": "lectures/09-r-pkg-dev-part02/index.html#learning-objectives",
+    "href": "lectures/09-r-pkg-dev-part02/index.html#learning-objectives",
+    "title": "R package unit tests and intro to OOP – Part 02",
+    "section": "Learning objectives",
+    "text": "Learning objectives\n\n\n\n\n\n\nNoteLearning objectives\n\n\n\nAt the end of this lesson you will:\n\nCreate unit tests for the function in your R package using testthat\nRecognize the primary object-oriented systems in R: S3, S4, R6, and Reference Classes (RC).\nUnderstand the terminology of a class, object, method, constructor and generic.\nBe able to create a new S3 with generics and methods"
+  },
+  {
+    "objectID": "lectures/09-r-pkg-dev-part02/index.html#slides",
+    "href": "lectures/09-r-pkg-dev-part02/index.html#slides",
+    "title": "R package unit tests and intro to OOP – Part 02",
+    "section": "Slides",
+    "text": "Slides\n\nLecture 09: R package development – Part 01"
+  },
+  {
+    "objectID": "lectures/09-r-pkg-dev-part02/index.html#summary",
+    "href": "lectures/09-r-pkg-dev-part02/index.html#summary",
+    "title": "R package unit tests and intro to OOP – Part 02",
+    "section": "Summary",
+    "text": "Summary\n\nR has three object oriented systems: S3, S4, and Reference Classes.\nReference Classes are the most similar to classes and objects in other programming languages.\nClasses are blueprints for an object.\nObjects are individual instances of a class.\nMethods are functions that are associated with a particular class.\nConstructors are methods that create objects.\nEverything in R is an object.\nS3 is a liberal object oriented system that allows you to assign a class to any object.\nS4 is a more strict object oriented system that build upon ideas in S3."
+  },
+  {
+    "objectID": "lectures/09-r-pkg-dev-part02/index.html#additional-practice",
+    "href": "lectures/09-r-pkg-dev-part02/index.html#additional-practice",
+    "title": "R package unit tests and intro to OOP – Part 02",
     "section": "Additional practice",
-    "text": "Additional practice\nHere are some additional practice questions to help you think about the material discussed."
-  },
-  {
-    "objectID": "lectures/08-r-pkg-dev-part01/index.html#part-1",
-    "href": "lectures/08-r-pkg-dev-part01/index.html#part-1",
-    "title": "R package development and pkgdown – Part 01",
-    "section": "Part 1",
-    "text": "Part 1\nHere, our goal is to build a minimal R package. We will practice setting up a new package using usethis, writing functions, and documenting the functions using roxygen2.\n\nCreate a package\n\n\nUse usethis::create_package(\"simpleutils\")\nLook at the files created: DESCRIPTION, NAMESPACE, R/, etc\n\n\nAdd two functions\n\n\nfunction 01: rescale01(x) = rescales a numeric vector to the range 0–1\nfunction 02: count_missing(x) = returns the number of missing values\n\n\nDocument each function using roxygen2\n\n\nAdd title, description, @param, @return, and an example\nThen run devtools::document() to automatically create the help files (.Rd) and the NAMESPACE\n\n\nInstall and test manually\n\n\nInstall with devtools::install().\n\n\nLoad it and try running the some example code e.g.\n\n\nlibrary(simpleutils)\nrescale01(c(1,5,10))\ncount_missing(c(1,NA,2,NA))"
-  },
-  {
-    "objectID": "lectures/08-r-pkg-dev-part01/index.html#part-2",
-    "href": "lectures/08-r-pkg-dev-part01/index.html#part-2",
-    "title": "R package development and pkgdown – Part 01",
-    "section": "Part 2",
-    "text": "Part 2\nNext, we will add a small dataset to the package and write documentation for the dataset.\n\nMake a small tibble or data frame (e.g., 30 rows, with 2 numeric vars and 1 factor). Save it to the package using:\n\n\nusethis::use_data(secret_data)\n\n\nCreate an R file under R/ with a roxygen block like:\n\n\n#' Example dataset: secret_data\n#' \n#' A small example dataset for demonstration.\n#' \n#' @format A data frame with 30 rows and 3 variables:\n#' \\describe{\n#'   \\item{x}{numeric}\n#'   \\item{y}{numeric}\n#'   \\item{group}{factor}\n#' }\n#' @source Simulated\n\"secret_data\"\n\n\nRun devtools::document() then devtools::install() to document and install the package.\n\n\nlibrary(simpleutils)\nmydata"
-  },
-  {
-    "objectID": "lectures/08-r-pkg-dev-part01/index.html#part-3",
-    "href": "lectures/08-r-pkg-dev-part01/index.html#part-3",
-    "title": "R package development and pkgdown – Part 01",
-    "section": "Part 3",
-    "text": "Part 3\nFinally, we will add a small vignette for our package.\n\nCreate a short vignette using usethis::use_vignette(\"getting-started\")\nAdd text to it describing\n\n\nwhat the package is for?\nhow to use rescale01()?\nhow to use your dataset?\n\n\nBuild and view the vignette using devtools::build_vignettes(). You can view it using browseVignettes(\"simpleutils\") too."
+    "text": "Additional practice\nHere are some additional practice questions to help you think about the material discussed.\n\nhttps://adv-r.hadley.nz/s3.html#exercises-38\nhttps://adv-r.hadley.nz/s3.html#exercises-39\nhttps://adv-r.hadley.nz/s3.html#exercises-40\nhttps://adv-r.hadley.nz/s3.html#exercises-42"
   },
   {
     "objectID": "lectures/07-ml-paradigms-part02/index.html",
@@ -585,7 +599,7 @@
     "href": "lectures.html",
     "title": "Course content",
     "section": "",
-    "text": "Course content for each lecture is below:\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-10-23\n\n\nWelcome to the course\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-28\n\n\nIntroduction to the command-line\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-30\n\n\nIntroduction to version control\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-04\n\n\nFunctional programming\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-06\n\n\nData Collection\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-11\n\n\nDatabase programming paradigms\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-13\n\n\nMachine learning paradigms and workflows – Part 01\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-18\n\n\nMachine learning paradigms and workflows – Part 02\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-20\n\n\nR package development and pkgdown – Part 01\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-25\n\n\nR package unit tests and intro to OOP – Part 02\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
+    "text": "Course content for each lecture is below:\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-10-23\n\n\nWelcome to the course\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-28\n\n\nIntroduction to the command-line\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-30\n\n\nIntroduction to version control\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-04\n\n\nFunctional programming\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-06\n\n\nData Collection\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-11\n\n\nDatabase programming paradigms\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-13\n\n\nMachine learning paradigms and workflows – Part 01\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-18\n\n\nMachine learning paradigms and workflows – Part 02\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-20\n\n\nR package development and pkgdown – Part 01\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-25\n\n\nR package unit tests and intro to OOP – Part 02\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-12-04\n\n\nParallel programming\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -840,46 +854,60 @@
     "text": "Additional practice\nHere are some additional practice questions to help you think about the material discussed.\n\nQuestion 1\nUsing penguins dataset discussed in class, we will practice more model building by experimenting with other features. In our first logistic regression, we only used two features (bill_length_mm and flipper_length_mm). In the second, we added body_mass_g and species.\nNow, fit a third logistic regression model that uses only bill_length_mm and body_mass_g as input features (X). Compute the accuracy and Kappa metrics using metrics(). Compare the results to both of the previous logistic regression models. Which combination of predictors yields the best performance, and why might that be? The purpose of this question is to help build intuition about how including or excluding features affects predictive accuracy and model interpretability.\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nlibrary(tidymodels)\nlibrary(palmerpenguins)\n\n\nAttaching package: 'palmerpenguins'\n\n\nThe following object is masked from 'package:modeldata':\n\n    penguins\n\n\nThe following objects are masked from 'package:datasets':\n\n    penguins, penguins_raw\n\npenguins &lt;- na.omit(penguins)\n\n# Logistic regression using only bill_length_mm and body_mass_g\nlogistic_model_q1 &lt;- \n  logistic_reg() %&gt;% \n  set_engine(\"glm\") %&gt;% \n  fit(sex ~ bill_length_mm + body_mass_g, data = penguins)\n\n# Examine model coefficients\ntidy(logistic_model_q1)\n\n# A tibble: 3 × 5\n  term           estimate std.error statistic  p.value\n  &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)    -6.91     1.08         -6.41 1.42e-10\n2 bill_length_mm  0.0611   0.0267        2.29 2.21e- 2\n3 body_mass_g     0.00102  0.000198      5.14 2.77e- 7\n\n# Make predictions\nlogistic_preds_q1 &lt;- predict(logistic_model_q1, penguins) %&gt;%\n  bind_cols(penguins)\n\n# Evaluate model performance\nlogistic_preds_q1 %&gt;%\n  metrics(truth = sex, estimate = .pred_class)\n\n# A tibble: 2 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy binary         0.625\n2 kap      binary         0.250\n\n\nWe saw that flipper_length_mm was not an informative feature, but it seems like body_mass_g is an informative variable! When we drop uninformative features and add informative features to the model, the predictive accuracy improves. It also helps model interpretability because we are keeping only a minmial set of features in the model.\n\n\n\n\n\nQuestion 2\nIn class, we compared logistic regression to random rorest models. We also computed the accuracy and Kappa for both the random forest and logistic regression models. Which performed better on this dataset? Why might the random forest outperform (or underperform) logistic regression here?\n\n\n\n\n\n\nTip\n\n\n\nUse vip::vip(rf_fit) to visualize which features the random forest considered most important. If you do this, you will need to modify set_engine(\"ranger\", importance = \"impurity\") to calculate importance\n\n\nThe purpose of this question is to compare model types and interpret variable importance in tree-based models.\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nlibrary(vip)\n\n\nAttaching package: 'vip'\n\n\nThe following object is masked from 'package:utils':\n\n    vi\n\n# Logistic regression with multiple predictors\nlogistic_model_q2 &lt;- \n  logistic_reg() %&gt;%\n  set_engine(\"glm\") %&gt;%\n  fit(sex ~ bill_length_mm + flipper_length_mm + body_mass_g + species, \n      data = penguins)\n\n# Random forest with same predictors\nrf_spec_q2 &lt;- rand_forest(mtry = 3) %&gt;%\n  set_engine(\"ranger\", importance = \"impurity\") %&gt;%\n  set_mode(\"classification\")\n\nrf_fit_q2 &lt;- rf_spec_q2 %&gt;%\n  fit(sex ~ bill_length_mm + flipper_length_mm + body_mass_g + species, \n      data = penguins)\n\n# Evaluate both models\nlogistic_preds_q2 &lt;- predict(logistic_model_q2, penguins) %&gt;%\n  bind_cols(penguins)\n\nrf_preds_q2 &lt;- predict(rf_fit_q2, penguins) %&gt;%\n  bind_cols(penguins)\n\nmetrics(logistic_preds_q2, truth = sex, estimate = .pred_class)\n\n# A tibble: 2 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy binary         0.892\n2 kap      binary         0.784\n\nmetrics(rf_preds_q2, truth = sex, estimate = .pred_class)\n\n# A tibble: 2 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy binary         0.958\n2 kap      binary         0.916\n\n# Visualize feature importance for random forest\nvip(rf_fit_q2)\n\n\n\n\n\n\n\n\nWe see that random forest performed better than logistic regression. This is because random forest can model complex, non-linear decision boundaries, while logistic regression assumes a linear relationship between the features and the log-odds of the outcome.\nAlso random forest can help with overfitting. It creates an ensemble of multiple decision trees and averaging their predictions. Therefore, random forest is more robust and less prone to overfitting than a single decision tree.\nIt also provides a measure of which features are most important for making predictions, which can be useful for understanding the data.\n\n\n\n\n\nQuestion 3\nThe random forest model was trained and evaluated on the entire dataset. That’s not ideal for assessing generalization of how well the model will perform on data it was not trained on.\nNext, use initial_split() from rsample to create a training (80%) and testing (20%) dataset. Fit your random forest on the training data and compute metrics on the test data. Compare the test accuracy to the earlier “full dataset” accuracy. What does the difference tell you about potential overfitting? The purpose of this question is to practice a strategy that can improve the model-building workflow that we will learn about in our next lecture.\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nset.seed(123)\npeng_split &lt;- initial_split(penguins, prop = 0.8)\npeng_train &lt;- training(peng_split)\npeng_test  &lt;- testing(peng_split)\n\n# Reuse the same random forest specification\nrf_spec_q3 &lt;- rand_forest(mtry = 3) %&gt;%\n  set_engine(\"ranger\", importance = \"impurity\") %&gt;%\n  set_mode(\"classification\")\n\n# Fit model on training data\nrf_fit_q3 &lt;- rf_spec_q3 %&gt;%\n  fit(sex ~ bill_length_mm + flipper_length_mm + body_mass_g + species, \n      data = peng_train)\n\n# Evaluate on test data\nrf_preds_q3 &lt;- predict(rf_fit_q3, peng_test) %&gt;%\n  bind_cols(peng_test)\n\nmetrics_train &lt;- predict(rf_fit_q3, peng_train) %&gt;%\n  bind_cols(peng_train) %&gt;%\n  metrics(truth = sex, estimate = .pred_class)\n\nmetrics_test &lt;- rf_preds_q3 %&gt;%\n  metrics(truth = sex, estimate = .pred_class)\n\nmetrics_train\n\n# A tibble: 2 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy binary         0.947\n2 kap      binary         0.895\n\nmetrics_test\n\n# A tibble: 2 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy binary         0.881\n2 kap      binary         0.757\n\n\nThe performance dropped in the test data, therefore we are potentially overfitting when we fit our models."
   },
   {
-    "objectID": "lectures/09-r-pkg-dev-part02/index.html",
-    "href": "lectures/09-r-pkg-dev-part02/index.html",
-    "title": "R package unit tests and intro to OOP – Part 02",
+    "objectID": "lectures/08-r-pkg-dev-part01/index.html",
+    "href": "lectures/08-r-pkg-dev-part01/index.html",
+    "title": "R package development and pkgdown – Part 01",
     "section": "",
-    "text": "Tip\n\n\n\nFor unit testing, please install\n\ntestthat - this provides utilities for unit testing package for R\n\nFor reading more about object-oriented programming, please have a brief look through these four sections of the book:\n\nhttps://adv-r.hadley.nz/oo (Chapters 12-16)"
+    "text": "Tip\n\n\n\nIn advance of class, please install two additional packages:\n\ndevtools - this provides many additional tools for building packages\nroxygen2 - this provides tools for writing documentation\npkgdown - this helps you to build a package website with little effort\nusethis - an automation package that simplifies project creation and setup\n\nYou can do this by calling\n\ninstall.packages(c(\"devtools\", \"roxygen2\",\n                   \"usethis\", \"pkgdown\"))\n\nIn addition, please read through:\n\nhttps://r-pkgs.org\nhttps://stat545.com/package-overview\nhttps://usethis.r-lib.org\nhttps://pkgdown.r-lib.org/articles/pkgdown"
   },
   {
-    "objectID": "lectures/09-r-pkg-dev-part02/index.html#acknowledgements",
-    "href": "lectures/09-r-pkg-dev-part02/index.html#acknowledgements",
-    "title": "R package unit tests and intro to OOP – Part 02",
+    "objectID": "lectures/08-r-pkg-dev-part01/index.html#acknowledgements",
+    "href": "lectures/08-r-pkg-dev-part01/index.html#acknowledgements",
+    "title": "R package development and pkgdown – Part 01",
     "section": "Acknowledgements",
-    "text": "Acknowledgements\nMaterial for this lecture was borrowed and adopted from\n\nhttps://testthat.r-lib.org\nhttps://adv-r.hadley.nz/oo (Chapters 12-16)"
+    "text": "Acknowledgements\nMaterial for this lecture was borrowed and adopted from\n\nhttps://pkgdown.r-lib.org/index.html\nhttps://bookdown.org/yihui/rmarkdown/pkgdown-components.html"
   },
   {
-    "objectID": "lectures/09-r-pkg-dev-part02/index.html#learning-objectives",
-    "href": "lectures/09-r-pkg-dev-part02/index.html#learning-objectives",
-    "title": "R package unit tests and intro to OOP – Part 02",
+    "objectID": "lectures/08-r-pkg-dev-part01/index.html#learning-objectives",
+    "href": "lectures/08-r-pkg-dev-part01/index.html#learning-objectives",
+    "title": "R package development and pkgdown – Part 01",
     "section": "Learning objectives",
-    "text": "Learning objectives\n\n\n\n\n\n\nNoteLearning objectives\n\n\n\nAt the end of this lesson you will:\n\nCreate unit tests for the function in your R package using testthat\nRecognize the primary object-oriented systems in R: S3, S4, R6, and Reference Classes (RC).\nUnderstand the terminology of a class, object, method, constructor and generic.\nBe able to create a new S3 with generics and methods"
+    "text": "Learning objectives\n\n\n\n\n\n\nNoteLearning objectives\n\n\n\nAt the end of this lesson you will:\n\nCreate an empty R package\nDesign a R function and write documentation\nDescribe what a DESCRIPTION file is and what goes in it\nBe able to build and install a R package\nBuild a website for your package"
   },
   {
-    "objectID": "lectures/09-r-pkg-dev-part02/index.html#slides",
-    "href": "lectures/09-r-pkg-dev-part02/index.html#slides",
-    "title": "R package unit tests and intro to OOP – Part 02",
+    "objectID": "lectures/08-r-pkg-dev-part01/index.html#slides",
+    "href": "lectures/08-r-pkg-dev-part01/index.html#slides",
+    "title": "R package development and pkgdown – Part 01",
     "section": "Slides",
-    "text": "Slides\n\nLecture 09: R package development – Part 01"
+    "text": "Slides\n\nLecture 08: R package development – Part 01"
   },
   {
-    "objectID": "lectures/09-r-pkg-dev-part02/index.html#summary",
-    "href": "lectures/09-r-pkg-dev-part02/index.html#summary",
-    "title": "R package unit tests and intro to OOP – Part 02",
-    "section": "Summary",
-    "text": "Summary\n\nR has three object oriented systems: S3, S4, and Reference Classes.\nReference Classes are the most similar to classes and objects in other programming languages.\nClasses are blueprints for an object.\nObjects are individual instances of a class.\nMethods are functions that are associated with a particular class.\nConstructors are methods that create objects.\nEverything in R is an object.\nS3 is a liberal object oriented system that allows you to assign a class to any object.\nS4 is a more strict object oriented system that build upon ideas in S3."
-  },
-  {
-    "objectID": "lectures/09-r-pkg-dev-part02/index.html#additional-practice",
-    "href": "lectures/09-r-pkg-dev-part02/index.html#additional-practice",
-    "title": "R package unit tests and intro to OOP – Part 02",
+    "objectID": "lectures/08-r-pkg-dev-part01/index.html#additional-practice",
+    "href": "lectures/08-r-pkg-dev-part01/index.html#additional-practice",
+    "title": "R package development and pkgdown – Part 01",
     "section": "Additional practice",
-    "text": "Additional practice\nHere are some additional practice questions to help you think about the material discussed.\n\nhttps://adv-r.hadley.nz/s3.html#exercises-38\nhttps://adv-r.hadley.nz/s3.html#exercises-39\nhttps://adv-r.hadley.nz/s3.html#exercises-40\nhttps://adv-r.hadley.nz/s3.html#exercises-42"
+    "text": "Additional practice\nHere are some additional practice questions to help you think about the material discussed."
+  },
+  {
+    "objectID": "lectures/08-r-pkg-dev-part01/index.html#part-1",
+    "href": "lectures/08-r-pkg-dev-part01/index.html#part-1",
+    "title": "R package development and pkgdown – Part 01",
+    "section": "Part 1",
+    "text": "Part 1\nHere, our goal is to build a minimal R package. We will practice setting up a new package using usethis, writing functions, and documenting the functions using roxygen2.\n\nCreate a package\n\n\nUse usethis::create_package(\"simpleutils\")\nLook at the files created: DESCRIPTION, NAMESPACE, R/, etc\n\n\nAdd two functions\n\n\nfunction 01: rescale01(x) = rescales a numeric vector to the range 0–1\nfunction 02: count_missing(x) = returns the number of missing values\n\n\nDocument each function using roxygen2\n\n\nAdd title, description, @param, @return, and an example\nThen run devtools::document() to automatically create the help files (.Rd) and the NAMESPACE\n\n\nInstall and test manually\n\n\nInstall with devtools::install().\n\n\nLoad it and try running the some example code e.g.\n\n\nlibrary(simpleutils)\nrescale01(c(1,5,10))\ncount_missing(c(1,NA,2,NA))"
+  },
+  {
+    "objectID": "lectures/08-r-pkg-dev-part01/index.html#part-2",
+    "href": "lectures/08-r-pkg-dev-part01/index.html#part-2",
+    "title": "R package development and pkgdown – Part 01",
+    "section": "Part 2",
+    "text": "Part 2\nNext, we will add a small dataset to the package and write documentation for the dataset.\n\nMake a small tibble or data frame (e.g., 30 rows, with 2 numeric vars and 1 factor). Save it to the package using:\n\n\nusethis::use_data(secret_data)\n\n\nCreate an R file under R/ with a roxygen block like:\n\n\n#' Example dataset: secret_data\n#' \n#' A small example dataset for demonstration.\n#' \n#' @format A data frame with 30 rows and 3 variables:\n#' \\describe{\n#'   \\item{x}{numeric}\n#'   \\item{y}{numeric}\n#'   \\item{group}{factor}\n#' }\n#' @source Simulated\n\"secret_data\"\n\n\nRun devtools::document() then devtools::install() to document and install the package.\n\n\nlibrary(simpleutils)\nmydata"
+  },
+  {
+    "objectID": "lectures/08-r-pkg-dev-part01/index.html#part-3",
+    "href": "lectures/08-r-pkg-dev-part01/index.html#part-3",
+    "title": "R package development and pkgdown – Part 01",
+    "section": "Part 3",
+    "text": "Part 3\nFinally, we will add a small vignette for our package.\n\nCreate a short vignette using usethis::use_vignette(\"getting-started\")\nAdd text to it describing\n\n\nwhat the package is for?\nhow to use rescale01()?\nhow to use your dataset?\n\n\nBuild and view the vignette using devtools::build_vignettes(). You can view it using browseVignettes(\"simpleutils\") too."
   },
   {
     "objectID": "projects.html",
@@ -1062,5 +1090,103 @@
     "title": "Scraping data from the web with rvest",
     "section": "Use",
     "text": "Use\nTo use it, open the page you want to scrape, then:\n\nClick the SelectorGadget entry in your bookmark bar.\nClick on the element you want to select. SelectorGadget will make a first guess at what css selector you want. It’s likely to be bad since it only has one example to learn from, but it’s a start. Elements that match the selector will be highlighted in yellow.\nClick on elements that should not be selected. They will turn red. Click on elements that should be selected. They will turn green.\nIterate until only the elements you want are selected. SelectorGadget is not perfect and sometimes will not be able to find a useful css selector. Sometimes starting from a different element helps."
+  },
+  {
+    "objectID": "readings/11-strategies-big-data/index.html",
+    "href": "readings/11-strategies-big-data/index.html",
+    "title": "Strategies for dealing with large data",
+    "section": "",
+    "text": "First, we load a few R packages\n\nlibrary(tidyverse)\nlibrary(here)\nlibrary(dbplyr)\nlibrary(rsample)\n\nFor most data analyses in R, data you encounter can easily be read into memory in R (either locally or on a cluster of sorts) and analyzed in a standard way.\nHowever, if you do encounter data that is too big to be read into memory, you might start to search for strategies on how to deal with this data.\nFor most of people, it might be obvious why you would want to use R with big data, but it not obvious how.\nNow, you might say advances in hardware make this less and less of a problem as most laptops come with &gt;8-32Gb of memory and it is easy to get instances on cloud providers with terabytes of RAM.\nThat’s definitely true. But there might be some problems that you will run into.\n\n\nLet’s say you are able load part of the data into the RAM on your machine (in-memory).\nIf you had something like a zipped .csv file, you could always try loading just the first few lines into memory (see n_max = 8 below) to see what is inside the files, but eventually you will likely need a different strategy.\n\nread_csv(readr_example(\"mtcars.csv.bz2\"), \n         skip = 0, n_max = 8, progress = show_progress())\n\n# A tibble: 8 × 11\n    mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb\n  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1  21       6  160    110  3.9   2.62  16.5     0     1     4     4\n2  21       6  160    110  3.9   2.88  17.0     0     1     4     4\n3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1\n4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1\n5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2\n6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1\n7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4\n8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2\n\n\n\n\n\nYou have to keep in mind that you will need to do something with the data too (typically need 2-3 times the RAM of the size of your data).\nThis may or may not be a problem for your hardware that you are working with.\n\n\n\nIf you are working with data on a server that needs to be transferred somewhere to do the processing or computation once the data has been transferred.\nFor example, the time it takes to make a call over the internet from San Francisco to New York City takes over 4 times longer than reading from a standard hard drive and over 200 times longer than reading from a solid state hard drive.\n\n\n\n\n\n\n\n\n\n[image source]\nThis is an especially big problem early in developing a model or performing a data analysis, when data might have to be pulled repeatedly.\nToday we are going to discuss some strategies (and R packages) for working with big data in R. We will also go through some examples of how to execute these strategies in R."
+  },
+  {
+    "objectID": "readings/11-strategies-big-data/index.html#loading-data-into-memory",
+    "href": "readings/11-strategies-big-data/index.html#loading-data-into-memory",
+    "title": "Strategies for dealing with large data",
+    "section": "",
+    "text": "Let’s say you are able load part of the data into the RAM on your machine (in-memory).\nIf you had something like a zipped .csv file, you could always try loading just the first few lines into memory (see n_max = 8 below) to see what is inside the files, but eventually you will likely need a different strategy.\n\nread_csv(readr_example(\"mtcars.csv.bz2\"), \n         skip = 0, n_max = 8, progress = show_progress())\n\n# A tibble: 8 × 11\n    mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb\n  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1  21       6  160    110  3.9   2.62  16.5     0     1     4     4\n2  21       6  160    110  3.9   2.88  17.0     0     1     4     4\n3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1\n4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1\n5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2\n6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1\n7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4\n8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2"
+  },
+  {
+    "objectID": "readings/11-strategies-big-data/index.html#memory-for-calculations",
+    "href": "readings/11-strategies-big-data/index.html#memory-for-calculations",
+    "title": "Strategies for dealing with large data",
+    "section": "",
+    "text": "You have to keep in mind that you will need to do something with the data too (typically need 2-3 times the RAM of the size of your data).\nThis may or may not be a problem for your hardware that you are working with."
+  },
+  {
+    "objectID": "readings/11-strategies-big-data/index.html#transfer-speeds-can-be-slow",
+    "href": "readings/11-strategies-big-data/index.html#transfer-speeds-can-be-slow",
+    "title": "Strategies for dealing with large data",
+    "section": "",
+    "text": "If you are working with data on a server that needs to be transferred somewhere to do the processing or computation once the data has been transferred.\nFor example, the time it takes to make a call over the internet from San Francisco to New York City takes over 4 times longer than reading from a standard hard drive and over 200 times longer than reading from a solid state hard drive.\n\n\n\n\n\n\n\n\n\n[image source]\nThis is an especially big problem early in developing a model or performing a data analysis, when data might have to be pulled repeatedly.\nToday we are going to discuss some strategies (and R packages) for working with big data in R. We will also go through some examples of how to execute these strategies in R."
+  },
+  {
+    "objectID": "readings/11-strategies-big-data/index.html#sqlite-databases",
+    "href": "readings/11-strategies-big-data/index.html#sqlite-databases",
+    "title": "Strategies for dealing with large data",
+    "section": "SQLite databases",
+    "text": "SQLite databases\nOK so as mentioned above, let’s use the SQLite format to demonstrate the strategies for dealing with large data. However, they can easily transfer other data formats.\nReminder: There are several ways to query SQL or SQLite databases in R.\nOk, we will set up the SQLite database using the nycflights13_sqlite() function in the dbplyr package.\n\nlibrary(nycflights13)\nif(!file.exists(here(\"data\", \"nycflights13\", \"nycflights13.sqlite\"))){\n  dir.create(here(\"data\", \"nycflights13\"))\n  dbplyr::nycflights13_sqlite(path=here(\"data\", \"nycflights13\"))\n}\n\nWe can check to see what file has been created\n\nlist.files(here(\"data\", \"nycflights13\"))\n\n[1] \"nycflights13.sqlite\"\n\n\n\n\n\n\n\n\nNoteQuestion\n\n\n\nHow can we use the DBI::dbConnect() function with RSQLite::SQLite() backend to connect to the SQLite database?\n\nlibrary(DBI)\n# try it yourself \n\n\n\nClick here for the answer.\n\n\nlibrary(DBI)\nconn &lt;- dbConnect(RSQLite::SQLite(), \n                  here(\"data\", \"nycflights13\", \"nycflights13.sqlite\"))\nconn\n\n&lt;SQLiteConnection&gt;\n  Path: /Users/stephaniehicks/Documents/github/teaching/jhustatprogramming2025/data/nycflights13/nycflights13.sqlite\n  Extensions: TRUE\n\n\n\n\n\n\n\n\n\n\n\nNoteQuestion\n\n\n\nNext, let’s use the dplyr::tbl() function returns something that feels like a data frame with the flights dataset. Finally, show the first 10 rows of the data frame.\n\n# try it yourself \n\n\n\nClick here for the answer.\n\n\ntbl(conn, \"flights\")  |&gt; \n  head(n=10)\n\n# Source:   SQL [?? x 19]\n# Database: sqlite 3.51.0 [/Users/stephaniehicks/Documents/github/teaching/jhustatprogramming2025/data/nycflights13/nycflights13.sqlite]\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            600        -6      812            837\n 6  2013     1     1      554            558        -4      740            728\n 7  2013     1     1      555            600        -5      913            854\n 8  2013     1     1      557            600        -3      709            723\n 9  2013     1     1      557            600        -3      838            846\n10  2013     1     1      558            600        -2      753            745\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dbl&gt;\n\n\n\n\n\nBefore we jump into the next section, let’s save this data frame as flights_df and count the number of rows using dplyr::tally():\n\nflights_df &lt;- dplyr::tbl(conn, \"flights\")\nflights_df |&gt; \n  tally()\n\n# Source:   SQL [?? x 1]\n# Database: sqlite 3.51.0 [/Users/stephaniehicks/Documents/github/teaching/jhustatprogramming2025/data/nycflights13/nycflights13.sqlite]\n       n\n   &lt;int&gt;\n1 336776\n\n\nEven though it only has a few hundred thousand rows, it is still useful to demonstrate some strategies for dealing with big data in R."
+  },
+  {
+    "objectID": "readings/11-strategies-big-data/index.html#advantages",
+    "href": "readings/11-strategies-big-data/index.html#advantages",
+    "title": "Strategies for dealing with large data",
+    "section": "Advantages",
+    "text": "Advantages\n\nSpeed. Relative to working on your entire data set, working on just a sample can drastically decrease run times and increase iteration speed.\nPrototyping. Even if you will eventually have to run your model on the entire data set, this can be a good way to refine hyperparameters and do feature engineering for your model.\nPackages. Since you are working on a regular, in-memory data set, you can use all your favorite R packages."
+  },
+  {
+    "objectID": "readings/11-strategies-big-data/index.html#disadvantages",
+    "href": "readings/11-strategies-big-data/index.html#disadvantages",
+    "title": "Strategies for dealing with large data",
+    "section": "Disadvantages",
+    "text": "Disadvantages\n\nSampling. Downsampling is not terribly difficult, but does need to be done with care to ensure that the sample is valid and that you have pulled enough points from the original data set.\nScaling. If you are using sample and model to prototype something that will later be run on the full data set, you will need to have a strategy (such as pushing compute to the data) for scaling your prototype version back to the full data set.\nTotals. Business Intelligence (BI) – or strategies and technologies used by enterprises for the data analysis of business information (e.g. data mining, reporting, predictive analytics, etc) – tasks frequently answer questions about totals, like the count of all sales in a month. One of the other strategies is usually a better fit in this case."
+  },
+  {
+    "objectID": "readings/11-strategies-big-data/index.html#example",
+    "href": "readings/11-strategies-big-data/index.html#example",
+    "title": "Strategies for dealing with large data",
+    "section": "Example",
+    "text": "Example\nLet’s say we want to model whether flights will be delayed or not. We will start with some minor cleaning of the data.\nFirst, we will create a is_delayed column in the database:\n\nflights_df &lt;- \n  flights_df |&gt;\n    dplyr::mutate(is_delayed = arr_delay &gt; 0,\n                  hour = sched_dep_time / 100) |&gt; # Get just hour (currently formatted so 6 pm = 1800)\n    # Remove small carriers that make modeling difficult\n    dplyr::filter(!is.na(is_delayed) & !carrier %in% c(\"OO\", \"HA\"))\n\nHere are the total number of flights that were delayed or not:\n\nflights_df |&gt; \n  dplyr::count(is_delayed)\n\n# Source:   SQL [?? x 2]\n# Database: sqlite 3.51.0 [/Users/stephaniehicks/Documents/github/teaching/jhustatprogramming2025/data/nycflights13/nycflights13.sqlite]\n  is_delayed      n\n       &lt;int&gt;  &lt;int&gt;\n1          0 194078\n2          1 132897\n\n\nThese classes are reasonably well balanced, but we going to use logistic regression, so I will load a perfectly balanced sample of 40,000 data points.\nFor most databases, random sampling methods do not work smoothly with R.\n\nflights_df |&gt; \n  dplyr::sample_n(size = 1000)\n\nError in `dplyr::sample_n()`:\n! `tbl` must be a data frame, not a\n  &lt;tbl_SQLiteConnection/tbl_dbi/tbl_sql/tbl_lazy/tbl&gt; object.\n\n\nSo it is not suggested to use dplyr::sample_n() or dplyr::sample_frac(). So we will have to be a little more manual.\n\nset.seed(1234)\n\nn_rows &lt;- flights_df |&gt; tally() |&gt; pull()\nidx &lt;- sample(0:n_rows, replace = FALSE)\n\n# Create a modeling data set \n# df_mod &lt;- \n  \n  df_mod &lt;- flights_df |&gt;\n    mutate(x = runif(n()))\n\n\n\n\n\n\n\nTipNote\n\n\n\ndplyr::collect() forces a computation of a database query and retrieves data into a local tibble\nSo, here, we take the first 5% for each class for training set:\n\ndf_train &lt;- df_mod |&gt;\n  group_by(is_delayed) |&gt;\n  filter(x &lt;= .05) |&gt;\n  collect() \n\n\n\nThen, we take next 5% for test set:\n\ndf_test &lt;- df_mod |&gt;\n  group_by(is_delayed) |&gt;\n  filter(x &gt; .05 & x &lt;= .10) |&gt;\n  collect() # again, this data is now loaded locally\n\n\n# How many are in each group\ncount(df_train, is_delayed)\n\n# A tibble: 2 × 2\n# Groups:   is_delayed [2]\n  is_delayed     n\n       &lt;int&gt; &lt;int&gt;\n1          0  9675\n2          1  6596\n\ncount(df_test, is_delayed)\n\n# A tibble: 2 × 2\n# Groups:   is_delayed [2]\n  is_delayed     n\n       &lt;int&gt; &lt;int&gt;\n1          0 18196\n2          1 12575\n\n\nNow let’s build a model – let’s see if we can predict whether there will be a delay or not by the combination of the carrier, and the month of the flight.\n\nSys.time()\n\n[1] \"2025-11-15 22:16:38 EST\"\n\nmod &lt;- glm(is_delayed ~ carrier + as.factor(month),\n           family = \"binomial\", data = df_train)\nSys.time()\n\n[1] \"2025-11-15 22:16:38 EST\"\n\n\n\nsummary(mod)\n\n\nCall:\nglm(formula = is_delayed ~ carrier + as.factor(month), family = \"binomial\", \n    data = df_train)\n\nCoefficients:\n                   Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)        -0.49008    0.09102  -5.384 7.28e-08 ***\ncarrierAA          -0.15756    0.08987  -1.753 0.079589 .  \ncarrierAS          -0.06832    0.34826  -0.196 0.844464    \ncarrierB6           0.17270    0.08258   2.091 0.036509 *  \ncarrierDL          -0.17349    0.08410  -2.063 0.039121 *  \ncarrierEV           0.34619    0.08282   4.180 2.92e-05 ***\ncarrierF9           0.36230    0.36507   0.992 0.320999    \ncarrierFL           0.86366    0.18900   4.570 4.89e-06 ***\ncarrierMQ           0.33649    0.09244   3.640 0.000272 ***\ncarrierUA          -0.09001    0.08247  -1.091 0.275090    \ncarrierUS          -0.14218    0.09862  -1.442 0.149419    \ncarrierVX          -0.33315    0.14938  -2.230 0.025737 *  \ncarrierWN           0.30761    0.11068   2.779 0.005447 ** \ncarrierYV           0.19371    0.41360   0.468 0.639529    \nas.factor(month)2   0.04175    0.08201   0.509 0.610646    \nas.factor(month)3   0.01012    0.07966   0.127 0.898953    \nas.factor(month)4   0.31462    0.07932   3.966 7.30e-05 ***\nas.factor(month)5  -0.09839    0.07911  -1.244 0.213628    \nas.factor(month)6   0.22548    0.07994   2.821 0.004792 ** \nas.factor(month)7   0.30928    0.07757   3.987 6.68e-05 ***\nas.factor(month)8   0.10252    0.07875   1.302 0.192975    \nas.factor(month)9  -0.64927    0.08464  -7.671 1.71e-14 ***\nas.factor(month)10 -0.24484    0.07967  -3.073 0.002117 ** \nas.factor(month)11 -0.13600    0.07993  -1.702 0.088836 .  \nas.factor(month)12  0.60150    0.07929   7.586 3.30e-14 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 21970  on 16270  degrees of freedom\nResidual deviance: 21440  on 16246  degrees of freedom\nAIC: 21490\n\nNumber of Fisher Scoring iterations: 4\n\n\n\n# Out-of-Sample AUROC\ndf_test$pred &lt;- predict(mod, newdata = df_test)\nauc &lt;- suppressMessages(pROC::auc(df_test$is_delayed, df_test$pred))\nauc\n\nArea under the curve: 0.607\n\n\nAs you can see, this is not a great model, but that’s not the point here!\nInstead, we showed how to build a model on a small subset of a big data set. Including sampling time, this took my laptop a second to run, making it easy to iterate quickly as I want to improve the model. After I’m happy with this model, I could pull down a larger sample or even the entire data set if it is feasible, or do something with the model from the sample."
+  },
+  {
+    "objectID": "readings/11-strategies-big-data/index.html#advantages-1",
+    "href": "readings/11-strategies-big-data/index.html#advantages-1",
+    "title": "Strategies for dealing with large data",
+    "section": "Advantages",
+    "text": "Advantages\n\nFull data set. The entire data set gets used.\nParallelization. If the chunks are run separately, the problem is easy to treat as embarassingly parallel and make use of parallelization to speed runtimes."
+  },
+  {
+    "objectID": "readings/11-strategies-big-data/index.html#disadvantages-1",
+    "href": "readings/11-strategies-big-data/index.html#disadvantages-1",
+    "title": "Strategies for dealing with large data",
+    "section": "Disadvantages",
+    "text": "Disadvantages\n\nNeed Chunks. Your data needs to have separable chunks for chunk and pull to be appropriate.\nPull All Data. Eventually have to pull in all data, which may still be very time and memory intensive.\nStale Data. The data may require periodic refreshes from the database to stay up-to-date since you’re saving a version on your local machine."
+  },
+  {
+    "objectID": "readings/11-strategies-big-data/index.html#example-1",
+    "href": "readings/11-strategies-big-data/index.html#example-1",
+    "title": "Strategies for dealing with large data",
+    "section": "Example",
+    "text": "Example\nIn this case, I want to build another model of on-time arrival, but I want to do it per-carrier. This is exactly the kind of use case that is ideal for chunk and pull.\nI am going to separately pull the data in by carrier and run the model on each carrier’s data.\nI am going to start by just getting the complete list of the carriers.\n\n# Get all unique carriers\ncarriers &lt;- flights_df |&gt; \n  select(carrier) |&gt; \n  distinct() |&gt; \n  pull(carrier)\n\ncarriers\n\n [1] \"9E\" \"AA\" \"AS\" \"B6\" \"DL\" \"EV\" \"F9\" \"FL\" \"MQ\" \"UA\" \"US\" \"VX\" \"WN\" \"YV\"\n\n\nNow, I will write a function that\n\ntakes the name of a carrier as input\npulls the data for that carrier into R\nsplits the data into training and test\ntrains the model\noutputs the out-of-sample AUROC (a common measure of model quality)\n\n\ncarrier_model &lt;- function(carrier_name) {\n  # Pull a chunk of data\n  df_mod &lt;- flights_df |&gt;\n    filter(carrier == carrier_name) |&gt;\n    collect()\n  \n  # Split into training and test\n  split &lt;- df_mod |&gt;\n    rsample::initial_split(prop = 0.9, strata = \"is_delayed\") |&gt; \n    suppressMessages()\n  \n  # Get training data\n  df_train &lt;- split |&gt; \n                rsample::training()\n  \n  # Train model\n  mod &lt;- glm(is_delayed ~ as.factor(month),\n             family = \"binomial\", data = df_train)\n  \n  # Get out-of-sample AUROC\n  df_test &lt;- split |&gt; \n                rsample::testing()\n  df_test$pred &lt;- predict(mod, newdata = df_test)\n  suppressMessages(auc &lt;- pROC::auc(df_test$is_delayed ~ df_test$pred))\n  \n  auc\n}\n\nNow, I am going to actually run the carrier model function across each of the carriers. This code runs pretty quickly, and so I do not think the overhead of parallelization would be worth it.\n\nset.seed(1234)\nmods &lt;- lapply(carriers, carrier_model) |&gt;\n  suppressMessages()\n\nnames(mods) &lt;- carriers\n\nLet’s look at the results.\n\nmods\n\n$`9E`\nArea under the curve: 0.5711\n\n$AA\nArea under the curve: 0.5731\n\n$AS\nArea under the curve: 0.5597\n\n$B6\nArea under the curve: 0.6208\n\n$DL\nArea under the curve: 0.5817\n\n$EV\nArea under the curve: 0.588\n\n$F9\nArea under the curve: 0.5134\n\n$FL\nArea under the curve: 0.5508\n\n$MQ\nArea under the curve: 0.572\n\n$UA\nArea under the curve: 0.6046\n\n$US\nArea under the curve: 0.5811\n\n$VX\nArea under the curve: 0.67\n\n$WN\nArea under the curve: 0.5607\n\n$YV\nArea under the curve: 0.6041\n\n\nSo these models (again) are a little better than random chance. The point was that we utilized the chunk and pull strategy to pull the data separately by logical units and building a model on each chunk."
+  },
+  {
+    "objectID": "readings/11-strategies-big-data/index.html#advantages-2",
+    "href": "readings/11-strategies-big-data/index.html#advantages-2",
+    "title": "Strategies for dealing with large data",
+    "section": "Advantages",
+    "text": "Advantages\n\nUse the Database. Takes advantage of what databases are often best at: quickly summarizing and filtering data based on a query.\nMore Info, Less Transfer. By compressing before pulling data back to R, the entire data set gets used, but transfer times are far less than moving the entire data set."
+  },
+  {
+    "objectID": "readings/11-strategies-big-data/index.html#disadvantages-2",
+    "href": "readings/11-strategies-big-data/index.html#disadvantages-2",
+    "title": "Strategies for dealing with large data",
+    "section": "Disadvantages",
+    "text": "Disadvantages\n\nDatabase Operations. Depending on what database you are using, some operations might not be supported.\nDatabase Speed. In some contexts, the limiting factor for data analysis is the speed of the database itself, and so pushing more work onto the database is the last thing analysts want to do."
+  },
+  {
+    "objectID": "readings/11-strategies-big-data/index.html#example-2",
+    "href": "readings/11-strategies-big-data/index.html#example-2",
+    "title": "Strategies for dealing with large data",
+    "section": "Example",
+    "text": "Example\nIn this case, I am doing a pretty simple BI task - plotting the proportion of flights that are late by the hour of departure and the airline.\nJust by way of comparison, let’s run this first the naive way -– pulling all the data to my system and then doing my data manipulation to plot.\n\nsystem.time(\n  df_plot &lt;- flights_df |&gt;\n    collect() |&gt;\n    group_by(carrier, sched_dep_time) |&gt;\n    # Get proportion per carrier-time\n    summarize(delay_pct = mean(is_delayed, na.rm = TRUE)) |&gt;\n    ungroup() |&gt;\n    # Change string times into actual times\n    dplyr::mutate(sched_dep_time = \n                    stringr::str_pad(sched_dep_time, 4, \"left\", \"0\") |&gt; \n             strptime(\"%H%M\") |&gt;  # converts character class into POSIXlt class\n             as.POSIXct()) # converts POSIXlt class to POSIXct class\n  ) -&gt; timing1\n\ntiming1\n\n   user  system elapsed \n  0.841   0.013   0.857 \n\n\nNow that wasn’t too bad, just 0.857 seconds on my laptop.\nBut let’s see how much of a speedup we can get from chunk and pull. The conceptual change here is significant - I’m doing as much work as possible in the SQLite server now instead of locally.\nBut using dplyr means that the code change is minimal. The only difference in the code is that the collect() call got moved down by a few lines (to below ungroup()).\n\nsystem.time(\n  df_plot &lt;- flights_df |&gt;\n    dplyr::group_by(carrier, sched_dep_time) |&gt;\n    # Get proportion per carrier-time\n    dplyr::summarize(delay_pct = mean(is_delayed, na.rm = TRUE)) |&gt;\n    dplyr::ungroup() |&gt;\n    dplyr::collect() |&gt;\n    # Change string times into actual times\n    dplyr::mutate(sched_dep_time = \n                    stringr::str_pad(sched_dep_time, 4, \"left\", \"0\") |&gt; \n             strptime(\"%H%M\") |&gt; \n             as.POSIXct())) -&gt; timing2\n\n`summarise()` has grouped output by \"carrier\". You can override using the\n`.groups` argument.\n\ntiming2\n\n   user  system elapsed \n  0.278   0.048   0.345 \n\n\nIt might have taken you the same time to read this code as the last chunk, but this took only 0.345 seconds to run, almost an order of magnitude faster! That’s pretty good for just moving one line of code.\nNow that we have done a speed comparison, we can create the nice plot we all came for.\n\ndf_plot |&gt;\n  dplyr::mutate(carrier = paste0(\"Carrier: \", carrier)) |&gt;\n  ggplot(aes(x = sched_dep_time, y = delay_pct)) +\n    geom_line() +\n    facet_wrap(\"carrier\") +\n    ylab(\"Proportion of Flights Delayed\") +\n    xlab(\"Time of Day\") +\n    scale_y_continuous(labels = scales::percent) +\n    scale_x_datetime(date_breaks = \"4 hours\", \n                    date_labels = \"%H\")\n\n\n\n\n\n\n\n\nIt looks to me like flights later in the day might be a little more likely to experience delays."
   }
 ]

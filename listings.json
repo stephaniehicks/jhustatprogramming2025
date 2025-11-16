@@ -7,7 +7,8 @@
       "/readings/03-functional-programming/index.html",
       "/readings/04-data-collection-apis/index.html",
       "/readings/04-data-collection-html/index.html",
-      "/readings/05-database-programming/index.html"
+      "/readings/05-database-programming/index.html",
+      "/readings/11-strategies-big-data/index.html"
     ]
   },
   {
@@ -22,7 +23,8 @@
       "/lectures/06-ml-paradigms-part01/index.html",
       "/lectures/07-ml-paradigms-part02/index.html",
       "/lectures/08-r-pkg-dev-part01/index.html",
-      "/lectures/09-r-pkg-dev-part02/index.html"
+      "/lectures/09-r-pkg-dev-part02/index.html",
+      "/lectures/11-parallel-programming/index.html"
     ]
   },
   {
