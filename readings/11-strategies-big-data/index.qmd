@@ -6,8 +6,8 @@ author:
     affiliation: Department of Biostatistics, Johns Hopkins
     affiliation_url: https://publichealth.jhu.edu
 description: "Introduction to basic strategies for dealing with large data in R"
-date: 2025-11-18
-draft: true
+date: 2025-12-04
+draft: false
 ---
 
 

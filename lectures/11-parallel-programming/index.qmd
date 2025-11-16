@@ -6,38 +6,25 @@ author:
     affiliation: Department of Biostatistics, Johns Hopkins
     affiliation_url: https://publichealth.jhu.edu
 description: "and dealing with large data..."
-date: 2025-11-18
-draft: true
+date: 2025-12-04
+draft: false
 ---
 
 # Pre-lecture activities
 
-::: callout-important
+::: callout-tip
 
-In advance of class, please
+In advance of class, please install
 
-* `future` - this provides a unified parallel framework in R consistent
-
-You can do this by calling
-
-```{r}
-#| eval: false
-install.packages("future")
-```
-
-And load the package using: 
-
-```{r}
-library(future)
-```
-
-
-:::
+- [`future`](https://CRAN.R-project.org/package=future) - this provides a unified parallel framework in R consistent
 
 In addition, please read through
 
-- [Strategies for dealing with large data](../../readings/07-strategies-big-data/index.qmd)
+- [Strategies for dealing with large data](../../readings/11-strategies-big-data/index.qmd)
 - <https://www.futureverse.org/packages-overview.html> (just the `future` R package)
+
+:::
+
 
 
 ::: callout-note
@@ -79,7 +66,7 @@ Material for this lecture was borrowed and adopted from
 
 ## Slides 
 
-- [Lecture 07: Parallel computing (and dealing with large data)](https://docs.google.com/presentation/d/1jaMlB3SibUmF-rVFnKf3Hz-8_biX4HO80qt6Kx2Wrd0/edit?usp=sharing)
+- [Lecture 11: Parallel computing (and dealing with large data)](https://docs.google.com/presentation/d/11pXJyBkL8aQ7zKGWiSBu0gIXvFIM001mH0Vxc_5fXOs/edit?usp=sharing)
 
 
 # Class activity 
@@ -94,4 +81,4 @@ Henrik Bengtsson from the UseR! 2024 conference:
 Also, if you would like to try out the three strategies we learned about in 
 class today for dealing with large data, try working through the pre-reading: 
 
-- [Strategies for dealing with large data](../../readings/07-strategies-big-data/index.qmd)
+- [Strategies for dealing with large data](../../readings/11-strategies-big-data/index.qmd)
