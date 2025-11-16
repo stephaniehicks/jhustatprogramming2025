@@ -1,5 +1,5 @@
 ---
-title: "R package development and pkgdown"
+title: "R package development and pkgdown -- Part 01"
 author: 
   - name: Stephanie Hicks
     url: https://stephaniehicks.com
