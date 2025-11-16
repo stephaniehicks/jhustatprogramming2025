@@ -343,6 +343,62 @@
     "text": "5. Share your website\nGo to the Discussion Board in CoursePlus and write a short post with a link (URL) to your website (and URL to the corresponding GitHub repository) that you created. Also, list the URLs below for the purposes of grading.\nAs you read the introductions from other folks in the class, feel free to comment/reply using Discussion board.\n\nLink to your GitHub repository: [Delete this text and replace the text with the link to the public GitHub repo you created above for your website]\nLink to your deployed website: [Delete this and replace the text with the link to the public deployed website you created above]"
   },
   {
+    "objectID": "lectures/08-r-pkg-dev-part01/index.html",
+    "href": "lectures/08-r-pkg-dev-part01/index.html",
+    "title": "R package development and pkgdown – Part 01",
+    "section": "",
+    "text": "Tip\n\n\n\nIn advance of class, please install two additional packages:\n\ndevtools - this provides many additional tools for building packages\nroxygen2 - this provides tools for writing documentation\npkgdown - this helps you to build a package website with little effort\nusethis - an automation package that simplifies project creation and setup\n\nYou can do this by calling\n\ninstall.packages(c(\"devtools\", \"roxygen2\",\n                   \"usethis\", \"pkgdown\"))\n\nIn addition, please read through:\n\nhttps://r-pkgs.org\nhttps://stat545.com/package-overview\nhttps://usethis.r-lib.org\nhttps://pkgdown.r-lib.org/articles/pkgdown"
+  },
+  {
+    "objectID": "lectures/08-r-pkg-dev-part01/index.html#acknowledgements",
+    "href": "lectures/08-r-pkg-dev-part01/index.html#acknowledgements",
+    "title": "R package development and pkgdown – Part 01",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nMaterial for this lecture was borrowed and adopted from\n\nhttps://pkgdown.r-lib.org/index.html\nhttps://bookdown.org/yihui/rmarkdown/pkgdown-components.html"
+  },
+  {
+    "objectID": "lectures/08-r-pkg-dev-part01/index.html#learning-objectives",
+    "href": "lectures/08-r-pkg-dev-part01/index.html#learning-objectives",
+    "title": "R package development and pkgdown – Part 01",
+    "section": "Learning objectives",
+    "text": "Learning objectives\n\n\n\n\n\n\nNoteLearning objectives\n\n\n\nAt the end of this lesson you will:\n\nCreate an empty R package\nDesign a R function and write documentation\nDescribe what a DESCRIPTION file is and what goes in it\nBe able to build and install a R package\nBuild a website for your package"
+  },
+  {
+    "objectID": "lectures/08-r-pkg-dev-part01/index.html#slides",
+    "href": "lectures/08-r-pkg-dev-part01/index.html#slides",
+    "title": "R package development and pkgdown – Part 01",
+    "section": "Slides",
+    "text": "Slides\n\nLecture 08: R package development – Part 01"
+  },
+  {
+    "objectID": "lectures/08-r-pkg-dev-part01/index.html#additional-practice",
+    "href": "lectures/08-r-pkg-dev-part01/index.html#additional-practice",
+    "title": "R package development and pkgdown – Part 01",
+    "section": "Additional practice",
+    "text": "Additional practice\nHere are some additional practice questions to help you think about the material discussed."
+  },
+  {
+    "objectID": "lectures/08-r-pkg-dev-part01/index.html#part-1",
+    "href": "lectures/08-r-pkg-dev-part01/index.html#part-1",
+    "title": "R package development and pkgdown – Part 01",
+    "section": "Part 1",
+    "text": "Part 1\nHere, our goal is to build a minimal R package. We will practice setting up a new package using usethis, writing functions, and documenting the functions using roxygen2.\n\nCreate a package\n\n\nUse usethis::create_package(\"simpleutils\")\nLook at the files created: DESCRIPTION, NAMESPACE, R/, etc\n\n\nAdd two functions\n\n\nfunction 01: rescale01(x) = rescales a numeric vector to the range 0–1\nfunction 02: count_missing(x) = returns the number of missing values\n\n\nDocument each function using roxygen2\n\n\nAdd title, description, @param, @return, and an example\nThen run devtools::document() to automatically create the help files (.Rd) and the NAMESPACE\n\n\nInstall and test manually\n\n\nInstall with devtools::install().\n\n\nLoad it and try running the some example code e.g.\n\n\nlibrary(simpleutils)\nrescale01(c(1,5,10))\ncount_missing(c(1,NA,2,NA))"
+  },
+  {
+    "objectID": "lectures/08-r-pkg-dev-part01/index.html#part-2",
+    "href": "lectures/08-r-pkg-dev-part01/index.html#part-2",
+    "title": "R package development and pkgdown – Part 01",
+    "section": "Part 2",
+    "text": "Part 2\nNext, we will add a small dataset to the package and write documentation for the dataset.\n\nMake a small tibble or data frame (e.g., 30 rows, with 2 numeric vars and 1 factor). Save it to the package using:\n\n\nusethis::use_data(secret_data)\n\n\nCreate an R file under R/ with a roxygen block like:\n\n\n#' Example dataset: secret_data\n#' \n#' A small example dataset for demonstration.\n#' \n#' @format A data frame with 30 rows and 3 variables:\n#' \\describe{\n#'   \\item{x}{numeric}\n#'   \\item{y}{numeric}\n#'   \\item{group}{factor}\n#' }\n#' @source Simulated\n\"secret_data\"\n\n\nRun devtools::document() then devtools::install() to document and install the package.\n\n\nlibrary(simpleutils)\nmydata"
+  },
+  {
+    "objectID": "lectures/08-r-pkg-dev-part01/index.html#part-3",
+    "href": "lectures/08-r-pkg-dev-part01/index.html#part-3",
+    "title": "R package development and pkgdown – Part 01",
+    "section": "Part 3",
+    "text": "Part 3\nFinally, we will add a small vignette for our package.\n\nCreate a short vignette using usethis::use_vignette(\"getting-started\")\nAdd text to it describing\n\n\nwhat the package is for?\nhow to use rescale01()?\nhow to use your dataset?\n\n\nBuild and view the vignette using devtools::build_vignettes(). You can view it using browseVignettes(\"simpleutils\") too."
+  },
+  {
     "objectID": "lectures/07-ml-paradigms-part02/index.html",
     "href": "lectures/07-ml-paradigms-part02/index.html",
     "title": "Machine learning paradigms and workflows – Part 02",
@@ -529,7 +585,7 @@
     "href": "lectures.html",
     "title": "Course content",
     "section": "",
-    "text": "Course content for each lecture is below:\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-10-23\n\n\nWelcome to the course\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-28\n\n\nIntroduction to the command-line\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-30\n\n\nIntroduction to version control\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-04\n\n\nFunctional programming\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-06\n\n\nData Collection\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-11\n\n\nDatabase programming paradigms\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-13\n\n\nMachine learning paradigms and workflows – Part 01\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-18\n\n\nMachine learning paradigms and workflows – Part 02\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-20\n\n\nR package development and pkgdown\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
+    "text": "Course content for each lecture is below:\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-10-23\n\n\nWelcome to the course\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-28\n\n\nIntroduction to the command-line\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-30\n\n\nIntroduction to version control\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-04\n\n\nFunctional programming\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-06\n\n\nData Collection\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-11\n\n\nDatabase programming paradigms\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-13\n\n\nMachine learning paradigms and workflows – Part 01\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-18\n\n\nMachine learning paradigms and workflows – Part 02\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-20\n\n\nR package development and pkgdown – Part 01\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-25\n\n\nR package unit tests and intro to OOP – Part 02\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -784,60 +840,46 @@
     "text": "Additional practice\nHere are some additional practice questions to help you think about the material discussed.\n\nQuestion 1\nUsing penguins dataset discussed in class, we will practice more model building by experimenting with other features. In our first logistic regression, we only used two features (bill_length_mm and flipper_length_mm). In the second, we added body_mass_g and species.\nNow, fit a third logistic regression model that uses only bill_length_mm and body_mass_g as input features (X). Compute the accuracy and Kappa metrics using metrics(). Compare the results to both of the previous logistic regression models. Which combination of predictors yields the best performance, and why might that be? The purpose of this question is to help build intuition about how including or excluding features affects predictive accuracy and model interpretability.\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nlibrary(tidymodels)\nlibrary(palmerpenguins)\n\n\nAttaching package: 'palmerpenguins'\n\n\nThe following object is masked from 'package:modeldata':\n\n    penguins\n\n\nThe following objects are masked from 'package:datasets':\n\n    penguins, penguins_raw\n\npenguins &lt;- na.omit(penguins)\n\n# Logistic regression using only bill_length_mm and body_mass_g\nlogistic_model_q1 &lt;- \n  logistic_reg() %&gt;% \n  set_engine(\"glm\") %&gt;% \n  fit(sex ~ bill_length_mm + body_mass_g, data = penguins)\n\n# Examine model coefficients\ntidy(logistic_model_q1)\n\n# A tibble: 3 × 5\n  term           estimate std.error statistic  p.value\n  &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)    -6.91     1.08         -6.41 1.42e-10\n2 bill_length_mm  0.0611   0.0267        2.29 2.21e- 2\n3 body_mass_g     0.00102  0.000198      5.14 2.77e- 7\n\n# Make predictions\nlogistic_preds_q1 &lt;- predict(logistic_model_q1, penguins) %&gt;%\n  bind_cols(penguins)\n\n# Evaluate model performance\nlogistic_preds_q1 %&gt;%\n  metrics(truth = sex, estimate = .pred_class)\n\n# A tibble: 2 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy binary         0.625\n2 kap      binary         0.250\n\n\nWe saw that flipper_length_mm was not an informative feature, but it seems like body_mass_g is an informative variable! When we drop uninformative features and add informative features to the model, the predictive accuracy improves. It also helps model interpretability because we are keeping only a minmial set of features in the model.\n\n\n\n\n\nQuestion 2\nIn class, we compared logistic regression to random rorest models. We also computed the accuracy and Kappa for both the random forest and logistic regression models. Which performed better on this dataset? Why might the random forest outperform (or underperform) logistic regression here?\n\n\n\n\n\n\nTip\n\n\n\nUse vip::vip(rf_fit) to visualize which features the random forest considered most important. If you do this, you will need to modify set_engine(\"ranger\", importance = \"impurity\") to calculate importance\n\n\nThe purpose of this question is to compare model types and interpret variable importance in tree-based models.\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nlibrary(vip)\n\n\nAttaching package: 'vip'\n\n\nThe following object is masked from 'package:utils':\n\n    vi\n\n# Logistic regression with multiple predictors\nlogistic_model_q2 &lt;- \n  logistic_reg() %&gt;%\n  set_engine(\"glm\") %&gt;%\n  fit(sex ~ bill_length_mm + flipper_length_mm + body_mass_g + species, \n      data = penguins)\n\n# Random forest with same predictors\nrf_spec_q2 &lt;- rand_forest(mtry = 3) %&gt;%\n  set_engine(\"ranger\", importance = \"impurity\") %&gt;%\n  set_mode(\"classification\")\n\nrf_fit_q2 &lt;- rf_spec_q2 %&gt;%\n  fit(sex ~ bill_length_mm + flipper_length_mm + body_mass_g + species, \n      data = penguins)\n\n# Evaluate both models\nlogistic_preds_q2 &lt;- predict(logistic_model_q2, penguins) %&gt;%\n  bind_cols(penguins)\n\nrf_preds_q2 &lt;- predict(rf_fit_q2, penguins) %&gt;%\n  bind_cols(penguins)\n\nmetrics(logistic_preds_q2, truth = sex, estimate = .pred_class)\n\n# A tibble: 2 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy binary         0.892\n2 kap      binary         0.784\n\nmetrics(rf_preds_q2, truth = sex, estimate = .pred_class)\n\n# A tibble: 2 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy binary         0.958\n2 kap      binary         0.916\n\n# Visualize feature importance for random forest\nvip(rf_fit_q2)\n\n\n\n\n\n\n\n\nWe see that random forest performed better than logistic regression. This is because random forest can model complex, non-linear decision boundaries, while logistic regression assumes a linear relationship between the features and the log-odds of the outcome.\nAlso random forest can help with overfitting. It creates an ensemble of multiple decision trees and averaging their predictions. Therefore, random forest is more robust and less prone to overfitting than a single decision tree.\nIt also provides a measure of which features are most important for making predictions, which can be useful for understanding the data.\n\n\n\n\n\nQuestion 3\nThe random forest model was trained and evaluated on the entire dataset. That’s not ideal for assessing generalization of how well the model will perform on data it was not trained on.\nNext, use initial_split() from rsample to create a training (80%) and testing (20%) dataset. Fit your random forest on the training data and compute metrics on the test data. Compare the test accuracy to the earlier “full dataset” accuracy. What does the difference tell you about potential overfitting? The purpose of this question is to practice a strategy that can improve the model-building workflow that we will learn about in our next lecture.\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nset.seed(123)\npeng_split &lt;- initial_split(penguins, prop = 0.8)\npeng_train &lt;- training(peng_split)\npeng_test  &lt;- testing(peng_split)\n\n# Reuse the same random forest specification\nrf_spec_q3 &lt;- rand_forest(mtry = 3) %&gt;%\n  set_engine(\"ranger\", importance = \"impurity\") %&gt;%\n  set_mode(\"classification\")\n\n# Fit model on training data\nrf_fit_q3 &lt;- rf_spec_q3 %&gt;%\n  fit(sex ~ bill_length_mm + flipper_length_mm + body_mass_g + species, \n      data = peng_train)\n\n# Evaluate on test data\nrf_preds_q3 &lt;- predict(rf_fit_q3, peng_test) %&gt;%\n  bind_cols(peng_test)\n\nmetrics_train &lt;- predict(rf_fit_q3, peng_train) %&gt;%\n  bind_cols(peng_train) %&gt;%\n  metrics(truth = sex, estimate = .pred_class)\n\nmetrics_test &lt;- rf_preds_q3 %&gt;%\n  metrics(truth = sex, estimate = .pred_class)\n\nmetrics_train\n\n# A tibble: 2 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy binary         0.947\n2 kap      binary         0.895\n\nmetrics_test\n\n# A tibble: 2 × 3\n  .metric  .estimator .estimate\n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;\n1 accuracy binary         0.881\n2 kap      binary         0.757\n\n\nThe performance dropped in the test data, therefore we are potentially overfitting when we fit our models."
   },
   {
-    "objectID": "lectures/08-r-pkg-dev-part01/index.html",
-    "href": "lectures/08-r-pkg-dev-part01/index.html",
-    "title": "R package development and pkgdown",
+    "objectID": "lectures/09-r-pkg-dev-part02/index.html",
+    "href": "lectures/09-r-pkg-dev-part02/index.html",
+    "title": "R package unit tests and intro to OOP – Part 02",
     "section": "",
-    "text": "Tip\n\n\n\nIn advance of class, please install two additional packages:\n\ndevtools - this provides many additional tools for building packages\nroxygen2 - this provides tools for writing documentation\npkgdown - this helps you to build a package website with little effort\nusethis - an automation package that simplifies project creation and setup\n\nYou can do this by calling\n\ninstall.packages(c(\"devtools\", \"roxygen2\",\n                   \"usethis\", \"pkgdown\"))\n\nIn addition, please read through:\n\nhttps://r-pkgs.org\nhttps://stat545.com/package-overview\nhttps://usethis.r-lib.org\nhttps://pkgdown.r-lib.org/articles/pkgdown"
+    "text": "Tip\n\n\n\nFor unit testing, please install\n\ntestthat - this provides utilities for unit testing package for R\n\nFor reading more about object-oriented programming, please have a brief look through these four sections of the book:\n\nhttps://adv-r.hadley.nz/oo (Chapters 12-16)"
   },
   {
-    "objectID": "lectures/08-r-pkg-dev-part01/index.html#acknowledgements",
-    "href": "lectures/08-r-pkg-dev-part01/index.html#acknowledgements",
-    "title": "R package development and pkgdown",
+    "objectID": "lectures/09-r-pkg-dev-part02/index.html#acknowledgements",
+    "href": "lectures/09-r-pkg-dev-part02/index.html#acknowledgements",
+    "title": "R package unit tests and intro to OOP – Part 02",
     "section": "Acknowledgements",
-    "text": "Acknowledgements\nMaterial for this lecture was borrowed and adopted from\n\nhttps://pkgdown.r-lib.org/index.html\nhttps://bookdown.org/yihui/rmarkdown/pkgdown-components.html"
+    "text": "Acknowledgements\nMaterial for this lecture was borrowed and adopted from\n\nhttps://testthat.r-lib.org\nhttps://adv-r.hadley.nz/oo (Chapters 12-16)"
   },
   {
-    "objectID": "lectures/08-r-pkg-dev-part01/index.html#learning-objectives",
-    "href": "lectures/08-r-pkg-dev-part01/index.html#learning-objectives",
-    "title": "R package development and pkgdown",
+    "objectID": "lectures/09-r-pkg-dev-part02/index.html#learning-objectives",
+    "href": "lectures/09-r-pkg-dev-part02/index.html#learning-objectives",
+    "title": "R package unit tests and intro to OOP – Part 02",
     "section": "Learning objectives",
-    "text": "Learning objectives\n\n\n\n\n\n\nNoteLearning objectives\n\n\n\nAt the end of this lesson you will:\n\nCreate an empty R package\nDesign a R function and write documentation\nDescribe what a DESCRIPTION file is and what goes in it\nBe able to build and install a R package\nBuild a website for your package"
+    "text": "Learning objectives\n\n\n\n\n\n\nNoteLearning objectives\n\n\n\nAt the end of this lesson you will:\n\nCreate unit tests for the function in your R package using testthat\nRecognize the primary object-oriented systems in R: S3, S4, R6, and Reference Classes (RC).\nUnderstand the terminology of a class, object, method, constructor and generic.\nBe able to create a new S3 with generics and methods"
   },
   {
-    "objectID": "lectures/08-r-pkg-dev-part01/index.html#slides",
-    "href": "lectures/08-r-pkg-dev-part01/index.html#slides",
-    "title": "R package development and pkgdown",
+    "objectID": "lectures/09-r-pkg-dev-part02/index.html#slides",
+    "href": "lectures/09-r-pkg-dev-part02/index.html#slides",
+    "title": "R package unit tests and intro to OOP – Part 02",
     "section": "Slides",
-    "text": "Slides\n\nLecture 08: R package development – Part 01"
+    "text": "Slides\n\nLecture 09: R package development – Part 01"
   },
   {
-    "objectID": "lectures/08-r-pkg-dev-part01/index.html#additional-practice",
-    "href": "lectures/08-r-pkg-dev-part01/index.html#additional-practice",
-    "title": "R package development and pkgdown",
+    "objectID": "lectures/09-r-pkg-dev-part02/index.html#summary",
+    "href": "lectures/09-r-pkg-dev-part02/index.html#summary",
+    "title": "R package unit tests and intro to OOP – Part 02",
+    "section": "Summary",
+    "text": "Summary\n\nR has three object oriented systems: S3, S4, and Reference Classes.\nReference Classes are the most similar to classes and objects in other programming languages.\nClasses are blueprints for an object.\nObjects are individual instances of a class.\nMethods are functions that are associated with a particular class.\nConstructors are methods that create objects.\nEverything in R is an object.\nS3 is a liberal object oriented system that allows you to assign a class to any object.\nS4 is a more strict object oriented system that build upon ideas in S3."
+  },
+  {
+    "objectID": "lectures/09-r-pkg-dev-part02/index.html#additional-practice",
+    "href": "lectures/09-r-pkg-dev-part02/index.html#additional-practice",
+    "title": "R package unit tests and intro to OOP – Part 02",
     "section": "Additional practice",
-    "text": "Additional practice\nHere are some additional practice questions to help you think about the material discussed."
-  },
-  {
-    "objectID": "lectures/08-r-pkg-dev-part01/index.html#part-1",
-    "href": "lectures/08-r-pkg-dev-part01/index.html#part-1",
-    "title": "R package development and pkgdown",
-    "section": "Part 1",
-    "text": "Part 1\nHere, our goal is to build a minimal R package. We will practice setting up a new package using usethis, writing functions, and documenting the functions using roxygen2.\n\nCreate a package\n\n\nUse usethis::create_package(\"simpleutils\")\nLook at the files created: DESCRIPTION, NAMESPACE, R/, etc\n\n\nAdd two functions\n\n\nfunction 01: rescale01(x) = rescales a numeric vector to the range 0–1\nfunction 02: count_missing(x) = returns the number of missing values\n\n\nDocument each function using roxygen2\n\n\nAdd title, description, @param, @return, and an example\nThen run devtools::document() to automatically create the help files (.Rd) and the NAMESPACE\n\n\nInstall and test manually\n\n\nInstall with devtools::install().\n\n\nLoad it and try running the some example code e.g.\n\n\nlibrary(simpleutils)\nrescale01(c(1,5,10))\ncount_missing(c(1,NA,2,NA))"
-  },
-  {
-    "objectID": "lectures/08-r-pkg-dev-part01/index.html#part-2",
-    "href": "lectures/08-r-pkg-dev-part01/index.html#part-2",
-    "title": "R package development and pkgdown",
-    "section": "Part 2",
-    "text": "Part 2\nNext, we will add a small dataset to the package and write documentation for the dataset.\n\nMake a small tibble or data frame (e.g., 30 rows, with 2 numeric vars and 1 factor). Save it to the package using:\n\n\nusethis::use_data(secret_data)\n\n\nCreate an R file under R/ with a roxygen block like:\n\n\n#' Example dataset: secret_data\n#' \n#' A small example dataset for demonstration.\n#' \n#' @format A data frame with 30 rows and 3 variables:\n#' \\describe{\n#'   \\item{x}{numeric}\n#'   \\item{y}{numeric}\n#'   \\item{group}{factor}\n#' }\n#' @source Simulated\n\"secret_data\"\n\n\nRun devtools::document() then devtools::install() to document and install the package.\n\n\nlibrary(simpleutils)\nmydata"
-  },
-  {
-    "objectID": "lectures/08-r-pkg-dev-part01/index.html#part-3",
-    "href": "lectures/08-r-pkg-dev-part01/index.html#part-3",
-    "title": "R package development and pkgdown",
-    "section": "Part 3",
-    "text": "Part 3\nFinally, we will add a small vignette for our package.\n\nCreate a short vignette using usethis::use_vignette(\"getting-started\")\nAdd text to it describing\n\n\nwhat the package is for?\nhow to use rescale01()?\nhow to use your dataset?\n\n\nBuild and view the vignette using devtools::build_vignettes(). You can view it using browseVignettes(\"simpleutils\") too."
+    "text": "Additional practice\nHere are some additional practice questions to help you think about the material discussed.\n\nhttps://adv-r.hadley.nz/s3.html#exercises-38\nhttps://adv-r.hadley.nz/s3.html#exercises-39\nhttps://adv-r.hadley.nz/s3.html#exercises-40\nhttps://adv-r.hadley.nz/s3.html#exercises-42"
   },
   {
     "objectID": "projects.html",
