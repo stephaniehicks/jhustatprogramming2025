@@ -71,14 +71,13 @@ Material for this lecture was borrowed and adopted from
 
 # Class activity 
 
-For the rest of the time in class, we will practice using the `future` package.
-There are two tutorials for you to work through own your own developed by 
-Henrik Bengtsson from the UseR! 2024 conference: 
+For the rest of the time in class, you and your team will work on the final project. Stephanie will walk around to answer questions and happy to help in any way! 
+
+# Post-lecture
+
+If you would like more practice using the `future` package, there are two 
+tutorials for you to work through own your own developed by Henrik Bengtsson 
+from the UseR! 2024 conference: 
 
 - [Lab: Futureverse 1](https://henrikbengtsson.github.io/future-tutorial-user2024/lab1.html)
 - [Lab: Futureverse 2](https://henrikbengtsson.github.io/future-tutorial-user2024/lab2.html)
-
-Also, if you would like to try out the three strategies we learned about in 
-class today for dealing with large data, try working through the pre-reading: 
-
-- [Strategies for dealing with large data](../../readings/11-strategies-big-data/index.qmd)
