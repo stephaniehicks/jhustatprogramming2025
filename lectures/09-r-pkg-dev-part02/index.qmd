@@ -44,8 +44,8 @@ Material for this lecture was borrowed and adopted from
 **At the end of this lesson you will:**
  
 - Create unit tests for the function in your R package using `testthat`
-- Recognize the primary object-oriented systems in R: S3, S4, R6, and Reference Classes (RC). 
-- Understand the terminology of a **class**, **object**, **method**, **constructor** and **generic**.
+- Recognize the primary object-oriented systems in R: S3, S4, and Reference Classes (RC). 
+- Understand the terminology of a **class**, **object**, **method**, and **generic**.
 - Be able to create a new S3 with generics and methods
 
 :::
@@ -53,7 +53,7 @@ Material for this lecture was borrowed and adopted from
 
 ## Slides 
 
-- [Lecture 09: R package development -- Part 01](https://docs.google.com/presentation/d/1kbauy6d45zb2mEtFpBt5fo2j8S9--lTwGcGruFBrAXM/edit?usp=sharing)
+- [Lecture 09: R package development -- Part 02](https://docs.google.com/presentation/d/1kbauy6d45zb2mEtFpBt5fo2j8S9--lTwGcGruFBrAXM/edit?usp=sharing)
 
 # Class activity 
 
