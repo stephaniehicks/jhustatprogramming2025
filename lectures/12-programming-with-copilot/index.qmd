@@ -16,7 +16,11 @@ draft: false
 
 In advance of class, please set up your GitHub student account on this website: <https://education.github.com/discount_requests/application>. This process may take up to 72 hours.
 
-Once you've been granted access, you can follow these instructions to install Copilot in RStudio: <https://drive.google.com/file/d/1Y_BLnYYWxujbJuxlWXjCtU93mghKG-2s/view?usp=sharing>.
+Once you have been granted access, you can follow these instructions to install Copilot: 
+
+- Using VSCode: <https://code.visualstudio.com/docs/copilot/setup>
+- Using Positron: <https://positron.posit.co/assistant#step-2-configure-language-model-providers>
+- RStudio: <https://docs.posit.co/ide/user/ide/guide/tools/copilot.html>
 
 :::
 
@@ -33,7 +37,7 @@ Once you've been granted access, you can follow these instructions to install Co
 
 -   Know the basic terminology and logic of GitHub Copilot
 -   Have helpful tips to optimize your use of GitHub Copilot
--   Have resources to create a free student account to GitHub Copilot and install it in RStudio 
+-   Have resources to create a free student account to GitHub Copilot and install it in your IDE
 
 :::
 
