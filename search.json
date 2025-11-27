@@ -343,6 +343,27 @@
     "text": "5. Share your website\nGo to the Discussion Board in CoursePlus and write a short post with a link (URL) to your website (and URL to the corresponding GitHub repository) that you created. Also, list the URLs below for the purposes of grading.\nAs you read the introductions from other folks in the class, feel free to comment/reply using Discussion board.\n\nLink to your GitHub repository: [Delete this text and replace the text with the link to the public GitHub repo you created above for your website]\nLink to your deployed website: [Delete this and replace the text with the link to the public deployed website you created above]"
   },
   {
+    "objectID": "lectures/12-programming-with-copilot/index.html",
+    "href": "lectures/12-programming-with-copilot/index.html",
+    "title": "Programming with GitHub Copilot",
+    "section": "",
+    "text": "Tip\n\n\n\nIn advance of class, please set up your GitHub student account on this website: https://education.github.com/discount_requests/application. This process may take up to 72 hours.\nOnce you’ve been granted access, you can follow these instructions to install Copilot in RStudio: https://drive.google.com/file/d/1Y_BLnYYWxujbJuxlWXjCtU93mghKG-2s/view?usp=sharing."
+  },
+  {
+    "objectID": "lectures/12-programming-with-copilot/index.html#learning-objectives",
+    "href": "lectures/12-programming-with-copilot/index.html#learning-objectives",
+    "title": "Programming with GitHub Copilot",
+    "section": "Learning objectives",
+    "text": "Learning objectives\n\n\n\n\n\n\nNoteLearning objectives\n\n\n\nAt the end of this lesson you will:\n\nKnow the basic terminology and logic of GitHub Copilot\nHave helpful tips to optimize your use of GitHub Copilot\nHave resources to create a free student account to GitHub Copilot and install it in RStudio"
+  },
+  {
+    "objectID": "lectures/12-programming-with-copilot/index.html#slides",
+    "href": "lectures/12-programming-with-copilot/index.html#slides",
+    "title": "Programming with GitHub Copilot",
+    "section": "Slides",
+    "text": "Slides\n\nLecture 12: Programming with Copilot"
+  },
+  {
     "objectID": "lectures/11-parallel-programming/index.html",
     "href": "lectures/11-parallel-programming/index.html",
     "title": "Parallel programming",
@@ -599,7 +620,7 @@
     "href": "lectures.html",
     "title": "Course content",
     "section": "",
-    "text": "Course content for each lecture is below:\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-10-23\n\n\nWelcome to the course\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-28\n\n\nIntroduction to the command-line\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-30\n\n\nIntroduction to version control\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-04\n\n\nFunctional programming\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-06\n\n\nData Collection\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-11\n\n\nDatabase programming paradigms\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-13\n\n\nMachine learning paradigms and workflows – Part 01\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-18\n\n\nMachine learning paradigms and workflows – Part 02\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-20\n\n\nR package development and pkgdown – Part 01\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-25\n\n\nR package unit tests and intro to OOP – Part 02\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-12-04\n\n\nParallel programming\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
+    "text": "Course content for each lecture is below:\n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n2025-10-23\n\n\nWelcome to the course\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-28\n\n\nIntroduction to the command-line\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-10-30\n\n\nIntroduction to version control\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-04\n\n\nFunctional programming\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-06\n\n\nData Collection\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-11\n\n\nDatabase programming paradigms\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-13\n\n\nMachine learning paradigms and workflows – Part 01\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-18\n\n\nMachine learning paradigms and workflows – Part 02\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-20\n\n\nR package development and pkgdown – Part 01\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-11-25\n\n\nR package unit tests and intro to OOP – Part 02\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-12-04\n\n\nParallel programming\n\n\nStephanie Hicks\n\n\n\n\n\n\n2025-12-09\n\n\nProgramming with GitHub Copilot\n\n\nKinnary Shah\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
