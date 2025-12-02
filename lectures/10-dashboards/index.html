@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Stephanie Hicks">
+<meta name="dcterms.date" content="2025-12-02">
+<meta name="description" content="Introduction to building dashboards in R">
 
-<title>Important reading materials – Statistical Programming Paradigms and Workflows</title>
+<title>Building static and interactive dashboards – Statistical Programming Paradigms and Workflows</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +23,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-fc1a281c15ae91fd4173f431b0abd564.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-fc1a281c15ae91fd4173f431b0abd564.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,67 +106,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-reading-listings .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-reading-listings'] = new List('listing-reading-listings', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -140,7 +118,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Statistical Programming Paradigms and Workflows</span>
     </a>
   </div>
@@ -151,12 +129,12 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> <i class="bi bi-home" role="img">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-home" role="img">
 </i> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./lectures.html"> <i class="bi bi-book-half" role="img">
+    <a class="nav-link" href="../../lectures.html"> <i class="bi bi-book-half" role="img">
 </i> 
 <span class="menu-text">Course</span></a>
   </li>  
@@ -168,15 +146,15 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-resources">    
         <li>
-    <a class="dropdown-item" href="./readings.html">
+    <a class="dropdown-item" href="../../readings.html">
  <span class="dropdown-text">Pre-reading</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./projects.html">
+    <a class="dropdown-item" href="../../projects.html">
  <span class="dropdown-text">Projects</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./resources.html">
+    <a class="dropdown-item" href="../../resources.html">
  <span class="dropdown-text">Additional Resources</span></a>
   </li>  
     </ul>
@@ -194,25 +172,63 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#pre-lecture-activities" id="toc-pre-lecture-activities" class="nav-link active" data-scroll-target="#pre-lecture-activities">Pre-lecture activities</a></li>
+  <li><a href="#lecture" id="toc-lecture" class="nav-link" data-scroll-target="#lecture">Lecture</a>
+  <ul class="collapse">
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#deploying-a-dashboard" id="toc-deploying-a-dashboard" class="nav-link" data-scroll-target="#deploying-a-dashboard">Deploying a dashboard</a></li>
+  </ul></li>
+  <li><a href="#class-activity" id="toc-class-activity" class="nav-link" data-scroll-target="#class-activity">Class activity</a></li>
+  <li><a href="#post-lecture" id="toc-post-lecture" class="nav-link" data-scroll-target="#post-lecture">Post-lecture</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Important reading materials</h1>
+<h1 class="title">Building static and interactive dashboards</h1>
 </div>
 
+<div>
+  <div class="description">
+    Introduction to building dashboards in R
+  </div>
+</div>
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author"><a href="https://stephaniehicks.com">Stephanie Hicks</a> </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Department of Biostatistics, Johns Hopkins
+          </p>
+      </div>
+  </div>
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
-    
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 2, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -222,126 +238,112 @@ window.Quarto = {
 </header>
 
 
-<p>The following contains relevant reading materials you should read prior to each class:</p>
-<div id="listing-reading-listings" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-
-<th>
-Date
-</th>
-
-<th>
-Title
-</th>
-
-<th>
-Author
-</th>
-
-</tr>
-</thead>
-<tbody class="list">
-
-<tr data-index="0" data-listing-date-sort="1761177600000" data-listing-file-modified-sort="1764647186278" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1405" data-listing-title-sort="(Some) Best practices for writing up a data analysis" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">2025-10-23</span>
-</td>
-<td>
-<a href="./readings/00-best-practices-data-analysis/index.html" class="title listing-title">(Some) Best practices for writing up a data analysis</a>
-</td>
-<td>
-<span class="listing-author">Stephanie Hicks</span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-listing-date-sort="1761177600000" data-listing-file-modified-sort="1764647186278" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3372" data-listing-title-sort="Authoring projects and websites with Quarto" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">2025-10-23</span>
-</td>
-<td>
-<a href="./readings/00-quarto/index.html" class="title listing-title">Authoring projects and websites with Quarto</a>
-</td>
-<td>
-<span class="listing-author">Stephanie Hicks</span>
-</td>
-
-</tr>
-
-<tr data-index="2" data-listing-date-sort="1762214400000" data-listing-file-modified-sort="1764647186278" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3177" data-listing-title-sort="Functional Programming with `purrr`" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">2025-11-04</span>
-</td>
-<td>
-<a href="./readings/03-functional-programming/index.html" class="title listing-title">Functional Programming with <code>purrr</code></a>
-</td>
-<td>
-<span class="listing-author">Stephanie Hicks</span>
-</td>
-
-</tr>
-
-<tr data-index="3" data-listing-date-sort="1762387200000" data-listing-file-modified-sort="1764647186278" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2707" data-listing-title-sort="Retrieving data from APIs with `httr2`" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">2025-11-06</span>
-</td>
-<td>
-<a href="./readings/04-data-collection-apis/index.html" class="title listing-title">Retrieving data from APIs with <code>httr2</code></a>
-</td>
-<td>
-<span class="listing-author">Stephanie Hicks</span>
-</td>
-
-</tr>
-
-<tr data-index="4" data-listing-date-sort="1762387200000" data-listing-file-modified-sort="1764647186282" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2330" data-listing-title-sort="Scraping data from the web with `rvest`" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">2025-11-06</span>
-</td>
-<td>
-<a href="./readings/04-data-collection-html/index.html" class="title listing-title">Scraping data from the web with <code>rvest</code></a>
-</td>
-<td>
-<span class="listing-author">Stephanie Hicks</span>
-</td>
-
-</tr>
-
-<tr data-index="5" data-listing-date-sort="1762819200000" data-listing-file-modified-sort="1764647186286" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="20" data-listing-word-count-sort="3902" data-listing-title-sort="Relational databases and SQL basics" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">2025-11-11</span>
-</td>
-<td>
-<a href="./readings/05-database-programming/index.html" class="title listing-title">Relational databases and SQL basics</a>
-</td>
-<td>
-<span class="listing-author">Stephanie Hicks</span>
-</td>
-
-</tr>
-
-<tr data-index="6" data-listing-date-sort="1764806400000" data-listing-file-modified-sort="1764647186288" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3097" data-listing-title-sort="Strategies for dealing with large data" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">2025-12-04</span>
-</td>
-<td>
-<a href="./readings/11-strategies-big-data/index.html" class="title listing-title">Strategies for dealing with large data</a>
-</td>
-<td>
-<span class="listing-author">Stephanie Hicks</span>
-</td>
-
-</tr>
-
-</tbody>
-</table>
-<div class="listing-no-matching d-none">No matching items</div>
+<section id="pre-lecture-activities" class="level1">
+<h1>Pre-lecture activities</h1>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In advance of class, please install three additional packages:</p>
+<ul>
+<li><code>shiny</code> - this provides functionality to create interactive dashboard elements</li>
+</ul>
+<p>You can do this by calling</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"shiny"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In addition, please read through</p>
+<ol type="1">
+<li>Information about creating quarto dashboards: <a href="https://quarto.org/docs/dashboards/" class="uri">https://quarto.org/docs/dashboards/</a></li>
+<li>Examples of quarto dashboards: <a href="https://quarto.org/docs/gallery/#dashboards" class="uri">https://quarto.org/docs/gallery/#dashboards</a></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="lecture" class="level1">
+<h1>Lecture</h1>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Learning objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>At the end of this lesson you will:</strong></p>
+<ul>
+<li>Know how to create a static quarto dashboard to display data analysis elements</li>
+<li>Add interactive elements to your dashboard using tools from the <code>shiny</code> package</li>
+<li>Have resources to assist you in developing your own more complex dashboard to clearly present data and interactive elements</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<ul>
+<li><a href="https://docs.google.com/presentation/d/1vxpDDHh3p5Gms902nhtBx_bNjADgnTuYtUq83h76b_o/edit?usp=sharing">Lecture 10: Building static and interactive dashboards</a></li>
+</ul>
+</section>
+<section id="deploying-a-dashboard" class="level2">
+<h2 class="anchored" data-anchor-id="deploying-a-dashboard">Deploying a dashboard</h2>
+<p>Here are some helpful pointers for getting a free <code>Shinyapps.io</code> account and then publishing your dashboard to the web:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Deploying a Shiny app in RStudio
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Sign up for a free account on <a href="http://www.shinyapps.io/">http://www.shinyapps.io/</a></li>
+<li>Install the <code>rsconnect</code> package: <code>install.packages("rsconnect")</code></li>
+<li>Check out these instructions to deploy on ShinyApps.io (<a href="https://quarto.org/docs/interactive/shiny/running.html#shinyapps" class="uri">https://quarto.org/docs/interactive/shiny/running.html#shinyapps</a>)</li>
+<li>If you want to delete the app (unpublish it), you need to do this from within your shinyapps.io account. Go to <a href="http://www.shinyapps.io/">http://www.shinyapps.io/</a> and log in to your account. Click on applications to manage your applications. You must first archive your app before you can delete it.</li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+<section id="class-activity" class="level1">
+<h1>Class activity</h1>
+<p>For the rest of the time in class, you and your team will work on the final project. Stephanie will walk around to answer questions.</p>
+</section>
+<section id="post-lecture" class="level1">
+<h1>Post-lecture</h1>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Here are a list of resources on Shiny:</p>
+<ul>
+<li>Main page: <a href="https://shiny.posit.co/" class="uri">https://shiny.posit.co/</a></li>
+<li>Awesome tutorial: <a href="https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/" class="uri">https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/</a></li>
+</ul>
+</div>
 </div>
 
 
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
